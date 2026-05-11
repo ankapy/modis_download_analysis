@@ -1,0 +1,45 @@
+###
+project_dump.txt
+test*
+gis/
+data/
+00_zonal_stats_arcgis.py
+00_zonal_stats.py
+
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+.env
+
+# Данные (не коммитить!)
+data/raw/*
+data/processed/*
+data/tables/*
+
+# Выводы (генерируются автоматически)
+output/figures/*
+output/tables/*
+
+# Логи
+logs/*
+!logs/.gitkeep
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
