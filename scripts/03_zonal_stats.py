@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Zonal Statistics: Pure GDAL + NumPy Approach
 Метод: Direct Memory Masking
@@ -32,25 +33,30 @@ OUTPUT_CSV = os.path.join(DATA_PATHS["tables"], "zonal_stats_monthly.csv")
 
 
 def load_zones(gpkg_path: str):
-    """Чтение зон из GeoPackage через ogr (без geopandas)"""
+    """Чтение зон из GeoPackage через ogr. Вычисляет lat_center центроида."""
     if not os.path.exists(gpkg_path):
         raise FileNotFoundError(f"GeoPackage not found: {gpkg_path}")
 
     ds = ogr.Open(gpkg_path)
     layer = ds.GetLayer("natural_zones")
     if layer is None:
-        layer = ds.GetLayerByIndex(0)  # Fallback to first layer
+        layer = ds.GetLayerByIndex(0)
 
     zones = []
     for i, feat in enumerate(layer):
         name = feat.GetField("target_zone")
         if name:
-            # Сохраняем WKT для быстрого доступа
+            geom = feat.GetGeometryRef()
+            # Вычисляем центроид напрямую через OGR
+            centroid = geom.Centroid()
+            lat_center = centroid.GetY()
+
             zones.append(
                 {
-                    "id": i + 1,  # Уникальный ID для растеризации
+                    "id": i + 1,
                     "name": str(name).strip(),
-                    "wkt": feat.GetGeometryRef().ExportToWkt(),
+                    "wkt": geom.ExportToWkt(),
+                    "lat_center": float(lat_center),
                 }
             )
     ds = None
@@ -58,6 +64,7 @@ def load_zones(gpkg_path: str):
 
 
 def extract_date(filename: str) -> str:
+    """Извлечение YYYY-DOY из имени файла MODIS"""
     try:
         parts = filename.split(".")
         if len(parts) >= 2 and parts[1].startswith("A"):
@@ -68,6 +75,7 @@ def extract_date(filename: str) -> str:
 
 
 def doy_to_month(date_str: str) -> int:
+    """Конвертация дня года в месяц"""
     if date_str == "unknown":
         return 0
     try:
@@ -94,10 +102,7 @@ def doy_to_month(date_str: str) -> int:
 
 
 def process_raster_pure_gdal(raster_path: str, zones: list):
-    """
-    Основная функция: Растеризация зон в память и расчет статистики через NumPy.
-    """
-    # 1. Открываем растр
+    """Растеризация зон в память и расчет статистики через NumPy."""
     ds = gdal.Open(raster_path)
     if ds is None:
         return []
@@ -111,20 +116,18 @@ def process_raster_pure_gdal(raster_path: str, zones: list):
     cols, rows = ds.RasterXSize, ds.RasterYSize
     geotransform = ds.GetGeoTransform()
     projection = ds.GetProjection()
-    ds = None  # Закрываем, данные в памяти
+    ds = None
 
-    # 2. Создаем векторный слой в памяти
+    # Векторный слой в памяти
     mem_driver = ogr.GetDriverByName("Memory")
     v_ds = mem_driver.CreateDataSource("mem")
     srs = osr.SpatialReference()
     srs.ImportFromWkt(projection)
     v_layer = v_ds.CreateLayer("zones", srs=srs, geom_type=ogr.wkbPolygon)
 
-    # Добавляем поле для ID зоны
     field_def = ogr.FieldDefn("zone_id", ogr.OFTInteger)
     v_layer.CreateField(field_def)
 
-    # 3. Добавляем все полигоны в слой
     for zone in zones:
         feat = ogr.Feature(v_layer.GetLayerDefn())
         feat.SetField("zone_id", zone["id"])
@@ -132,14 +135,12 @@ def process_raster_pure_gdal(raster_path: str, zones: list):
         v_layer.CreateFeature(feat)
         feat = None
 
-    # 4. Растеризуем в память (Mask Raster)
+    # Растеризация
     mask_driver = gdal.GetDriverByName("MEM")
     mask_ds = mask_driver.Create("mask", cols, rows, 1, gdal.GDT_Int32)
     mask_ds.SetGeoTransform(geotransform)
     mask_ds.SetProjection(projection)
 
-    # Burn values: используем атрибут zone_id
-    # ALL_TOUCHED=TRUE гарантирует, что все касающиеся пиксели будут учтены
     gdal.RasterizeLayer(
         mask_ds,
         [1],
@@ -152,31 +153,23 @@ def process_raster_pure_gdal(raster_path: str, zones: list):
     v_ds = None
     mask_ds = None
 
-    # 5. Вычисляем статистику для каждой зоны через NumPy
+    # Статистика
     results = []
     unique_ids = np.unique(mask_data[mask_data > 0])
-
     date_str = extract_date(os.path.basename(raster_path))
     month = doy_to_month(date_str)
 
-    # Определяем продукт и год из пути
     parts = Path(raster_path).parts
     product = parts[-3]
     year = int(parts[-2])
 
     for uid in unique_ids:
-        # Находим зону по ID
         zone = next((z for z in zones if z["id"] == uid), None)
         if not zone:
             continue
 
-        # Маска для текущей зоны
         zone_mask = mask_data == uid
-
-        # Извлекаем значения растра по маске
         values = raster_data[zone_mask]
-
-        # Фильтруем NoData и NaN
         valid_values = values[(values != nodata) & (~np.isnan(values))]
 
         if len(valid_values) > 0:
@@ -187,6 +180,7 @@ def process_raster_pure_gdal(raster_path: str, zones: list):
                     "month": month,
                     "product": product,
                     "date": date_str,
+                    "lat_center": zone["lat_center"],
                     "pixel_count": int(len(valid_values)),
                     "mean": float(valid_values.mean()),
                     "std": float(valid_values.std()),
@@ -195,12 +189,10 @@ def process_raster_pure_gdal(raster_path: str, zones: list):
                     "max": float(valid_values.max()),
                 }
             )
-
     return results
 
 
 def main():
-    # 1. Обработка аргументов командной строки
     parser = argparse.ArgumentParser(description="Zonal Statistics Pure GDAL")
     parser.add_argument(
         "--test", action="store_true", help="Быстрый тест: 1 файл на продукт"
@@ -214,7 +206,7 @@ def main():
     print("=" * 60)
     start_time = time.time()
 
-    # 2. Загрузка зон
+    # 1. Загрузка зон
     print("[1/4] Loading zones from GeoPackage...")
     try:
         zones = load_zones(ZONES_GPKG)
@@ -226,7 +218,7 @@ def main():
         print(f"[ERROR] {e}")
         return
 
-    # 3. Поиск файлов
+    # 2. Поиск файлов
     print("[2/4] Scanning for rasters...")
     products = ["LST", "NDVI"]
     years = list(range(TEMPORAL_RANGE["start_year"], TEMPORAL_RANGE["end_year"] + 1))
@@ -237,22 +229,17 @@ def main():
             prod_dir = Path(DATA_PATHS["processed"]) / product / str(year)
             if prod_dir.exists():
                 tifs = sorted(prod_dir.glob("*.tif"))
-
-                # ЛОГИКА ТЕСТОВОГО РЕЖИМА
                 if args.test:
                     if tifs:
-                        tasks.append(str(tifs[0]))  # Берем только первый файл
+                        tasks.append(str(tifs[0]))
                         print(f"  [TEST] Found {tifs[0].name}")
-                        # Если нашли 1 файл для LST и 1 для NDVI, можно остановиться,
-                        # но оставим цикл, чтобы проверить наличие обоих продуктов
                 else:
-                    # Полный режим
                     for tif in tifs:
                         tasks.append(str(tif))
 
     print(f"[OK] Found {len(tasks)} rasters to process.")
 
-    # 4. Обработка
+    # 3. Обработка
     print("[3/4] Processing (Direct Memory Masking)...")
     all_results = []
 
@@ -260,23 +247,45 @@ def main():
         try:
             res = process_raster_pure_gdal(raster_path, zones)
             all_results.extend(res)
-
-            # Вывод прогресса
-            if not args.test:
-                if (i + 1) % 10 == 0:
-                    print(f"  Processed {i+1}/{len(tasks)} rasters...")
+            if not args.test and (i + 1) % 10 == 0:
+                print(f"  Processed {i+1}/{len(tasks)} rasters...")
         except Exception as e:
             print(f"[WARN] Error on {raster_path}: {e}")
 
-    # 5. Сохранение
-    print("[4/4] Saving results...")
+    # 4. Сохранение и агрегация
+    print("[4/4] Saving results & generating summary...")
     if all_results:
         df = pd.DataFrame(all_results)
         os.makedirs(os.path.dirname(OUTPUT_CSV), exist_ok=True)
+
+        # Сохраняем основные данные (включая lat_center)
         df.to_csv(OUTPUT_CSV, index=False, encoding="utf-8-sig")
         print(f"[OK] Saved {len(df)} records to {OUTPUT_CSV}")
-        print(f"\nПример данных (первые 5 строк):")
-        print(df.head())
+
+        # Генерируем агрегированную таблицу
+        agg_df = (
+            df.groupby(["zone_name", "year", "month", "product"])["mean"]
+            .agg(["mean", "std", "min", "max", "count"])
+            .reset_index()
+        )
+        agg_df = agg_df.rename(
+            columns={
+                "mean": "mean_val",
+                "std": "std_val",
+                "min": "min_val",
+                "max": "max_val",
+                "count": "n_observations",
+            }
+        )
+
+        agg_path = OUTPUT_CSV.replace(".csv", "_agg.csv")
+        agg_df.to_csv(agg_path, index=False, encoding="utf-8-sig")
+        print(f"[OK] Saved aggregated summary to {agg_path}")
+
+        print(f"\nПример выходных данных:")
+        print(
+            df[["zone_name", "year", "month", "product", "mean", "lat_center"]].head(3)
+        )
     else:
         print("[WARN] No data extracted. Check if zones intersect rasters.")
 

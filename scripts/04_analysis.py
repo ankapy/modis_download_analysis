@@ -505,7 +505,7 @@ class MODISAnalyzer:
         print("[8/8] Экспорт агрегированных данных...")
         self.export_monthly_aggregated()
 
-        print("\n✅ Завершено. Все графики и таблицы в:", self.output_dir)
+        print("\nЗавершено. Все графики и таблицы в:", self.output_dir)
 
 
 def main():
