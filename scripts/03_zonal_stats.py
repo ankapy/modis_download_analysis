@@ -56,7 +56,8 @@ def load_zones(gpkg_path: str):
                     "id": i + 1,
                     "name": str(name).strip(),
                     "wkt": geom.ExportToWkt(),
-                    "lat_center": float(lat_center),
+                    "lat_center": float(centroid.GetY()),
+                    "lon_center": float(centroid.GetX()),
                 }
             )
     ds = None
@@ -181,6 +182,7 @@ def process_raster_pure_gdal(raster_path: str, zones: list):
                     "product": product,
                     "date": date_str,
                     "lat_center": zone["lat_center"],
+                    "lon_center": zone["lon_center"],
                     "pixel_count": int(len(valid_values)),
                     "mean": float(valid_values.mean()),
                     "std": float(valid_values.std()),

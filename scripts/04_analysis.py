@@ -2,6 +2,7 @@
 Анализ и визуализация результатов Zonal Statistics
 Включает: сезонную динамику, тренды, корреляцию, широтный градиент,
 амплитуду колебаний, таблицы значимости и агрегированные данные.
+Добавлен экспорт данных в формате для Origin Pro.
 """
 
 import matplotlib
@@ -128,6 +129,158 @@ class MODISAnalyzer:
     def _get_color(self, zone_name: str) -> str:
         """Возврат цвета для зоны"""
         return ZONE_COLORS.get(zone_name, "gray")
+
+    def export_for_origin(self):
+        """
+        Экспорт данных в формате для Origin Pro (2 Excel-файла с листами)
+
+        Структура:
+        1. seasonal_dynamics.xlsx
+           - LST_mean, LST_std, NDVI_mean, NDVI_std
+           - Строки: месяцы (Май-Сен), Колонки: зоны
+
+        2. interannual_dynamics.xlsx
+           - LST_mean, LST_std, NDVI_mean, NDVI_std
+           - Строки: годы (2015-2025), Колонки: зоны
+
+        3. summary_tables.xlsx
+           - Summary, Trend_Significance, Amplitude
+        """
+        try:
+            output_dir = Path(DATA_PATHS["tables_output"])
+            output_dir.mkdir(parents=True, exist_ok=True)
+
+            # === СЕЗОННАЯ ДИНАМИКА ===
+            seasonal_file = output_dir / "seasonal_dynamics.xlsx"
+
+            with pd.ExcelWriter(seasonal_file, engine="openpyxl") as writer:
+                for product in ["LST", "NDVI"]:
+                    # Данные: среднее по месяцам за все годы
+                    seasonal = (
+                        self.df[self.df["product"] == product]
+                        .groupby(["zone_name", "month"])["mean"]
+                        .agg(["mean", "std"])
+                        .reset_index()
+                    )
+
+                    # Pivot: строки=месяцы, колонки=зоны
+                    pivot_mean = seasonal.pivot(
+                        index="month", columns="zone_name", values="mean"
+                    )
+                    pivot_std = seasonal.pivot(
+                        index="month", columns="zone_name", values="std"
+                    )
+
+                    # Переименование месяцев
+                    pivot_mean.index = [MONTH_NAMES.get(m, m) for m in pivot_mean.index]
+                    pivot_std.index = [MONTH_NAMES.get(m, m) for m in pivot_std.index]
+
+                    # Сортировка по порядку зон
+                    pivot_mean = pivot_mean.reindex(
+                        columns=[z for z in ZONE_ORDER if z in pivot_mean.columns]
+                    )
+                    pivot_std = pivot_std.reindex(
+                        columns=[z for z in ZONE_ORDER if z in pivot_std.columns]
+                    )
+
+                    # Запись листов
+                    pivot_mean.to_excel(writer, sheet_name=f"{product}_mean")
+                    pivot_std.to_excel(writer, sheet_name=f"{product}_std")
+
+            print(f"[OK] {seasonal_file}")
+
+            # === МЕЖГОДОВАЯ ДИНАМИКА ===
+            interannual_file = output_dir / "interannual_dynamics.xlsx"
+
+            with pd.ExcelWriter(interannual_file, engine="openpyxl") as writer:
+                for product in ["LST", "NDVI"]:
+                    # Данные: среднее по годам за все месяцы вегетации
+                    interannual = (
+                        self.df[self.df["product"] == product]
+                        .groupby(["zone_name", "year"])["mean"]
+                        .agg(["mean", "std"])
+                        .reset_index()
+                    )
+
+                    # Pivot: строки=годы, колонки=зоны
+                    pivot_mean = interannual.pivot(
+                        index="year", columns="zone_name", values="mean"
+                    )
+                    pivot_std = interannual.pivot(
+                        index="year", columns="zone_name", values="std"
+                    )
+
+                    # Сортировка по порядку зон
+                    pivot_mean = pivot_mean.reindex(
+                        columns=[z for z in ZONE_ORDER if z in pivot_mean.columns]
+                    )
+                    pivot_std = pivot_std.reindex(
+                        columns=[z for z in ZONE_ORDER if z in pivot_std.columns]
+                    )
+
+                    # Запись листов
+                    pivot_mean.to_excel(writer, sheet_name=f"{product}_mean")
+                    pivot_std.to_excel(writer, sheet_name=f"{product}_std")
+
+            print(f"[OK] {interannual_file}")
+
+            # === ДОПОЛНИТЕЛЬНЫЕ ТАБЛИЦЫ ===
+            summary_file = output_dir / "summary_tables.xlsx"
+
+            with pd.ExcelWriter(summary_file, engine="openpyxl") as writer:
+                # Лист 1: Общая сводка
+                summary = self.export_summary_table(save=False)
+                if summary is not None:
+                    summary.to_excel(writer, sheet_name="Summary", index=False)
+
+                # Лист 2: Значимость трендов
+                trend_sig = self.export_trend_significance(save=False)
+                if trend_sig is not None:
+                    trend_sig.to_excel(
+                        writer, sheet_name="Trend_Significance", index=False
+                    )
+
+                # Лист 3: Сезонная амплитуда
+                amplitude = self._calculate_amplitude()
+                if amplitude is not None:
+                    amplitude.to_excel(writer, sheet_name="Amplitude", index=False)
+
+            print(f"[OK] {summary_file}")
+            print(f"\n[OK] Экспорт для Origin завершён. Файлы в: {output_dir}")
+
+        except ImportError:
+            print(
+                "[WARN] Установите openpyxl для экспорта в Excel: pip install openpyxl"
+            )
+        except Exception as e:
+            print(f"[ERROR] Ошибка экспорта для Origin: {e}")
+
+    def _calculate_amplitude(self):
+        """Расчет сезонной амплитуды для экспорта"""
+        rows = []
+        for product in ["LST", "NDVI"]:
+            for zone in ZONE_ORDER:
+                subset = self.df[
+                    (self.df["product"] == product) & (self.df["zone_name"] == zone)
+                ]
+                if subset.empty:
+                    continue
+
+                means = subset["mean"]
+                if len(means) > 0:
+                    amplitude = means.max() - means.min()
+                    rows.append(
+                        {
+                            "zone": zone,
+                            "product": product,
+                            "amplitude": amplitude,
+                            "max_val": means.max(),
+                            "min_val": means.min(),
+                        }
+                    )
+
+        df_out = pd.DataFrame(rows)
+        return df_out.sort_values(["product", "amplitude"], ascending=[True, True])
 
     def plot_seasonal_dynamics(self, product: str, save: bool = True):
         """Сезонная динамика по месяцам"""
@@ -476,36 +629,41 @@ class MODISAnalyzer:
         return agg
 
     def run_all(self):
-        """Запуск всех визуализаций"""
-        print("\n[1/8] Сезонная динамика...")
+        """Запуск всех визуализаций и экспорта"""
+        print("\n[1/9] Сезонная динамика...")
         self.plot_seasonal_dynamics("LST")
         self.plot_seasonal_dynamics("NDVI")
 
-        print("[2/8] Межгодовые тренды...")
+        print("[2/9] Межгодовые тренды...")
         self.plot_interannual_trends("LST")
         self.plot_interannual_trends("NDVI")
 
-        print("[3/8] Широтный градиент (Июль)...")
+        print("[3/9] Широтный градиент (Июль)...")
         self.plot_latitudinal_gradient("LST", month=7)
         self.plot_latitudinal_gradient("NDVI", month=7)
 
-        print("[4/8] Сезонная амплитуда...")
+        print("[4/9] Сезонная амплитуда...")
         self.plot_seasonal_amplitude("LST")
         self.plot_seasonal_amplitude("NDVI")
 
-        print("[5/8] Корреляция LST–NDVI...")
+        print("[5/9] Корреляция LST–NDVI...")
         self.plot_lst_ndvi_correlation(month=7)
 
-        print("[6/8] Сводная таблица...")
+        print("[6/9] Сводная таблица...")
         self.export_summary_table()
 
-        print("[7/8] Таблица значимости трендов...")
+        print("[7/9] Таблица значимости трендов...")
         self.export_trend_significance()
 
-        print("[8/8] Экспорт агрегированных данных...")
+        print("[8/9] Экспорт агрегированных данных...")
         self.export_monthly_aggregated()
 
-        print("\nЗавершено. Все графики и таблицы в:", self.output_dir)
+        print("[9/9] Экспорт для Origin Pro...")
+        self.export_for_origin()
+
+        print("\n✅ Завершено.")
+        print(f"📊 Графики: {self.output_dir}")
+        print(f"📑 Таблицы для Origin: {Path(DATA_PATHS['tables_output'])}")
 
 
 def main():
@@ -530,3 +688,8 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+###
+# настроить при выводе порядок зон - с севера на юг
+###
