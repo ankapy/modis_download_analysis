@@ -5,7 +5,8 @@ gis/
 data/
 00_zonal_stats_arcgis.py
 00_zonal_stats.py
-
+output/
+logs/
 
 # Python
 __pycache__/
