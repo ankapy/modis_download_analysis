@@ -1,56 +1,46 @@
 """
-Конфигурационный файл для обработки данных MODIS
+Конфигурация пайплайна MODIS.
 """
 
-import os
-from datetime import datetime, timedelta
+from pathlib import Path
 
-# Базовая директория проекта
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-PROJECT_DIR = os.path.dirname(BASE_DIR)
+# Базовая директория проекта (корень репозитория).
+BASE_DIR = Path(__file__).parent.resolve()
 
-# Временной диапазон
+# Временной диапазон (может быть переопределён через CLI).
 TEMPORAL_RANGE = {
     "start_year": 2015,
     "end_year": 2025,
-    "veg_start": "05-01",
-    "veg_end": "09-30",
+    "months": list(range(1, 13)),
 }
 
-# Пространственный диапазон
-SPATIAL_RANGE = {
-    "lat_min": 52.0,
-    "lat_max": 76.0,
-    "lon_min": 89.5,
-    "lon_max": 95.5,
-}
+# Пространственный диапазон (рассчитывается автоматически из zones.gpkg).
+SPATIAL_RANGE = None
 
-# Пути к данным (ОБЪЯВЛЯЕМ РАНЬШЕ, ЧТОБЫ ИСПОЛЬЗОВАТЬ В ZONES_GEOJSON)
+# Пути к данным (все внутри BASE_DIR).
 DATA_PATHS = {
-    "raw": os.path.join(PROJECT_DIR, "data", "raw"),
-    "processed": os.path.join(PROJECT_DIR, "data", "processed"),
-    "tables": os.path.join(PROJECT_DIR, "data", "tables"),
-    "gis": os.path.join(PROJECT_DIR, "gis"),
-    "figures": os.path.join(PROJECT_DIR, "output", "figures"),
-    "tables_output": os.path.join(PROJECT_DIR, "output", "tables"),
+    "raw": BASE_DIR / "data" / "raw",
+    "processed": BASE_DIR / "data" / "processed",
+    "tables": BASE_DIR / "data" / "tables",
+    "gis": BASE_DIR / "gis",
+    "figures": BASE_DIR / "output" / "figures",
+    "tables_output": BASE_DIR / "output" / "tables",
+    "logs": BASE_DIR / "output" / "logs",
 }
 
+# Создание директорий.
 for path in DATA_PATHS.values():
-    os.makedirs(path, exist_ok=True)
+    path.mkdir(parents=True, exist_ok=True)
 
-# Путь к GeoJSON с полигонами зон
-# ZONES_GEOJSON = os.path.join(DATA_PATHS["gis"], "zones.geojson")
-ZONES_GPKG = os.path.join(DATA_PATHS["gis"], "zones.gpkg")
-ZONES_LAYER = "natural_zones"  # Имя слоя в геопакете
+# Путь к GeoPackage с зонами (обязательный параметр).
+ZONES_GPKG = DATA_PATHS["gis"] / "zones.gpkg"
 
-# MODIS продукты
+# MODIS продукты (расширяемый словарь).
 MODIS_PRODUCTS = {
     "LST": {
         "product": "MOD11A2",
         "version": "061",
-        "collection": "061",
         "band": "LST_Day_1km",
-        "qa_band": "QC_Day",
         "resolution": 1000,
         "temporal_resolution": "8-day",
         "scale_factor": 0.02,
@@ -60,41 +50,123 @@ MODIS_PRODUCTS = {
     "NDVI": {
         "product": "MOD13Q1",
         "version": "061",
-        "collection": "061",
         "band": "NDVI",
-        "qa_band": "VI_Quality",
         "resolution": 250,
         "temporal_resolution": "16-day",
         "scale_factor": 0.0001,
         "offset": 0,
         "no_data_value": -3000,
     },
+    # === ВЕГЕТАЦИОННЫЕ ИНДЕКСЫ ===
+    # "EVI": {
+    #     "product": "MOD13Q1",
+    #     "version": "061",
+    #     "band": "EVI",
+    #     "resolution": 250,
+    #     "temporal_resolution": "16-day",
+    #     "scale_factor": 0.0001,
+    #     "offset": 0,
+    #     "no_data_value": -3000,
+    # },
+    # "EVI2": {
+    #     "product": "MOD13Q1",
+    #     "version": "061",
+    #     "band": "EVI2",
+    #     "resolution": 250,
+    #     "temporal_resolution": "16-day",
+    #     "scale_factor": 0.0001,
+    #     "offset": 0,
+    #     "no_data_value": -3000,
+    # },
+    # === ТЕМПЕРАТУРА ПОВЕРХНОСТИ ===
+    # "LST_Night": {
+    #     "product": "MOD11A2",
+    #     "version": "061",
+    #     "band": "LST_Night_1km",
+    #     "resolution": 1000,
+    #     "temporal_resolution": "8-day",
+    #     "scale_factor": 0.02,
+    #     "offset": -273.15,
+    #     "no_data_value": 0,
+    # },
+    # === СНЕЖНЫЙ ПОКРОВ ===
+    # "Snow": {
+    #     "product": "MOD10A2",
+    #     "version": "061",
+    #     "band": "Snow_Cover",
+    #     "resolution": 500,
+    #     "temporal_resolution": "8-day",
+    #     "scale_factor": 1,
+    #     "offset": 0,
+    #     "no_data_value": 250,
+    # },
+    # "Snow_Daily": {
+    #     "product": "MOD10A1",
+    #     "version": "061",
+    #     "band": "Snow_Cover",
+    #     "resolution": 500,
+    #     "temporal_resolution": "daily",
+    #     "scale_factor": 1,
+    #     "offset": 0,
+    #     "no_data_value": 250,
+    # },
+    # === ЗЕМЛЕПОКРОВ ===
+    # "Land_Cover": {
+    #     "product": "MCD12Q1",
+    #     "version": "061",
+    #     "band": "LC_Type1",
+    #     "resolution": 500,
+    #     "temporal_resolution": "yearly",
+    #     "scale_factor": 1,
+    #     "offset": 0,
+    #     "no_data_value": 255,
+    # },
+    # === АТМОСФЕРНЫЕ ПРОИЗВЕДЕНИЯ ===
+    # "AOD": {
+    #     "product": "MOD04_L2",
+    #     "version": "061",
+    #     "band": "AOD_550",
+    #     "resolution": 1000,
+    #     "temporal_resolution": "daily",
+    #     "scale_factor": 0.001,
+    #     "offset": 0,
+    #     "no_data_value": -999,
+    # },
+    # === ПОЖАРЫ ===
+    # "Fire": {
+    #     "product": "MOD14A1",
+    #     "version": "061",
+    #     "band": "FireMask",
+    #     "resolution": 1000,
+    #     "temporal_resolution": "daily",
+    #     "scale_factor": 1,
+    #     "offset": 0,
+    #     "no_data_value": 255,
+    # },
+    # === ОТРАЖАТЕЛЬНАЯ СПОСОБНОСТЬ ===
+    # "Albedo": {
+    #     "product": "MCD43A3",
+    #     "version": "061",
+    #     "band": "Albedo_BSA",
+    #     "resolution": 500,
+    #     "temporal_resolution": "daily",
+    #     "scale_factor": 0.001,
+    #     "offset": 0,
+    #     "no_data_value": 32767,
+    # },
 }
 
-# Природные зоны (оставлено для совместимости, если понадобится)
-NATURAL_ZONES = {
-    1: {"name": "Степь", "lat_range": (52, 54)},
-    2: {"name": "Лесостепь", "lat_range": (54, 56)},
-    3: {"name": "Южная тайга", "lat_range": (56, 62)},
-    4: {"name": "Северная тайга", "lat_range": (62, 67)},
-    5: {"name": "Лесотундра", "lat_range": (67, 69)},
-    6: {"name": "Тундра", "lat_range": (69, 76)},
-}
-
-if __name__ == "__main__":
-    print("Конфигурация загружена успешно!")
-    print(f"ZONES_GEOJSON: {ZONES_GPKG}")
+# Константы для логирования.
+LOG_FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+LOG_DATE_FORMAT = "%Y-%m-%d %H:%M:%S"
 
 """
-- SPATIAL_RANGE расчитывать по входной графике  нужен он вообще?
 - NATURAL_ZONES заменить нейм на ZONES да и вообще убрать эти зоны. 
 если нужны эти значения в словаре - все брать из графики.
-- в коментах может перечислить все MODIS_PRODUCTS чтобы можно было
-просто раскоментировать нужные? или перечислить только ходовые
-- пути должны вести в папку проекта а не уровенть выше
+- в коментах перечислить все MODIS_PRODUCTS и настроить интерактивный
+выбор при запуске модуля
 - 02_1_validate_and_cleanup должен быть вторым этапом, остальные
 должны сдвинуться. 
-- убрать все упоминания о Origin
 - классы должны быть везде абстрактные в коде а не конкретные (степь, лесостепь и тд)
 - 
 """
