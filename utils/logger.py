@@ -9,16 +9,7 @@ from config import DATA_PATHS, LOG_FORMAT, LOG_DATE_FORMAT
 
 
 def setup_logger(name: str, level: int = logging.INFO) -> logging.Logger:
-    """
-    Настройка логгера с выводом в консоль и файл.
-
-    Args:
-        name: Имя логгера.
-        level: Уровень логирования.
-
-    Returns:
-        Настроенный логгер.
-    """
+    """Настройка логгера с выводом в консоль и файл."""
     logger = logging.getLogger(name)
     logger.setLevel(level)
 
