@@ -13,8 +13,9 @@ import matplotlib.pyplot as plt
 from matplotlib import rcParams
 from scipy import stats
 from pathlib import Path
+from datetime import datetime
 
-from config import DATA_PATHS
+from config import DATA_PATHS, LOG_DATE_FORMAT
 from utils.logger import setup_logger
 from utils.geo_utils import generate_zone_colors
 from utils import messages
@@ -27,12 +28,10 @@ try:
     rcParams["savefig.dpi"] = 300
     rcParams["savefig.bbox"] = "tight"
     rcParams["savefig.pad_inches"] = 0.1
-except Exception:
+except RuntimeError:
     pass
 
 warnings.filterwarnings("ignore")
-
-
 logger = setup_logger(__name__)
 
 
@@ -49,17 +48,18 @@ class MODISAnalyzer:
         if not self.data_path.exists():
             raise FileNotFoundError(messages.ERR_FILE_NOT_FOUND.format(self.data_path))
 
-        self.df = pd.read_csv(
-            self.data_path,
-            sep=";",
-            decimal=",",
-            encoding="utf-8-sig",
-        )
-        self.df.columns = self.df.columns.str.strip().str.replace(
-            "\ufeff", "", regex=False
-        )
+        try:
+            self.df = pd.read_csv(
+                self.data_path, sep=";", decimal=",", encoding="utf-8-sig"
+            )
+            self.df.columns = self.df.columns.str.strip().str.replace(
+                "\ufeff", "", regex=False
+            )
+        except (pd.errors.EmptyDataError, pd.errors.ParserError) as e:
+            raise ValueError(
+                messages.ERR_CSV_READ_FAILED.format(self.data_path, str(e))
+            )
 
-        # Явное преобразование числовых колонок в float.
         numeric_cols = [
             "mean",
             "std",
@@ -75,11 +75,9 @@ class MODISAnalyzer:
                 self.df[col] = pd.to_numeric(self.df[col], errors="coerce")
 
         self._preprocess_data()
-
         zone_names = self.df["zone_name"].unique().tolist()
         self.zone_colors = generate_zone_colors(zone_names)
         self.zone_order = sorted(zone_names)
-
         logger.info(messages.MSG_LOADED.format(len(self.df)))
 
     def _preprocess_data(self):
@@ -93,9 +91,7 @@ class MODISAnalyzer:
 
         required_cols = ["month", "mean", "pixel_count"]
         if not all(col in self.df.columns for col in required_cols):
-            logger.warning(
-                f"В файле отсутствуют колонки: {required_cols}. Фильтрация пропущена."
-            )
+            logger.warning(messages.WARN_MISSING_COLS.format(required_cols))
             return
 
         mask = (
@@ -143,10 +139,9 @@ class MODISAnalyzer:
                 linewidth=1.5,
             )
 
-        ylabel = "Температура, °C" if product == "LST" else "NDVI"
         ax.set_title(f"Сезонная динамика ({product})")
         ax.set_xlabel("Месяц")
-        ax.set_ylabel(ylabel)
+        ax.set_ylabel("Температура, °C" if product == "LST" else "NDVI")
         ax.legend(title="Зона", frameon=True)
         ax.grid(axis="y", alpha=0.3)
 
@@ -179,13 +174,11 @@ class MODISAnalyzer:
             x = yearly.index.astype(float)
             y = yearly.values
             color = self._get_color(zone)
-
             ax.plot(x, y, label=zone, color=color, marker="o")
 
             if len(yearly) >= 3:
                 slope, intercept, _, p_val, _ = stats.linregress(x, y)
-                trend = x * slope + intercept
-                ax.plot(x, trend, linestyle=":", alpha=0.5, color=color)
+                ax.plot(x, x * slope + intercept, linestyle=":", alpha=0.5, color=color)
 
         ax.set_title(f"Межгодовая динамика ({product})")
         ax.set_xlabel("Год")
@@ -220,7 +213,6 @@ class MODISAnalyzer:
 
         lst.columns = ["zone_name", "year", "LST"]
         ndvi.columns = ["zone_name", "year", "NDVI"]
-
         merged = pd.merge(lst, ndvi, on=["zone_name", "year"], how="inner")
         merged = merged[merged["LST"].notna() & merged["NDVI"].notna()]
 
@@ -233,7 +225,6 @@ class MODISAnalyzer:
             data = merged[merged["zone_name"] == zone]
             if data.empty:
                 continue
-
             color = self._get_color(zone)
             ax.scatter(
                 data["LST"],
@@ -282,14 +273,12 @@ class MODISAnalyzer:
             & (self.df["month"] == month)
             & (self.df["lat_center"].notna())
         ]
-
         if subset.empty:
             logger.warning(messages.LOG_ANALYSIS_NO_DATA.format(product, month))
             return
 
         subset = subset.copy()
         subset["lat_bin"] = (subset["lat_center"] // 2) * 2
-
         agg = (
             subset.groupby("lat_bin")["mean"]
             .agg(["mean", "std", "count"])
@@ -351,17 +340,15 @@ class MODISAnalyzer:
             agg["amplitude"],
             color=[self._get_color(z) for z in agg["zone_name"]],
         )
-
         ax.set_xlabel("Амплитуда, °C" if product == "LST" else "NDVI")
         ax.set_title(f"Сезонная амплитуда ({product})")
         ax.grid(axis="x", alpha=0.3)
 
         for bar in bars:
-            width = bar.get_width()
             ax.text(
-                width + 0.1,
+                bar.get_width() + 0.1,
                 bar.get_y() + bar.get_height() / 2,
-                f"{width:.2f}",
+                f"{bar.get_width():.2f}",
                 va="center",
                 fontsize=9,
             )
@@ -428,7 +415,6 @@ class MODISAnalyzer:
 
                 x = yearly.index.astype(float)
                 slope, _, r, p_val, _ = stats.linregress(x, yearly.values)
-
                 rows.append(
                     {
                         "product": product,
@@ -468,7 +454,6 @@ class MODISAnalyzer:
         if products is None:
             products = ["LST", "NDVI"]
 
-        # Фильтруем только те продукты, которые есть в данных.
         available_products = self.df["product"].unique().tolist()
         products = [p for p in products if p in available_products]
 
@@ -496,7 +481,7 @@ class MODISAnalyzer:
         if "LST" in products and "NDVI" in products:
             self.plot_lst_ndvi_correlation(month=7)
         else:
-            logger.info("Пропуск корреляции: нужны оба продукта (LST и NDVI).")
+            logger.info(messages.INFO_SKIP_CORRELATION)
 
         logger.info("[6/7] Сводные таблицы...")
         self.export_summary_table()
@@ -513,6 +498,10 @@ def main(args):
     logger.info(messages.HEADER_ANALYZER)
     logger.info(messages.SEPARATOR)
 
+    logger.info(
+        messages.STATUS_START_TIME.format(datetime.now().strftime(LOG_DATE_FORMAT))
+    )
+
     input_csv = DATA_PATHS["tables"] / "zonal_stats_flat.csv"
     output_dir = (
         args.output_dir if args.output_dir else DATA_PATHS["figures"] / "analysis"
@@ -522,17 +511,16 @@ def main(args):
         logger.error(messages.ERR_FILE_NOT_FOUND.format(input_csv))
         return
 
-    # Определяем продукты для анализа.
-    if args.product == "all":
-        products = ["LST", "NDVI"]
-    else:
-        products = [args.product]
+    products = ["LST", "NDVI"] if args.product == "all" else [args.product]
 
     try:
         analyzer = MODISAnalyzer(input_csv, output_dir)
         analyzer.run_all(products=products)
-    except Exception as e:
-        logger.error(messages.ERR_CRITICAL.format(e))
+        logger.info(
+            messages.STATUS_END_TIME.format(datetime.now().strftime(LOG_DATE_FORMAT))
+        )
+    except (FileNotFoundError, ValueError, pd.errors.EmptyDataError) as e:
+        logger.error(messages.ERR_CRITICAL.format(str(e)))
         import traceback
 
         traceback.print_exc()

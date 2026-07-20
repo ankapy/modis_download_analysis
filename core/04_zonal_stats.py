@@ -1,6 +1,5 @@
 """
 Зональная статистика: Pure GDAL + NumPy.
-Оптимизации: кэширование масок, многопоточность, безопасная запись в CSV.
 """
 
 import time
@@ -10,9 +9,14 @@ import pandas as pd
 from pathlib import Path
 from datetime import datetime, timedelta
 from concurrent.futures import ThreadPoolExecutor, as_completed
-
 from osgeo import gdal, ogr, osr
-from config import DATA_PATHS, TEMPORAL_RANGE
+from config import (
+    DATA_PATHS,
+    TEMPORAL_RANGE,
+    LOG_DATE_FORMAT,
+    CSV_SEPARATOR,
+    CSV_DECIMAL,
+)
 from utils.logger import setup_logger
 from utils.geo_utils import load_zones
 from utils import messages
@@ -22,9 +26,7 @@ ogr.UseExceptions()
 gdal.SetConfigOption("GDAL_CACHEMAX", "1024")
 gdal.SetConfigOption("GDAL_NUM_THREADS", "ALL_CPUS")
 
-
 logger = setup_logger(__name__)
-
 
 MASK_CACHE = {}
 MASK_CACHE_LOCK = threading.Lock()
@@ -59,29 +61,25 @@ def get_zone_mask(raster_path: str, zones: list):
         field_def = ogr.FieldDefn("zone_id", ogr.OFTInteger)
         v_layer.CreateField(field_def)
 
-        # Перепроецирование полигонов из WGS84 в проекцию растра
         wgs84_srs = osr.SpatialReference()
         wgs84_srs.ImportFromEPSG(4326)
 
-        # Проверяем возможность трансформации
-        if srs.IsProjected() or srs.IsGeographic():
-            transform = osr.CoordinateTransformation(wgs84_srs, srs)
-            use_transform = True
-        else:
-            use_transform = False
+        use_transform = srs.IsProjected() or srs.IsGeographic()
+        transform = (
+            osr.CoordinateTransformation(wgs84_srs, srs) if use_transform else None
+        )
 
         for zone in zones:
             feat = ogr.Feature(v_layer.GetLayerDefn())
             feat.SetField("zone_id", zone["id"])
-
             geom = ogr.CreateGeometryFromWkt(zone["wkt"])
 
-            if use_transform:
+            if use_transform and transform:
                 try:
                     geom.Transform(transform)
-                except Exception as e:
+                except RuntimeError as e:
                     logger.warning(
-                        f"Ошибка трансформации геометрии для зоны {zone['name']}: {e}"
+                        messages.ERR_GEOM_TRANSFORM.format(zone["name"], str(e))
                     )
 
             feat.SetGeometry(geom)
@@ -107,7 +105,6 @@ def get_zone_mask(raster_path: str, zones: list):
         mask_ds = None
 
         logger.info(messages.LOG_RASTERIZE_OK)
-
         MASK_CACHE[cache_key] = mask_data
 
     return mask_data, cols, rows, geotransform
@@ -119,48 +116,36 @@ def extract_date(filename: str) -> str:
         parts = filename.split(".")
         if len(parts) >= 2 and parts[1].startswith("A"):
             return f"{parts[1][1:5]}-{parts[1][5:8]}"
-    except Exception:
+    except ValueError:
         pass
     return "unknown"
 
 
 def doy_to_date(date_str: str) -> str:
-    """
-    Конвертация даты из формата YYYY-DOY в YYYY-MM-DD.
-    Пример: 2015-145 -> 2015-05-25.
-    """
+    """Конвертация YYYY-DOY в YYYY-MM-DD."""
     try:
         if date_str == "unknown" or pd.isna(date_str):
             return None
         parts = str(date_str).split("-")
         if len(parts) != 2:
             return None
-        year = int(parts[0])
-        doy = int(parts[1])
-        date_obj = datetime(year, 1, 1) + timedelta(days=doy - 1)
-        return date_obj.strftime("%Y-%m-%d")
-    except Exception:
+        year, doy = int(parts[0]), int(parts[1])
+        return (datetime(year, 1, 1) + timedelta(days=doy - 1)).strftime("%Y-%m-%d")
+    except (ValueError, OverflowError):
         return None
 
 
 def doy_to_month(date_str: str) -> int:
-    """
-    Конвертация дня года в номер месяца.
-    Пример: 2015-001 -> 1 (январь), 2015-032 -> 2 (февраль).
-    """
+    """Конвертация дня года в номер месяца."""
     if date_str == "unknown":
         return 0
     try:
         parts = str(date_str).split("-")
         if len(parts) != 2:
             return 0
-        year = int(parts[0])
-        doy = int(parts[1])
-
-        # Используем datetime для точного определения месяца
-        date_obj = datetime(year, 1, 1) + timedelta(days=doy - 1)
-        return date_obj.month
-    except Exception:
+        year, doy = int(parts[0]), int(parts[1])
+        return (datetime(year, 1, 1) + timedelta(days=doy - 1)).month
+    except (ValueError, OverflowError):
         return 0
 
 
@@ -236,8 +221,8 @@ def main(args):
         logger.info(messages.LOG_ZONES_LOADED.format(len(zones)))
         for z in zones:
             logger.info(messages.LOG_ZONE_INFO.format(z["id"], z["name"]))
-    except Exception as e:
-        logger.error(f"{e}")
+    except (FileNotFoundError, RuntimeError) as e:
+        logger.error(str(e))
         return
 
     logger.info("[2/4] Scanning for rasters...")
@@ -250,43 +235,49 @@ def main(args):
             prod_dir = DATA_PATHS["processed"] / product / str(year)
             if prod_dir.exists():
                 tifs = sorted(prod_dir.glob("*.tif"))
-                if args.test:
-                    if tifs:
-                        tasks.append(str(tifs[0]))
-                        logger.info(messages.INFO_TEST_FILE.format(tifs[0].name))
+                if args.test and tifs:
+                    tasks.append(str(tifs[0]))
+                    logger.info(messages.INFO_TEST_FILE.format(tifs[0].name))
                 else:
-                    for tif in tifs:
-                        tasks.append(str(tif))
+                    tasks.extend(str(tif) for tif in tifs)
 
     logger.info(messages.INFO_RASTERS_FOUND.format(len(tasks)))
-
     if not tasks:
         logger.error(messages.ERR_NO_RASTERS)
         return
 
     output_csv = DATA_PATHS["tables"] / "zonal_stats_flat.csv"
-
     processed_keys = set()
+
     if output_csv.exists():
         logger.info(messages.INFO_EXISTING_FILE_FOUND.format(output_csv))
         logger.info(messages.INFO_LOADING_INDICES)
         try:
-            cols_to_read = ["zone_name", "date", "product"]
-            existing_df = pd.read_csv(output_csv, usecols=cols_to_read, sep=";")
+            existing_df = pd.read_csv(
+                output_csv, usecols=["zone_name", "date", "product"], sep=";"
+            )
             for _, row in existing_df.iterrows():
-                key = f"{row['zone_name']}_{row['date']}_{row['product']}"
-                processed_keys.add(key)
+                processed_keys.add(f"{row['zone_name']}_{row['date']}_{row['product']}")
             logger.info(messages.INFO_SKIPPED_RECORDS.format(len(processed_keys)))
-        except Exception as e:
-            logger.warning(messages.WARN_READ_FILE_FAILED.format(e))
+        except (
+            pd.errors.EmptyDataError,
+            pd.errors.ParserError,
+            FileNotFoundError,
+        ) as e:
+            logger.warning(
+                messages.ERR_CSV_READ_FAILED.format(output_csv, "нуля", str(e))
+            )
 
     logger.info("[3/4] Processing rasters...")
 
     def worker_task(raster_path):
         try:
             return process_single_raster(raster_path, zones)
-        except Exception as e:
-            logger.warning(f"Error on {raster_path}: {e}")
+        except RuntimeError as e:
+            logger.warning(f"RuntimeError on {raster_path}: {str(e)}")
+            return []
+        except ValueError as e:
+            logger.warning(f"ValueError on {raster_path}: {str(e)}")
             return []
 
     all_results = []
@@ -302,15 +293,14 @@ def main(args):
                     unique_key = f"{row['zone_name']}_{row['date']}_{row['product']}"
                     if unique_key not in processed_keys:
                         with CSV_WRITE_LOCK:
-                            df_row = pd.DataFrame([row])
-                            df_row.to_csv(
+                            pd.DataFrame([row]).to_csv(
                                 output_csv,
                                 mode="a",
                                 header=not file_exists,
                                 index=False,
                                 encoding="utf-8-sig",
-                                sep=";",
-                                decimal=",",
+                                sep=CSV_SEPARATOR,
+                                decimal=CSV_DECIMAL,
                             )
                             file_exists = True
                         all_results.append(row)
@@ -324,15 +314,14 @@ def main(args):
             for row in res:
                 unique_key = f"{row['zone_name']}_{row['date']}_{row['product']}"
                 if unique_key not in processed_keys:
-                    df_row = pd.DataFrame([row])
-                    df_row.to_csv(
+                    pd.DataFrame([row]).to_csv(
                         output_csv,
                         mode="a",
                         header=not file_exists,
                         index=False,
                         encoding="utf-8-sig",
-                        sep=";",
-                        decimal=",",
+                        sep=CSV_SEPARATOR,
+                        decimal=CSV_DECIMAL,
                     )
                     file_exists = True
                     all_results.append(row)
@@ -349,11 +338,9 @@ def main(args):
                 pd.read_csv(output_csv, sep=";", decimal=",", encoding="utf-8-sig")
             )
             if existing_count > 0:
-                logger.info(
-                    f"В CSV уже есть {existing_count} записей. Новые не добавлены."
-                )
+                logger.info(messages.INFO_CSV_EXISTING_RECORDS.format(existing_count))
                 return
-        except Exception:
+        except (pd.errors.EmptyDataError, pd.errors.ParserError):
             pass
 
     if all_results:

@@ -4,14 +4,19 @@
 """
 
 import json
-import hashlib
 from pathlib import Path
 from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Dict, List, Tuple
 
 from osgeo import gdal, ogr
-from config import TEMPORAL_RANGE, MODIS_PRODUCTS, DATA_PATHS
+from config import (
+    TEMPORAL_RANGE,
+    MODIS_PRODUCTS,
+    DATA_PATHS,
+    MIN_FILE_SIZE,
+    LOG_DATE_FORMAT,
+)
 from utils.logger import setup_logger
 from utils import messages
 
@@ -24,9 +29,6 @@ try:
     USE_TQDM = True
 except ImportError:
     USE_TQDM = False
-    logger = setup_logger(__name__)
-    logger.warning(messages.WARN_TQDM_NOT_INSTALLED)
-
 
 logger = setup_logger(__name__)
 
@@ -34,13 +36,7 @@ logger = setup_logger(__name__)
 class HDFValidator:
     """Оптимизированный валидатор HDF файлов MODIS."""
 
-    MIN_SIZE_MOD11A2 = 500_000
-    MIN_SIZE_MOD13Q1 = 500_000
-
-    EXPECTED_DATASETS = {
-        "MOD11A2": ["LST_Day_1km"],
-        "MOD13Q1": ["NDVI"],
-    }
+    EXPECTED_DATASETS = {"MOD11A2": ["LST_Day_1km"], "MOD13Q1": ["NDVI"]}
 
     def __init__(self, max_workers: int = 4):
         """Инициализация валидатора."""
@@ -56,7 +52,6 @@ class HDFValidator:
         self.corrupted_files = []
         self.valid_files = []
         self._size_cache = {}
-
         gdal.SetConfigOption("GDAL_CACHEMAX", "256")
         gdal.SetConfigOption("CPL_DEBUG", "NO")
 
@@ -70,14 +65,10 @@ class HDFValidator:
     def validate_file(self, hdf_path: Path, product_code: str) -> Tuple[bool, str]:
         """Быстрая валидация HDF файла."""
         if not hdf_path.exists():
-            return False, "Файл не существует"
+            return False, messages.ERR_FILE_NOT_FOUND.format(hdf_path)
 
         file_size = self._get_file_size(hdf_path)
-        min_size = (
-            self.MIN_SIZE_MOD11A2
-            if product_code == "MOD11A2"
-            else self.MIN_SIZE_MOD13Q1
-        )
+        min_size = MIN_FILE_SIZE.get(product_code, 500_000)
 
         if file_size < min_size:
             self.stats["too_small"] += 1
@@ -87,7 +78,7 @@ class HDFValidator:
             dataset = gdal.Open(str(hdf_path))
             if dataset is None:
                 self.stats["read_error"] += 1
-                return False, "GDAL не может открыть файл"
+                return False, messages.ERR_OPEN_FILE.format(hdf_path.name)
 
             subdatasets = dataset.GetSubDatasets()
             if not subdatasets:
@@ -107,14 +98,12 @@ class HDFValidator:
             dataset = None
             return True, "OK"
 
-        except Exception as e:
-            error_msg = str(e)
-            if "not recognized" in error_msg.lower():
-                self.stats["read_error"] += 1
+        except RuntimeError as e:
+            error_msg = str(e).lower()
+            self.stats["read_error"] += 1
+            if "not recognized" in error_msg:
                 return False, "Формат файла не распознан (повреждён)"
-            else:
-                self.stats["read_error"] += 1
-                return False, f"Ошибка: {error_msg[:100]}"
+            return False, messages.ERR_READ_ERROR.format(str(e)[:100])
 
     def validate_directory(
         self, directory: Path, product_code: str, year: int, show_progress: bool = True
@@ -122,7 +111,7 @@ class HDFValidator:
         """Валидация всех файлов в директории."""
         hdf_files = sorted(directory.glob("*.hdf"))
         if not hdf_files:
-            return {"total": 0, "valid": 0, "corrupted": 0, "deleted": []}
+            return {"total": 0, "valid": 0, "corrupted": 0, "files": []}
 
         dir_stats = {
             "total": len(hdf_files),
@@ -130,7 +119,6 @@ class HDFValidator:
             "corrupted": 0,
             "files": [],
         }
-
         iterator = (
             tqdm(hdf_files, desc=f"{product_code}/{year}", ncols=100)
             if (show_progress and USE_TQDM)
@@ -170,29 +158,25 @@ class HDFValidator:
             return 0
 
         deleted = 0
-        failed = 0
-
-        def delete_single(filepath: str) -> Tuple[str, bool]:
-            try:
-                Path(filepath).unlink()
-                return filepath, True
-            except Exception:
-                return filepath, False
-
         iterator = (
             tqdm(file_paths, desc="Удаление", ncols=100)
             if (show_progress and USE_TQDM)
             else file_paths
         )
 
+        def delete_single(filepath: str) -> Tuple[str, bool]:
+            try:
+                Path(filepath).unlink()
+                return filepath, True
+            except (OSError, PermissionError) as e:
+                logger.warning(messages.ERR_DELETE_FAILED.format(filepath, str(e)))
+                return filepath, False
+
         with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
             futures = {executor.submit(delete_single, fp): fp for fp in iterator}
             for future in as_completed(futures):
-                filepath, success = future.result()
-                if success:
+                if future.result()[1]:
                     deleted += 1
-                else:
-                    failed += 1
 
         self.stats["deleted"] = deleted
         return deleted
@@ -207,7 +191,6 @@ class HDFValidator:
             "corrupted_count": len(self.corrupted_files),
             "recommendations": [],
         }
-
         if self.stats["too_small"] > 0:
             report["recommendations"].append(
                 messages.VALIDATION_TOO_SMALL.format(self.stats["too_small"])
@@ -219,7 +202,6 @@ class HDFValidator:
 
         with open(output_path, "w", encoding="utf-8") as f:
             json.dump(report, f, ensure_ascii=False, indent=2)
-
         return report
 
     def generate_redownload_list(self, output_path: Path) -> Dict:
@@ -231,8 +213,9 @@ class HDFValidator:
 
         grouped = defaultdict(list)
         for file_info in self.corrupted_files:
-            key = f"{file_info['product']}/{file_info['year']}"
-            grouped[key].append(file_info["file"])
+            grouped[f"{file_info['product']}/{file_info['year']}"].append(
+                file_info["file"]
+            )
 
         redownload_info = {
             "timestamp": datetime.now().isoformat(),
@@ -240,10 +223,8 @@ class HDFValidator:
             "by_product_year": {k: len(v) for k, v in grouped.items()},
             "files": self.corrupted_files,
         }
-
         with open(output_path, "w", encoding="utf-8") as f:
             json.dump(redownload_info, f, ensure_ascii=False, indent=2)
-
         return redownload_info
 
 
@@ -252,8 +233,10 @@ def main(args):
     logger.info(messages.SEPARATOR)
     logger.info(messages.HEADER_VALIDATOR)
     logger.info(messages.SEPARATOR)
+
+    # ИСПРАВЛЕНИЕ: Использование константы LOG_DATE_FORMAT
     logger.info(
-        messages.STATUS_START_TIME.format(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+        messages.STATUS_START_TIME.format(datetime.now().strftime(LOG_DATE_FORMAT))
     )
     logger.info(messages.STATUS_THREADS.format(args.workers))
 
@@ -265,20 +248,16 @@ def main(args):
     logger.info(mode)
 
     validator = HDFValidator(max_workers=args.workers)
-
     products = ["LST", "NDVI"] if args.product == "all" else [args.product]
     years = (
         [args.year]
         if args.year
         else range(TEMPORAL_RANGE["start_year"], TEMPORAL_RANGE["end_year"] + 1)
     )
-
     show_progress = not args.quiet if hasattr(args, "quiet") else True
 
     for product in products:
-        product_config = MODIS_PRODUCTS[product]
-        product_code = product_config["product"]
-
+        product_code = MODIS_PRODUCTS[product]["product"]
         for year in years:
             directory = DATA_PATHS["raw"] / product_code / str(year)
             if not directory.exists():
@@ -288,7 +267,6 @@ def main(args):
             logger.info(messages.SEPARATOR)
             logger.info(messages.LOG_VALIDATION_START.format(product_code, year))
             logger.info(messages.SEPARATOR)
-
             validator.validate_directory(
                 directory, product_code, year, show_progress=show_progress
             )
@@ -309,12 +287,10 @@ def main(args):
         logger.info(messages.SEPARATOR)
         logger.info(messages.LOG_DELETE_START)
         logger.info(messages.SEPARATOR)
-
         file_paths = [f["path"] for f in validator.corrupted_files]
         deleted = validator.delete_files_parallel(
             file_paths, show_progress=show_progress
         )
-
         logger.info(messages.LOG_DELETE_OK.format(deleted))
 
     logger.info(messages.SEPARATOR)

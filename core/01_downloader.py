@@ -1,6 +1,5 @@
 """
 Скачивание данных MODIS через earthaccess.
-Стабильная версия с пакетной загрузкой и паузами.
 """
 
 import time
@@ -8,11 +7,18 @@ import traceback
 from pathlib import Path
 from datetime import datetime
 
-from config import MODIS_PRODUCTS, DATA_PATHS
+from config import (
+    MODIS_PRODUCTS,
+    DATA_PATHS,
+    DOWNLOAD_BATCH_SIZE,
+    DOWNLOAD_MAX_RETRIES,
+    DOWNLOAD_PAUSE_BATCH,
+    DOWNLOAD_PAUSE_GRANULE,
+    LOG_DATE_FORMAT,
+)
 from utils.logger import setup_logger
-from utils.geo_utils import calculate_bbox_from_gpkg, load_zones, check_modis_coverage
+from utils.geo_utils import calculate_bbox_from_gpkg, check_modis_coverage
 from utils.config_loader import (
-    parse_year_range,
     parse_months,
     prompt_temporal_range,
     prompt_products,
@@ -25,6 +31,7 @@ try:
 except ImportError:
     raise ImportError(messages.ERR_EARTHACCESS_NOT_FOUND)
 
+# ogr.UseExceptions()
 
 logger = setup_logger(__name__)
 
@@ -42,21 +49,15 @@ def authenticate():
     try:
         earthaccess.login(strategy="netrc", persist=True)
         logger.info(messages.LOG_AUTH_OK)
-    except Exception as e:
-        logger.warning(messages.LOG_AUTH_WARN.format(e))
+    except (RuntimeError, ConnectionError) as e:
+        logger.warning(messages.LOG_AUTH_WARN.format(str(e)))
         earthaccess.login(strategy="environment", persist=True)
 
 
 def download_granules(
-    results_to_download: list, output_dir: Path, batch_size: int = 15
+    results_to_download: list, output_dir: Path, batch_size: int = DOWNLOAD_BATCH_SIZE
 ):
-    """
-    Скачивание гранул с паузами и повторными попытками.
-    """
-    pause_batch = 5
-    pause_granule = 2
-    max_retries = 3
-
+    """Скачивание гранул с паузами и повторными попытками."""
     downloaded = 0
     failed = 0
     batch_num = 0
@@ -74,7 +75,7 @@ def download_granules(
 
             for granule_idx, granule in enumerate(batch, 1):
                 success = False
-                for attempt in range(max_retries):
+                for attempt in range(DOWNLOAD_MAX_RETRIES):
                     try:
                         result = earthaccess.download([granule], str(output_dir))
                         if result and len(result) > 0:
@@ -90,33 +91,35 @@ def download_granules(
                             logger.warning(
                                 messages.LOG_DOWNLOAD_WARN.format(attempt + 1)
                             )
-                    except Exception as e:
+                    except (ConnectionError, RuntimeError) as e:
                         error_msg = str(e)[:80]
                         logger.error(
                             messages.LOG_DOWNLOAD_ERROR.format(
-                                attempt + 1, max_retries, error_msg
+                                attempt + 1, DOWNLOAD_MAX_RETRIES, error_msg
                             )
                         )
-                        if attempt < max_retries - 1:
+                        if attempt < DOWNLOAD_MAX_RETRIES - 1:
                             wait_time = (attempt + 1) * 5
                             logger.info(messages.LOG_DOWNLOAD_PAUSE.format(wait_time))
                             time.sleep(wait_time)
 
                 if not success:
                     failed += 1
-                    logger.warning(messages.LOG_DOWNLOAD_FAIL.format(max_retries))
+                    logger.warning(
+                        messages.LOG_DOWNLOAD_FAIL.format(DOWNLOAD_MAX_RETRIES)
+                    )
 
                 if granule_idx < len(batch):
-                    time.sleep(pause_granule)
+                    time.sleep(DOWNLOAD_PAUSE_GRANULE)
 
             if batch_num < (len(results_to_download) // batch_size) + 1:
-                logger.info(messages.LOG_BATCH_PAUSE.format(pause_batch))
-                time.sleep(pause_batch)
+                logger.info(messages.LOG_BATCH_PAUSE.format(DOWNLOAD_PAUSE_BATCH))
+                time.sleep(DOWNLOAD_PAUSE_BATCH)
 
         except KeyboardInterrupt:
             logger.warning(messages.LOG_INTERRUPT.format(batch_num))
             break
-        except Exception as e:
+        except (ConnectionError, RuntimeError) as e:
             logger.error(messages.LOG_BATCH_ERROR.format(batch_num, str(e)[:80]))
             failed += len(batch)
             time.sleep(10)
@@ -130,7 +133,6 @@ def process_product_year(
     """Обработка одного продукта за один год."""
     config = MODIS_PRODUCTS[product_key]
     product_code = config["product"]
-
     output_dir = DATA_PATHS["raw"] / product_code / str(year)
     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -159,8 +161,8 @@ def process_product_year(
             bounding_box=bbox,
             count=2000,
         )
-    except Exception as e:
-        logger.error(f"Ошибка поиска: {e}")
+    except (ConnectionError, RuntimeError) as e:
+        logger.error(messages.ERR_CRITICAL.format(str(e)))
         return 0, 1
 
     if not results:
@@ -170,12 +172,12 @@ def process_product_year(
     logger.info(messages.LOG_GRANULES_FOUND.format(len(results)))
 
     existing_files = {f.name for f in output_dir.glob("*.hdf")}
-    results_to_download = []
-    for granule in results:
-        granule_id = granule.get("meta", {}).get("native-id", "")
-        expected_filename = granule_id.split(":")[-1] + ".hdf"
-        if expected_filename not in existing_files:
-            results_to_download.append(granule)
+    results_to_download = [
+        granule
+        for granule in results
+        if granule.get("meta", {}).get("native-id", "").split(":")[-1] + ".hdf"
+        not in existing_files
+    ]
 
     if not results_to_download:
         logger.info(messages.INFO_SKIP_ALL_DOWNLOADED)
@@ -184,9 +186,7 @@ def process_product_year(
     logger.info(
         messages.LOG_DOWNLOAD_START.format(len(results_to_download), len(results))
     )
-
     downloaded, failed = download_granules(results_to_download, output_dir)
-
     logger.info(messages.LOG_RESULT.format(product_code, year, downloaded, failed))
 
     return downloaded, failed
@@ -216,13 +216,13 @@ def main(args):
 
         # Временной диапазон.
         if args.start_year and args.end_year:
-            years = list(range(args.start_year, args.end_year + 1))
             months = parse_months(args.months) if args.months else list(range(1, 13))
             temporal_range = {
                 "start_year": args.start_year,
                 "end_year": args.end_year,
                 "months": months,
             }
+            years = list(range(args.start_year, args.end_year + 1))
         else:
             temporal_range = prompt_temporal_range()
             years = list(
@@ -235,8 +235,9 @@ def main(args):
         else:
             products = prompt_products()
 
-        logger.info(messages.MSG_ZONES_PATH.format(zones_path))
-        logger.info(messages.MSG_PRODUCTS.format(products))
+        # ИСПРАВЛЕНО: используем INFO_ZONES_PATH вместо MSG_ZONES_PATH
+        logger.info(messages.INFO_ZONES_PATH.format(zones_path))
+        logger.info(messages.INFO_PRODUCTS.format(products))
 
         authenticate()
 
@@ -267,7 +268,6 @@ def main(args):
                     total_skipped += 1
 
                 time.sleep(5)
-
             time.sleep(10)
 
         logger.info(messages.SEPARATOR)
@@ -286,6 +286,6 @@ def main(args):
     except KeyboardInterrupt:
         logger.warning("\n[INTERRUPT] Программа прервана пользователем")
         logger.info("[INFO] Запустите снова для продолжения")
-    except Exception as e:
-        logger.error(messages.ERR_CRITICAL.format(e))
+    except (FileNotFoundError, ValueError, RuntimeError) as e:
+        logger.error(messages.ERR_CRITICAL.format(str(e)))
         traceback.print_exc()
