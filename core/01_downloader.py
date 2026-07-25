@@ -4,8 +4,10 @@
 
 import time
 import traceback
+import earthaccess
 from pathlib import Path
 from datetime import datetime
+
 
 from config import (
     MODIS_PRODUCTS,
@@ -25,13 +27,6 @@ from utils.config_loader import (
     prompt_zones_path,
 )
 from utils import messages
-
-try:
-    import earthaccess
-except ImportError:
-    raise ImportError(messages.ERR_EARTHACCESS_NOT_FOUND)
-
-# ogr.UseExceptions()
 
 logger = setup_logger(__name__)
 
@@ -198,7 +193,7 @@ def main(args):
     logger.info(messages.HEADER_DOWNLOADER)
     logger.info(messages.SEPARATOR)
     logger.info(
-        messages.STATUS_START_TIME.format(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+        messages.STATUS_START_TIME.format(datetime.now().strftime(LOG_DATE_FORMAT))
     )
 
     try:
@@ -235,7 +230,6 @@ def main(args):
         else:
             products = prompt_products()
 
-        # ИСПРАВЛЕНО: используем INFO_ZONES_PATH вместо MSG_ZONES_PATH
         logger.info(messages.INFO_ZONES_PATH.format(zones_path))
         logger.info(messages.INFO_PRODUCTS.format(products))
 
@@ -277,9 +271,7 @@ def main(args):
         logger.info(messages.STATUS_SKIPPED.format(total_skipped))
         logger.info(messages.STATUS_FAILED.format(total_failed))
         logger.info(
-            messages.STATUS_END_TIME.format(
-                datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            )
+            messages.STATUS_END_TIME.format(datetime.now().strftime(LOG_DATE_FORMAT))
         )
         logger.info(messages.SEPARATOR)
 

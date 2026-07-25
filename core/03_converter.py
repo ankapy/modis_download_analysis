@@ -17,7 +17,7 @@ logger = setup_logger(__name__)
 
 
 class MODISConverter:
-    """Конвертер MODIS HDF в GeoTIFF."""
+    """Универсальный конвертер MODIS HDF в GeoTIFF."""
 
     def __init__(self):
         """Инициализация конвертера."""
@@ -28,8 +28,19 @@ class MODISConverter:
             "+proj=sinu +lon_0=0 +x_0=0 +y_0=0 +R=6371007.181 +units=m +no_defs"
         )
 
-    def convert_lst(self, hdf_path: Path, output_path: Path) -> bool:
-        """Конвертация LST данных."""
+    def convert_generic(
+        self, hdf_path: Path, output_path: Path, product_config: dict
+    ) -> bool:
+        """
+        Универсальная конвертация на основе настроек из config.py.
+        """
+        band_name = product_config["band"]
+        scale = product_config["scale_factor"]
+        offset = product_config["offset"]
+        no_data = product_config["no_data_value"]
+        unit = product_config.get("unit", "unknown")
+        product_name = product_config["product"]
+
         try:
             hdf_dataset = gdal.Open(str(hdf_path))
             if hdf_dataset is None:
@@ -37,72 +48,37 @@ class MODISConverter:
                 return False
 
             subdatasets = hdf_dataset.GetSubDatasets()
-            lst_subdataset = next(
-                (name for name, _ in subdatasets if "LST_Day_1km" in name), None
+
+            # Ищем поддатасет по имени, указанному в конфиге
+            target_subdataset = next(
+                (name for name, _ in subdatasets if band_name in name), None
             )
 
-            if not lst_subdataset:
-                logger.error(messages.ERR_MISSING_DATASETS.format(["LST_Day_1km"]))
+            if not target_subdataset:
+                logger.error(messages.ERR_MISSING_DATASETS.format([band_name]))
                 return False
 
-            lst_band = gdal.Open(lst_subdataset)
-            lst_dn = lst_band.ReadAsArray().astype(np.float32)
+            band = gdal.Open(target_subdataset)
+            dn_array = band.ReadAsArray().astype(np.float32)
 
-            lst_celsius = lst_dn * 0.02 - 273.15
-            lst_celsius[lst_dn == 0] = np.nan
+            # Универсальная формула: Value = (DN * scale) + offset
+            result_array = (dn_array * scale) + offset
+
+            # Маскирование невалидных значений
+            result_array[dn_array == no_data] = np.nan
 
             self._save_geotiff(
-                lst_celsius, output_path, lst_band, "LST", "°C", nodata=-9999
+                data=result_array,
+                output_path=output_path,
+                source_band=band,
+                product_name=product_name,
+                unit=unit,
+                nodata=-9999,
             )
             return True
 
         except RuntimeError as e:
-            logger.error(messages.ERR_CONVERSION_LST.format(hdf_path.name, str(e)))
-            return False
-        except OSError as e:
-            logger.error(messages.ERR_OPEN_FILE.format(f"{hdf_path.name}: {str(e)}"))
-            return False
-
-    def convert_ndvi(self, hdf_path: Path, output_path: Path) -> bool:
-        """Конвертация NDVI данных."""
-        try:
-            hdf_dataset = gdal.Open(str(hdf_path))
-            if hdf_dataset is None:
-                logger.error(messages.ERR_OPEN_FILE.format(hdf_path.name))
-                return False
-
-            subdatasets = hdf_dataset.GetSubDatasets()
-            ndvi_subdataset = next(
-                (
-                    name
-                    for name, desc in subdatasets
-                    if "NDVI" in name and "250m" in desc
-                ),
-                None,
-            )
-
-            if not ndvi_subdataset:
-                ndvi_subdataset = next(
-                    (name for name, _ in subdatasets if "NDVI" in name), None
-                )
-
-            if not ndvi_subdataset:
-                logger.error(messages.ERR_MISSING_DATASETS.format(["NDVI"]))
-                return False
-
-            ndvi_band = gdal.Open(ndvi_subdataset)
-            ndvi_dn = ndvi_band.ReadAsArray().astype(np.float32)
-
-            ndvi = ndvi_dn * 0.0001
-            ndvi[ndvi_dn == -3000] = np.nan
-
-            self._save_geotiff(
-                ndvi, output_path, ndvi_band, "NDVI", "index", nodata=-9999
-            )
-            return True
-
-        except RuntimeError as e:
-            logger.error(messages.ERR_CONVERSION_NDVI.format(hdf_path.name, str(e)))
+            logger.error(messages.ERR_SAVE_GEOTIFF.format(str(e)))
             return False
         except OSError as e:
             logger.error(messages.ERR_OPEN_FILE.format(f"{hdf_path.name}: {str(e)}"))
@@ -154,7 +130,7 @@ class MODISConverter:
             logger.error(messages.ERR_SAVE_GEOTIFF.format(str(e)))
 
     def process_year(self, product_name: str, year: int):
-        """Обработка всех файлов за год."""
+        """Обработка всех файлов за год для указанного продукта."""
         product_config = MODIS_PRODUCTS[product_name]
         product_code = product_config["product"]
 
@@ -182,11 +158,7 @@ class MODISConverter:
                 skipped += 1
                 continue
 
-            success = (
-                self.convert_lst(hdf_file, output_path)
-                if product_name == "LST"
-                else self.convert_ndvi(hdf_file, output_path)
-            )
+            success = self.convert_generic(hdf_file, output_path, product_config)
 
             if success:
                 converted += 1
@@ -205,10 +177,15 @@ def main(args):
     logger.info(messages.SEPARATOR)
     logger.info(messages.HEADER_CONVERTER)
     logger.info(messages.SEPARATOR)
-    logger.info(f"GDAL версия: {gdal.__version__}")
+    logger.info("GDAL версия: {}".format(gdal.__version__))
 
     converter = MODISConverter()
-    products = ["LST", "NDVI"] if args.product == "all" else [args.product]
+
+    if args.product == "all":
+        products = list(MODIS_PRODUCTS.keys())
+    else:
+        products = [args.product]
+
     years = (
         [args.year]
         if args.year
@@ -216,7 +193,7 @@ def main(args):
     )
 
     for year in years:
-        logger.info(f">>> Год: {year}")
+        logger.info(">>> Год: {}".format(year))
         for product in products:
             converter.process_year(product, year)
 

@@ -7,7 +7,7 @@ import json
 from pathlib import Path
 from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from typing import Dict, List, Tuple
+from typing import Dict, List, Tuple, Any
 
 from osgeo import gdal, ogr
 from config import (
@@ -16,6 +16,7 @@ from config import (
     DATA_PATHS,
     MIN_FILE_SIZE,
     LOG_DATE_FORMAT,
+    DATE_FORMAT_FILE,
 )
 from utils.logger import setup_logger
 from utils import messages
@@ -41,7 +42,7 @@ class HDFValidator:
     def __init__(self, max_workers: int = 4):
         """Инициализация валидатора."""
         self.max_workers = max_workers
-        self.stats = {
+        self.stats: Dict[str, int] = {
             "total_checked": 0,
             "valid": 0,
             "corrupted": 0,
@@ -49,9 +50,9 @@ class HDFValidator:
             "read_error": 0,
             "missing_dataset": 0,
         }
-        self.corrupted_files = []
-        self.valid_files = []
-        self._size_cache = {}
+        self.corrupted_files: List[Dict[str, Any]] = []
+        self.valid_files: List[str] = []
+        self._size_cache: Dict[str, int] = {}
         gdal.SetConfigOption("GDAL_CACHEMAX", "256")
         gdal.SetConfigOption("CPL_DEBUG", "NO")
 
@@ -107,13 +108,13 @@ class HDFValidator:
 
     def validate_directory(
         self, directory: Path, product_code: str, year: int, show_progress: bool = True
-    ) -> Dict:
+    ) -> Dict[str, Any]:
         """Валидация всех файлов в директории."""
         hdf_files = sorted(directory.glob("*.hdf"))
         if not hdf_files:
             return {"total": 0, "valid": 0, "corrupted": 0, "files": []}
 
-        dir_stats = {
+        dir_stats: Dict[str, Any] = {
             "total": len(hdf_files),
             "valid": 0,
             "corrupted": 0,
@@ -181,9 +182,9 @@ class HDFValidator:
         self.stats["deleted"] = deleted
         return deleted
 
-    def generate_report(self, output_path: Path) -> Dict:
+    def generate_report(self, output_path: Path) -> Dict[str, Any]:
         """Генерация отчёта о валидации."""
-        report = {
+        report: Dict[str, Any] = {
             "timestamp": datetime.now().isoformat(),
             "statistics": self.stats,
             "corrupted_files": self.corrupted_files,
@@ -204,20 +205,20 @@ class HDFValidator:
             json.dump(report, f, ensure_ascii=False, indent=2)
         return report
 
-    def generate_redownload_list(self, output_path: Path) -> Dict:
+    def generate_redownload_list(self, output_path: Path) -> Dict[str, Any]:
         """Генерация списка файлов для перескачивания."""
         if not self.corrupted_files:
             return {"files": [], "total": 0}
 
         from collections import defaultdict
 
-        grouped = defaultdict(list)
+        grouped: Dict[str, List[str]] = defaultdict(list)
         for file_info in self.corrupted_files:
             grouped[f"{file_info['product']}/{file_info['year']}"].append(
                 file_info["file"]
             )
 
-        redownload_info = {
+        redownload_info: Dict[str, Any] = {
             "timestamp": datetime.now().isoformat(),
             "total_files": len(self.corrupted_files),
             "by_product_year": {k: len(v) for k, v in grouped.items()},
@@ -233,8 +234,6 @@ def main(args):
     logger.info(messages.SEPARATOR)
     logger.info(messages.HEADER_VALIDATOR)
     logger.info(messages.SEPARATOR)
-
-    # ИСПРАВЛЕНИЕ: Использование константы LOG_DATE_FORMAT
     logger.info(
         messages.STATUS_START_TIME.format(datetime.now().strftime(LOG_DATE_FORMAT))
     )
@@ -273,7 +272,7 @@ def main(args):
 
     report_dir = DATA_PATHS["tables"]
     report_dir.mkdir(parents=True, exist_ok=True)
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    timestamp = datetime.now().strftime(DATE_FORMAT_FILE)
     report_path = report_dir / f"validation_report_{timestamp}.json"
     redownload_path = report_dir / f"redownload_list_{timestamp}.json"
 

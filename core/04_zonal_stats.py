@@ -16,6 +16,7 @@ from config import (
     LOG_DATE_FORMAT,
     CSV_SEPARATOR,
     CSV_DECIMAL,
+    DATE_FORMAT_ISO,
 )
 from utils.logger import setup_logger
 from utils.geo_utils import load_zones
@@ -130,7 +131,9 @@ def doy_to_date(date_str: str) -> str:
         if len(parts) != 2:
             return None
         year, doy = int(parts[0]), int(parts[1])
-        return (datetime(year, 1, 1) + timedelta(days=doy - 1)).strftime("%Y-%m-%d")
+        return (datetime(year, 1, 1) + timedelta(days=doy - 1)).strftime(
+            DATE_FORMAT_ISO
+        )
     except (ValueError, OverflowError):
         return None
 

@@ -83,9 +83,8 @@ LOG_ANALYSIS_NO_DATA = "Нет данных для градиента {} в ме
 LOG_ANALYSIS_NO_LAT = "Широтный градиент пропущен: нет колонки lat_center в данных."
 INFO_SKIP_CORRELATION = "Пропуск корреляции: нужны оба продукта (LST и NDVI)."
 
-# === ОШИБКИ (КОНКРЕТНЫЕ) ===
+# === ОШИБКИ ===
 ERR_CRITICAL = "Критическая ошибка: {}"
-ERR_EARTHACCESS_NOT_FOUND = "Установите earthaccess: pip install earthaccess"
 ERR_GPKG_NOT_FOUND = "GeoPackage не найден: {}"
 ERR_NO_ZONES = "Зоны не загружены."
 ERR_NO_RASTERS = "Растров не найдено."
@@ -102,6 +101,7 @@ ERR_INVALID_INPUT = "Неверный ввод: {}. Попробуйте сно�
 ERR_GPKG_NOT_FOUND = "GeoPackage не найден: {}"
 ERR_CSV_READ_FAILED = "Не удалось прочитать файл: {}. Начинаем с {}. Ошибка"
 ERR_DELETE_FAILED = "Не удалось удалить {}: {}"
+ERR_READ_ERROR = "Ошибка чтения: {}"
 
 # === ПРЕДУПРЕЖДЕНИЯ ===
 WARN_TQDM_NOT_INSTALLED = "tqdm не установлен — прогресс-бары отключены"
@@ -133,3 +133,5 @@ NEXT_STEPS = "СЛЕДУЮЩИЕ ШАГИ:"
 NEXT_STEP_1 = "1. Проверьте отчёт: {}"
 NEXT_STEP_2 = "2. Запустите modis_pipeline.py 01_download"
 NEXT_STEP_3 = "3. Запустите modis_pipeline.py 03_convert"
+
+"Введите путь к zones.gpkg: 

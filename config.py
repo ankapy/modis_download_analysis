@@ -9,8 +9,9 @@ BASE_DIR = Path(__file__).parent.resolve()
 
 # Форматы дат.
 LOG_FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-LOG_DATE_FORMAT = "%Y-%m-%d %H:%M:%S"
-DATE_FORMAT_FILE = "%Y-%m-%d"
+LOG_DATE_FORMAT = "%Y-%m-%d %H:%M:%S"  # Для логов
+DATE_FORMAT_FILE = "%Y%m%d_%H%M%S"  # Для имен файлов
+DATE_FORMAT_ISO = "%Y-%m-%d"  # Для дат в метаданных
 
 # Временной диапазон (переопределяется через CLI).
 TEMPORAL_RANGE = {
