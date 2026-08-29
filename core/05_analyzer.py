@@ -15,7 +15,7 @@ from scipy import stats
 from pathlib import Path
 from datetime import datetime
 
-from config import DATA_PATHS, LOG_DATE_FORMAT
+from config import DATA_PATHS, LOG_DATE_FORMAT, MODIS_PRODUCTS
 from utils.logger import setup_logger
 from utils.geo_utils import generate_zone_colors
 from utils import messages
@@ -80,6 +80,10 @@ class MODISAnalyzer:
         self.zone_order = sorted(zone_names)
         logger.info(messages.MSG_LOADED.format(len(self.df)))
 
+    def _get_unit(self, product: str) -> str:
+        """Получение единицы измерения продукта из конфигурации."""
+        return MODIS_PRODUCTS.get(product, {}).get("unit", "значение")
+
     def _preprocess_data(self):
         """Фильтрация и подготовка данных."""
         if "month" in self.df.columns:
@@ -141,7 +145,7 @@ class MODISAnalyzer:
 
         ax.set_title(f"Сезонная динамика ({product})")
         ax.set_xlabel("Месяц")
-        ax.set_ylabel("Температура, °C" if product == "LST" else "NDVI")
+        ax.set_ylabel(f"{product} ({self._get_unit(product)})")
         ax.legend(title="Зона", frameon=True)
         ax.grid(axis="y", alpha=0.3)
 
@@ -182,7 +186,7 @@ class MODISAnalyzer:
 
         ax.set_title(f"Межгодовая динамика ({product})")
         ax.set_xlabel("Год")
-        ax.set_ylabel("Темп., °C" if product == "LST" else "NDVI")
+        ax.set_ylabel(f"{product} ({self._get_unit(product)})")
         ax.legend(title="Зона", ncol=2)
         ax.grid(alpha=0.3)
 
@@ -192,32 +196,37 @@ class MODISAnalyzer:
             logger.info(messages.LOG_ANALYSIS_OK.format(path))
         plt.close(fig)
 
-    def plot_lst_ndvi_correlation(self, month: int = 7, save: bool = True):
-        """Корреляция LST и NDVI."""
+    def plot_product_correlation(
+        self, product_x: str, product_y: str, month: int = 7, save: bool = True
+    ):
+        """Универсальная корреляция двух продуктов."""
         if "zone_name" not in self.df.columns or "year" not in self.df.columns:
             logger.warning(
                 messages.LOG_ANALYSIS_WARN.format("Корреляция", "zone_name или year")
             )
             return
 
-        lst = self.df[(self.df["product"] == "LST") & (self.df["month"] == month)][
+        df_x = self.df[(self.df["product"] == product_x) & (self.df["month"] == month)][
             ["zone_name", "year", "mean"]
         ].copy()
-        ndvi = self.df[(self.df["product"] == "NDVI") & (self.df["month"] == month)][
+        df_y = self.df[(self.df["product"] == product_y) & (self.df["month"] == month)][
             ["zone_name", "year", "mean"]
         ].copy()
 
-        if lst.empty or ndvi.empty:
-            logger.warning("Недостаточно данных для корреляции LST-NDVI.")
+        if df_x.empty or df_y.empty:
+            logger.warning(messages.INFO_SKIP_CORRELATION.format(product_x, product_y))
             return
 
-        lst.columns = ["zone_name", "year", "LST"]
-        ndvi.columns = ["zone_name", "year", "NDVI"]
-        merged = pd.merge(lst, ndvi, on=["zone_name", "year"], how="inner")
-        merged = merged[merged["LST"].notna() & merged["NDVI"].notna()]
+        df_x.columns = ["zone_name", "year", f"val_{product_x}"]
+        df_y.columns = ["zone_name", "year", f"val_{product_y}"]
+
+        merged = pd.merge(df_x, df_y, on=["zone_name", "year"], how="inner")
+        merged = merged[
+            merged[f"val_{product_x}"].notna() & merged[f"val_{product_y}"].notna()
+        ]
 
         if merged.empty:
-            logger.warning("Нет общих точек для корреляции.")
+            logger.warning(messages.WARN_CORRELATION_NO_DATA)
             return
 
         fig, ax = plt.subplots(figsize=(8, 7))
@@ -225,10 +234,11 @@ class MODISAnalyzer:
             data = merged[merged["zone_name"] == zone]
             if data.empty:
                 continue
+
             color = self._get_color(zone)
             ax.scatter(
-                data["LST"],
-                data["NDVI"],
+                data[f"val_{product_x}"],
+                data[f"val_{product_y}"],
                 label=zone,
                 color=color,
                 alpha=0.6,
@@ -237,7 +247,9 @@ class MODISAnalyzer:
             )
 
             if len(data) >= 3:
-                r, _ = stats.pearsonr(data["LST"], data["NDVI"])
+                r, _ = stats.pearsonr(
+                    data[f"val_{product_x}"], data[f"val_{product_y}"]
+                )
                 ax.text(
                     0.05,
                     0.95 - 0.1 * self.zone_order.index(zone),
@@ -248,14 +260,17 @@ class MODISAnalyzer:
                     va="top",
                 )
 
-        ax.set_xlabel("Температура, °C")
-        ax.set_ylabel("NDVI")
-        ax.set_title(f"Корреляция LST-NDVI (месяц {month})")
+        ax.set_xlabel(f"{product_x} ({self._get_unit(product_x)})")
+        ax.set_ylabel(f"{product_y} ({self._get_unit(product_y)})")
+        ax.set_title(f"Корреляция {product_x} - {product_y} (месяц {month})")
         ax.legend(frameon=True)
         ax.grid(alpha=0.3)
 
         if save:
-            path = self.output_dir / f"correlation_m{month}.png"
+            path = (
+                self.output_dir
+                / f"correlation_{product_x.lower()}_{product_y.lower()}_m{month}.png"
+            )
             fig.savefig(path)
             logger.info(messages.LOG_ANALYSIS_OK.format(path))
         plt.close(fig)
@@ -312,8 +327,8 @@ class MODISAnalyzer:
             )
 
         ax.set_xlabel("Широта, ° с.ш.")
-        ax.set_ylabel("Темп., °C" if product == "LST" else "NDVI")
-        ax.set_title(f"Широтный градиент (месяц {month})")
+        ax.set_ylabel(f"{product} ({self._get_unit(product)})")
+        ax.set_title(f"Широтный градиент {product} (месяц {month})")
         ax.legend()
         ax.grid(alpha=0.3)
 
@@ -340,7 +355,7 @@ class MODISAnalyzer:
             agg["amplitude"],
             color=[self._get_color(z) for z in agg["zone_name"]],
         )
-        ax.set_xlabel("Амплитуда, °C" if product == "LST" else "NDVI")
+        ax.set_xlabel(f"Амплитуда ({self._get_unit(product)})")
         ax.set_title(f"Сезонная амплитуда ({product})")
         ax.grid(axis="x", alpha=0.3)
 
@@ -451,45 +466,54 @@ class MODISAnalyzer:
 
     def run_all(self, products: list = None):
         """Запуск всех визуализаций и экспорта."""
-        if products is None:
-            products = ["LST", "NDVI"]
-
         available_products = self.df["product"].unique().tolist()
-        products = [p for p in products if p in available_products]
+        if products is None:
+            products = available_products
+        else:
+            products = [p for p in products if p in available_products]
 
         if not products:
-            logger.warning("Нет данных для выбранных продуктов.")
+            logger.warning(messages.INFO_NO_PRODUCTS)
             return
 
-        logger.info("\n[1/7] Сезонная динамика...")
+        # Репрезентативный месяц: июль если доступен, иначе средний из имеющихся.
+        available_months = sorted(self.df["month"].unique())
+        if 7 in available_months:
+            target_month = 7
+        elif available_months:
+            target_month = available_months[len(available_months) // 2]
+        else:
+            target_month = 7
+
+        logger.info(messages.ANALYSIS_STEP_SEASONAL)
         for product in products:
             self.plot_seasonal_dynamics(product)
 
-        logger.info("[2/7] Межгодовые тренды...")
+        logger.info(messages.ANALYSIS_STEP_TRENDS)
         for product in products:
             self.plot_interannual_trends(product)
 
-        logger.info("[3/7] Широтный градиент...")
+        logger.info(messages.ANALYSIS_STEP_GRADIENT.format(target_month))
         for product in products:
-            self.plot_latitudinal_gradient(product, month=7)
+            self.plot_latitudinal_gradient(product, month=target_month)
 
-        logger.info("[4/7] Сезонная амплитуда...")
+        logger.info(messages.ANALYSIS_STEP_AMPLITUDE)
         for product in products:
             self.plot_seasonal_amplitude(product)
 
-        logger.info("[5/7] Корреляция LST-NDVI...")
-        if "LST" in products and "NDVI" in products:
-            self.plot_lst_ndvi_correlation(month=7)
+        logger.info(messages.ANALYSIS_STEP_CORRELATION.format(target_month))
+        if len(products) >= 2:
+            self.plot_product_correlation(products[0], products[1], month=target_month)
         else:
-            logger.info(messages.INFO_SKIP_CORRELATION)
+            logger.info(messages.INFO_SKIP_CORRELATION.format("N/A", "N/A"))
 
-        logger.info("[6/7] Сводные таблицы...")
+        logger.info(messages.ANALYSIS_STEP_TABLES)
         self.export_summary_table()
         self.export_trend_significance()
         self.export_monthly_aggregated()
 
-        logger.info("\nЗавершено.")
-        logger.info(f"Графики: {self.output_dir}")
+        logger.info(f"\n{messages.INFO_ANALYSIS_DONE}")
+        logger.info(messages.INFO_FIGURES_DIR.format(self.output_dir))
 
 
 def main(args):
@@ -497,7 +521,6 @@ def main(args):
     logger.info(messages.SEPARATOR)
     logger.info(messages.HEADER_ANALYZER)
     logger.info(messages.SEPARATOR)
-
     logger.info(
         messages.STATUS_START_TIME.format(datetime.now().strftime(LOG_DATE_FORMAT))
     )
@@ -511,7 +534,7 @@ def main(args):
         logger.error(messages.ERR_FILE_NOT_FOUND.format(input_csv))
         return
 
-    products = ["LST", "NDVI"] if args.product == "all" else [args.product]
+    products = list(MODIS_PRODUCTS.keys()) if args.product == "all" else [args.product]
 
     try:
         analyzer = MODISAnalyzer(input_csv, output_dir)
@@ -521,6 +544,3 @@ def main(args):
         )
     except (FileNotFoundError, ValueError, pd.errors.EmptyDataError) as e:
         logger.error(messages.ERR_CRITICAL.format(str(e)))
-        import traceback
-
-        traceback.print_exc()

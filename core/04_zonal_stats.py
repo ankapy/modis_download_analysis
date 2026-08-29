@@ -1,22 +1,24 @@
 """
 Зональная статистика: Pure GDAL + NumPy.
+Оптимизации: кэширование масок зон, многопоточность, безопасная и быстрая запись в CSV.
 """
 
 import time
+import csv
 import threading
 import numpy as np
 import pandas as pd
 from pathlib import Path
 from datetime import datetime, timedelta
 from concurrent.futures import ThreadPoolExecutor, as_completed
+
 from osgeo import gdal, ogr, osr
 from config import (
     DATA_PATHS,
-    TEMPORAL_RANGE,
-    LOG_DATE_FORMAT,
+    MODIS_PRODUCTS,
+    DATE_FORMAT_ISO,
     CSV_SEPARATOR,
     CSV_DECIMAL,
-    DATE_FORMAT_ISO,
 )
 from utils.logger import setup_logger
 from utils.geo_utils import load_zones
@@ -33,9 +35,28 @@ MASK_CACHE = {}
 MASK_CACHE_LOCK = threading.Lock()
 CSV_WRITE_LOCK = threading.Lock()
 
+# Явно задаем ожидаемые колонки для корректной записи в CSV
+EXPECTED_COLUMNS = [
+    "zone_id",
+    "zone_name",
+    "year",
+    "month",
+    "product",
+    "date",
+    "date_formatted",
+    "lat_center",
+    "lon_center",
+    "pixel_count",
+    "mean",
+    "std",
+    "median",
+    "min",
+    "max",
+]
+
 
 def get_zone_mask(raster_path: str, zones: list):
-    """Получение маски зон для растра с кэшированием."""
+    """Получение маски зон для растра с потокобезопасным кэшированием."""
     ds = gdal.Open(raster_path)
     if ds is None:
         return None, None, None, None
@@ -53,7 +74,7 @@ def get_zone_mask(raster_path: str, zones: list):
 
         logger.info(messages.LOG_RASTERIZE_START)
 
-        mem_driver = ogr.GetDriverByName("Memory")
+        mem_driver = ogr.GetDriverByName("MEM") or ogr.GetDriverByName("Memory")
         v_ds = mem_driver.CreateDataSource("mem")
         srs = osr.SpatialReference()
         srs.ImportFromWkt(projection)
@@ -64,24 +85,17 @@ def get_zone_mask(raster_path: str, zones: list):
 
         wgs84_srs = osr.SpatialReference()
         wgs84_srs.ImportFromEPSG(4326)
-
-        use_transform = srs.IsProjected() or srs.IsGeographic()
-        transform = (
-            osr.CoordinateTransformation(wgs84_srs, srs) if use_transform else None
-        )
+        transform = osr.CoordinateTransformation(wgs84_srs, srs)
 
         for zone in zones:
             feat = ogr.Feature(v_layer.GetLayerDefn())
             feat.SetField("zone_id", zone["id"])
             geom = ogr.CreateGeometryFromWkt(zone["wkt"])
 
-            if use_transform and transform:
-                try:
-                    geom.Transform(transform)
-                except RuntimeError as e:
-                    logger.warning(
-                        messages.ERR_GEOM_TRANSFORM.format(zone["name"], str(e))
-                    )
+            try:
+                geom.Transform(transform)
+            except RuntimeError as e:
+                logger.warning(messages.ERR_GEOM_TRANSFORM.format(zone["name"], str(e)))
 
             feat.SetGeometry(geom)
             v_layer.CreateFeature(feat)
@@ -122,34 +136,55 @@ def extract_date(filename: str) -> str:
     return "unknown"
 
 
-def doy_to_date(date_str: str) -> str:
-    """Конвертация YYYY-DOY в YYYY-MM-DD."""
-    try:
-        if date_str == "unknown" or pd.isna(date_str):
-            return None
-        parts = str(date_str).split("-")
-        if len(parts) != 2:
-            return None
-        year, doy = int(parts[0]), int(parts[1])
-        return (datetime(year, 1, 1) + timedelta(days=doy - 1)).strftime(
-            DATE_FORMAT_ISO
-        )
-    except (ValueError, OverflowError):
-        return None
-
-
-def doy_to_month(date_str: str) -> int:
-    """Конвертация дня года в номер месяца."""
+def parse_doy(date_str: str) -> tuple:
+    """
+    Одновременная конвертация YYYY-DOY в YYYY-MM-DD и номер месяца.
+    Возвращает кортеж (date_formatted, month).
+    """
     if date_str == "unknown":
-        return 0
+        return "", 0
     try:
-        parts = str(date_str).split("-")
-        if len(parts) != 2:
-            return 0
-        year, doy = int(parts[0]), int(parts[1])
-        return (datetime(year, 1, 1) + timedelta(days=doy - 1)).month
+        year, doy = map(int, date_str.split("-"))
+        dt = datetime(year, 1, 1) + timedelta(days=doy - 1)
+        return dt.strftime(DATE_FORMAT_ISO), dt.month
     except (ValueError, OverflowError):
+        return "", 0
+
+
+def build_aggregated_table(flat_csv: Path, agg_csv: Path) -> int:
+    """Построение агрегированной сводки из полной плоской таблицы."""
+    try:
+        df = pd.read_csv(
+            flat_csv, sep=CSV_SEPARATOR, decimal=CSV_DECIMAL, encoding="utf-8-sig"
+        )
+    except (pd.errors.EmptyDataError, pd.errors.ParserError, FileNotFoundError):
         return 0
+
+    if df.empty:
+        return 0
+
+    agg = (
+        df.groupby(["zone_id", "zone_name", "year", "month", "product"])["mean"]
+        .agg(["mean", "std", "min", "max", "count"])
+        .reset_index()
+        .rename(
+            columns={
+                "mean": "mean_val",
+                "std": "std_val",
+                "min": "min_val",
+                "max": "max_val",
+                "count": "n_observations",
+            }
+        )
+    )
+    agg.to_csv(
+        agg_csv,
+        index=False,
+        encoding="utf-8-sig",
+        sep=CSV_SEPARATOR,
+        decimal=CSV_DECIMAL,
+    )
+    return len(agg)
 
 
 def process_single_raster(raster_path: str, zones: list):
@@ -161,18 +196,20 @@ def process_single_raster(raster_path: str, zones: list):
     ds = gdal.Open(raster_path)
     band = ds.GetRasterBand(1)
     raster_data = band.ReadAsArray().astype(np.float32)
-    nodata = band.GetNoDataValue() or -9999
+
+    nodata = band.GetNoDataValue()
+    if nodata is None:
+        nodata = -9999
     ds = None
 
     results = []
     unique_ids = np.unique(mask_data[mask_data > 0])
     date_str = extract_date(Path(raster_path).name)
-    month = doy_to_month(date_str)
-    date_formatted = doy_to_date(date_str)
+    date_formatted, month = parse_doy(date_str)
 
-    parts = Path(raster_path).parts
-    product = parts[-3]
-    year = int(parts[-2])
+    path_obj = Path(raster_path)
+    product = path_obj.parent.parent.name
+    year = int(path_obj.parent.name)
 
     for uid in unique_ids:
         zone = next((z for z in zones if z["id"] == uid), None)
@@ -215,7 +252,7 @@ def main(args):
 
     start_time = time.time()
 
-    logger.info("[1/4] Loading zones from GeoPackage...")
+    logger.info(messages.STATS_STEP_ZONES)
     try:
         zones = load_zones(args.zones)
         if not zones:
@@ -228,23 +265,36 @@ def main(args):
         logger.error(str(e))
         return
 
-    logger.info("[2/4] Scanning for rasters...")
-    products = ["LST", "NDVI"]
-    years = list(range(TEMPORAL_RANGE["start_year"], TEMPORAL_RANGE["end_year"] + 1))
+    logger.info(messages.STATS_STEP_SCANNING)
 
+    processed_dir = DATA_PATHS["processed"]
     tasks = []
-    for product in products:
-        for year in years:
-            prod_dir = DATA_PATHS["processed"] / product / str(year)
-            if prod_dir.exists():
-                tifs = sorted(prod_dir.glob("*.tif"))
-                if args.test and tifs:
-                    tasks.append(str(tifs[0]))
-                    logger.info(messages.INFO_TEST_FILE.format(tifs[0].name))
-                else:
-                    tasks.extend(str(tif) for tif in tifs)
+
+    available_products = [
+        key for key in MODIS_PRODUCTS.keys() if (processed_dir / key).exists()
+    ]
+
+    for product in available_products:
+        product_dir = processed_dir / product
+        available_years = sorted(
+            [
+                int(d.name)
+                for d in product_dir.iterdir()
+                if d.is_dir() and d.name.isdigit()
+            ]
+        )
+
+        for year in available_years:
+            tifs = sorted((product_dir / str(year)).glob("*.tif"))
+            if args.test and tifs:
+                tasks.append(str(tifs[0]))
+                logger.info(messages.INFO_TEST_FILE.format(tifs[0].name))
+                break
+            elif not args.test:
+                tasks.extend(str(tif) for tif in tifs)
 
     logger.info(messages.INFO_RASTERS_FOUND.format(len(tasks)))
+
     if not tasks:
         logger.error(messages.ERR_NO_RASTERS)
         return
@@ -267,20 +317,15 @@ def main(args):
             pd.errors.ParserError,
             FileNotFoundError,
         ) as e:
-            logger.warning(
-                messages.ERR_CSV_READ_FAILED.format(output_csv, "нуля", str(e))
-            )
+            logger.warning(messages.WARN_READ_FILE_FAILED.format(str(e)))
 
-    logger.info("[3/4] Processing rasters...")
+    logger.info(messages.STATS_STEP_PROCESSING)
 
     def worker_task(raster_path):
         try:
             return process_single_raster(raster_path, zones)
-        except RuntimeError as e:
-            logger.warning(f"RuntimeError on {raster_path}: {str(e)}")
-            return []
-        except ValueError as e:
-            logger.warning(f"ValueError on {raster_path}: {str(e)}")
+        except (RuntimeError, ValueError) as e:
+            logger.warning(messages.ERR_RASTER_PROCESS.format(raster_path, str(e)))
             return []
 
     all_results = []
@@ -296,16 +341,32 @@ def main(args):
                     unique_key = f"{row['zone_name']}_{row['date']}_{row['product']}"
                     if unique_key not in processed_keys:
                         with CSV_WRITE_LOCK:
-                            pd.DataFrame([row]).to_csv(
-                                output_csv,
-                                mode="a",
-                                header=not file_exists,
-                                index=False,
-                                encoding="utf-8-sig",
-                                sep=CSV_SEPARATOR,
-                                decimal=CSV_DECIMAL,
-                            )
-                            file_exists = True
+                            if not file_exists:
+                                with open(
+                                    output_csv, "a", newline="", encoding="utf-8-sig"
+                                ) as f:
+                                    writer = csv.DictWriter(
+                                        f, fieldnames=EXPECTED_COLUMNS, delimiter=";"
+                                    )
+                                    writer.writeheader()
+                                file_exists = True
+
+                            with open(
+                                output_csv, "a", newline="", encoding="utf-8-sig"
+                            ) as f:
+                                writer = csv.DictWriter(
+                                    f, fieldnames=EXPECTED_COLUMNS, delimiter=";"
+                                )
+                                formatted_row = {
+                                    k: (
+                                        f"{v:.6f}".replace(".", ",")
+                                        if isinstance(v, float)
+                                        else v
+                                    )
+                                    for k, v in row.items()
+                                }
+                                writer.writerow(formatted_row)
+
                         all_results.append(row)
                         processed_keys.add(unique_key)
 
@@ -317,55 +378,44 @@ def main(args):
             for row in res:
                 unique_key = f"{row['zone_name']}_{row['date']}_{row['product']}"
                 if unique_key not in processed_keys:
-                    pd.DataFrame([row]).to_csv(
-                        output_csv,
-                        mode="a",
-                        header=not file_exists,
-                        index=False,
-                        encoding="utf-8-sig",
-                        sep=CSV_SEPARATOR,
-                        decimal=CSV_DECIMAL,
-                    )
-                    file_exists = True
+                    if not file_exists:
+                        with open(
+                            output_csv, "a", newline="", encoding="utf-8-sig"
+                        ) as f:
+                            writer = csv.DictWriter(
+                                f, fieldnames=EXPECTED_COLUMNS, delimiter=";"
+                            )
+                            writer.writeheader()
+                        file_exists = True
+
+                    with open(output_csv, "a", newline="", encoding="utf-8-sig") as f:
+                        writer = csv.DictWriter(
+                            f, fieldnames=EXPECTED_COLUMNS, delimiter=";"
+                        )
+                        formatted_row = {
+                            k: (
+                                f"{v:.6f}".replace(".", ",")
+                                if isinstance(v, float)
+                                else v
+                            )
+                            for k, v in row.items()
+                        }
+                        writer.writerow(formatted_row)
+
                     all_results.append(row)
                     processed_keys.add(unique_key)
 
             if not args.test and i % 20 == 0:
                 logger.info(messages.INFO_PROCESSED_RASTERS.format(i, len(tasks)))
 
-    logger.info("[4/4] Saving results...")
-
-    if not all_results and output_csv.exists():
-        try:
-            existing_count = len(
-                pd.read_csv(output_csv, sep=";", decimal=",", encoding="utf-8-sig")
-            )
-            if existing_count > 0:
-                logger.info(messages.INFO_CSV_EXISTING_RECORDS.format(existing_count))
-                return
-        except (pd.errors.EmptyDataError, pd.errors.ParserError):
-            pass
+    logger.info(messages.STATS_STEP_SAVING)
 
     if all_results:
-        df = pd.DataFrame(all_results)
-        logger.info(messages.LOG_SAVED_OK.format(len(df), output_csv))
+        logger.info(messages.LOG_SAVED_OK.format(len(all_results), output_csv))
 
-        agg_df = (
-            df.groupby(["zone_id", "zone_name", "year", "month", "product"])["mean"]
-            .agg(["mean", "std", "min", "max", "count"])
-            .reset_index()
-        )
-        agg_df = agg_df.rename(
-            columns={
-                "mean": "mean_val",
-                "std": "std_val",
-                "min": "min_val",
-                "max": "max_val",
-                "count": "n_observations",
-            }
-        )
-        agg_path = str(output_csv).replace(".csv", "_agg.csv")
-        agg_df.to_csv(agg_path, index=False, encoding="utf-8-sig", sep=";", decimal=",")
+    # Агрегат пересобирается из ПОЛНОЙ таблицы, поэтому при resume он всегда полный.
+    agg_path = output_csv.parent / f"{output_csv.stem}_agg.csv"
+    if build_aggregated_table(output_csv, agg_path) > 0:
         logger.info(messages.LOG_SAVED_AGG.format(agg_path))
     else:
         logger.warning(messages.LOG_NO_DATA)

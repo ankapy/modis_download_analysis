@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 """
 Единая точка входа MODIS Pipeline.
 Использование: python modis_pipeline.py <команда> [флаги]

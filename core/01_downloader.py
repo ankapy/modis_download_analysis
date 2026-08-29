@@ -2,12 +2,12 @@
 Скачивание данных MODIS через earthaccess.
 """
 
+import sys
 import time
-import traceback
+import calendar
 import earthaccess
 from pathlib import Path
 from datetime import datetime
-
 
 from config import (
     MODIS_PRODUCTS,
@@ -16,12 +16,17 @@ from config import (
     DOWNLOAD_MAX_RETRIES,
     DOWNLOAD_PAUSE_BATCH,
     DOWNLOAD_PAUSE_GRANULE,
+    DOWNLOAD_PAUSE_PRODUCT,
+    DOWNLOAD_PAUSE_YEAR,
+    EXPECTED_GRANULES,
     LOG_DATE_FORMAT,
+    SEARCH_MAX_RESULTS,
 )
 from utils.logger import setup_logger
 from utils.geo_utils import calculate_bbox_from_gpkg, check_modis_coverage
 from utils.config_loader import (
     parse_months,
+    parse_products,
     prompt_temporal_range,
     prompt_products,
     prompt_zones_path,
@@ -32,25 +37,38 @@ logger = setup_logger(__name__)
 
 
 def count_hdf_files(output_dir: Path) -> int:
-    """Подсчёт HDF-файлов в директории."""
+    """Подсчёт HDF-файлов в директории (без загрузки списка в память)."""
     if not output_dir.exists():
         return 0
-    return len(list(output_dir.glob("*.hdf")))
+    return sum(1 for _ in output_dir.glob("*.hdf"))
 
 
 def authenticate():
-    """Авторизация в NASA Earthdata."""
+    """Авторизация в NASA Earthdata с каскадным перебором стратегий."""
     logger.info(messages.LOG_AUTH_START)
+
     try:
         earthaccess.login(strategy="netrc", persist=True)
         logger.info(messages.LOG_AUTH_OK)
-    except (RuntimeError, ConnectionError) as e:
-        logger.warning(messages.LOG_AUTH_WARN.format(str(e)))
+        return
+    except Exception as e:
+        logger.debug(f"Авторизация через netrc не удалась: {e}")
+
+    try:
         earthaccess.login(strategy="environment", persist=True)
+        logger.info(messages.LOG_AUTH_OK)
+        return
+    except Exception as e:
+        logger.debug(f"Авторизация через окружение не удалась: {e}")
+
+    logger.error(messages.ERR_AUTH_FAILED)
+    sys.exit(1)
 
 
 def download_granules(
-    results_to_download: list, output_dir: Path, batch_size: int = DOWNLOAD_BATCH_SIZE
+    results_to_download: list,
+    output_dir: Path,
+    batch_size: int = DOWNLOAD_BATCH_SIZE,
 ):
     """Скачивание гранул с паузами и повторными попытками."""
     downloaded = 0
@@ -64,7 +82,9 @@ def download_granules(
         try:
             logger.info(
                 messages.LOG_BATCH_START.format(
-                    batch_num, i + 1, min(i + batch_size, len(results_to_download))
+                    batch_num,
+                    i + 1,
+                    min(i + batch_size, len(results_to_download)),
                 )
             )
 
@@ -97,6 +117,14 @@ def download_granules(
                             wait_time = (attempt + 1) * 5
                             logger.info(messages.LOG_DOWNLOAD_PAUSE.format(wait_time))
                             time.sleep(wait_time)
+                    except Exception as e:
+                        logger.error(
+                            messages.LOG_DOWNLOAD_ERROR.format(
+                                attempt + 1, DOWNLOAD_MAX_RETRIES, str(e)[:80]
+                            )
+                        )
+                        if attempt < DOWNLOAD_MAX_RETRIES - 1:
+                            time.sleep(5)
 
                 if not success:
                     failed += 1
@@ -114,7 +142,7 @@ def download_granules(
         except KeyboardInterrupt:
             logger.warning(messages.LOG_INTERRUPT.format(batch_num))
             break
-        except (ConnectionError, RuntimeError) as e:
+        except Exception as e:
             logger.error(messages.LOG_BATCH_ERROR.format(batch_num, str(e)[:80]))
             failed += len(batch)
             time.sleep(10)
@@ -123,30 +151,42 @@ def download_granules(
 
 
 def process_product_year(
-    product_key: str, year: int, bbox: tuple, temporal_range: dict
+    product_key: str,
+    year: int,
+    bbox: tuple,
+    temporal_range: dict,
 ):
     """Обработка одного продукта за один год."""
     config = MODIS_PRODUCTS[product_key]
-    product_code = config["product"]
+    product_code = str(config["product"])
     output_dir = DATA_PATHS["raw"] / product_code / str(year)
     output_dir.mkdir(parents=True, exist_ok=True)
 
     existing_hdf = count_hdf_files(output_dir)
-    expected_granules = 120 if product_code == "MOD11A2" else 77
+    expected_granules = EXPECTED_GRANULES.get(product_code, 0)
 
-    if existing_hdf >= expected_granules * 0.95:
+    if expected_granules > 0 and existing_hdf >= expected_granules * 0.95:
         logger.info(
             messages.INFO_EXISTING_FILES.format(existing_hdf, expected_granules)
         )
         return 0, 0
 
     months = temporal_range["months"]
-    start_date = f"{year}-{min(months):02d}-01"
-    end_date = f"{year}-{max(months):02d}-28"
+    min_month = min(months)
+    max_month = max(months)
+
+    _, last_day = calendar.monthrange(year, max_month)
+
+    start_date = f"{year}-{min_month:02d}-01"
+    end_date = f"{year}-{max_month:02d}-{last_day}"
 
     logger.info(messages.INFO_PERIOD.format(start_date, end_date))
     logger.info(messages.INFO_DIRECTORY.format(output_dir))
-    logger.info(messages.INFO_EXISTING_FILES.format(existing_hdf, expected_granules))
+
+    if expected_granules > 0:
+        logger.info(
+            messages.INFO_EXISTING_FILES.format(existing_hdf, expected_granules)
+        )
 
     try:
         logger.info(messages.LOG_SEARCH_START)
@@ -154,10 +194,10 @@ def process_product_year(
             short_name=product_code,
             temporal=(start_date, end_date),
             bounding_box=bbox,
-            count=2000,
+            count=SEARCH_MAX_RESULTS,
         )
-    except (ConnectionError, RuntimeError) as e:
-        logger.error(messages.ERR_CRITICAL.format(str(e)))
+    except Exception as e:
+        logger.error(messages.ERR_SEARCH_FAILED.format(str(e)))
         return 0, 1
 
     if not results:
@@ -167,12 +207,14 @@ def process_product_year(
     logger.info(messages.LOG_GRANULES_FOUND.format(len(results)))
 
     existing_files = {f.name for f in output_dir.glob("*.hdf")}
-    results_to_download = [
-        granule
-        for granule in results
-        if granule.get("meta", {}).get("native-id", "").split(":")[-1] + ".hdf"
-        not in existing_files
-    ]
+    results_to_download = []
+
+    for granule in results:
+        native_id = granule.get("meta", {}).get("native-id", "")
+        if native_id:
+            expected_filename = native_id.split(":")[-1] + ".hdf"
+            if expected_filename not in existing_files:
+                results_to_download.append(granule)
 
     if not results_to_download:
         logger.info(messages.INFO_SKIP_ALL_DOWNLOADED)
@@ -195,21 +237,21 @@ def main(args):
     logger.info(
         messages.STATUS_START_TIME.format(datetime.now().strftime(LOG_DATE_FORMAT))
     )
+    logger.info(messages.INFO_CTRL_C)
 
     try:
-        # Определение пути к зонам.
         zones_path = args.zones if args.zones else prompt_zones_path()
         if not zones_path.exists():
             raise FileNotFoundError(messages.ERR_GPKG_NOT_FOUND.format(zones_path))
 
-        # Расчёт пространственного диапазона.
         bbox = calculate_bbox_from_gpkg(zones_path)
-        logger.info(f"Bounding box: {bbox}")
+        logger.info(messages.INFO_BBOX.format(bbox))
 
         if not check_modis_coverage(bbox):
             raise ValueError(messages.WARN_NO_COVERAGE)
 
-        # Временной диапазон.
+        authenticate()
+
         if args.start_year and args.end_year:
             months = parse_months(args.months) if args.months else list(range(1, 13))
             temporal_range = {
@@ -224,30 +266,28 @@ def main(args):
                 range(temporal_range["start_year"], temporal_range["end_year"] + 1)
             )
 
-        # Выбор продуктов.
-        if args.products:
-            products = [p.strip() for p in args.products.split(",")]
-        else:
-            products = prompt_products()
+        products = parse_products(args.products) if args.products else prompt_products()
 
-        logger.info(messages.INFO_ZONES_PATH.format(zones_path))
-        logger.info(messages.INFO_PRODUCTS.format(products))
-
-        authenticate()
+        logger.info(messages.MSG_ZONES_PATH.format(zones_path))
+        logger.info(messages.MSG_PRODUCTS.format(products))
 
         total_success = 0
         total_failed = 0
         total_skipped = 0
 
-        for year_idx, year in enumerate(years, 1):
+        for product_idx, product_key in enumerate(products, 1):
+            config = MODIS_PRODUCTS[product_key]
             logger.info(messages.SEPARATOR)
-            logger.info(f">>> ГОД {year} ({year_idx}/{len(years)})")
+            logger.info(
+                messages.INFO_PRODUCT_HEADER.format(
+                    product_idx, len(products), config["product"], config["version"]
+                )
+            )
             logger.info(messages.SEPARATOR)
 
-            for product_idx, product_key in enumerate(products, 1):
-                config = MODIS_PRODUCTS[product_key]
+            for year_idx, year in enumerate(years, 1):
                 logger.info(
-                    f"[{product_idx}/{len(products)}] {config['product']} v{config['version']}"
+                    messages.INFO_YEAR_HEADER.format(year, year_idx, len(years))
                 )
 
                 downloaded, failed = process_product_year(
@@ -261,11 +301,11 @@ def main(args):
                 if downloaded == 0 and failed == 0:
                     total_skipped += 1
 
-                time.sleep(5)
-            time.sleep(10)
+                time.sleep(DOWNLOAD_PAUSE_YEAR)
+            time.sleep(DOWNLOAD_PAUSE_PRODUCT)
 
         logger.info(messages.SEPARATOR)
-        logger.info("ИТОГИ ЗАГРУЗКИ")
+        logger.info(messages.INFO_SUMMARY_HEADER)
         logger.info(messages.SEPARATOR)
         logger.info(messages.STATUS_SUCCESS.format(total_success))
         logger.info(messages.STATUS_SKIPPED.format(total_skipped))
@@ -276,8 +316,12 @@ def main(args):
         logger.info(messages.SEPARATOR)
 
     except KeyboardInterrupt:
-        logger.warning("\n[INTERRUPT] Программа прервана пользователем")
-        logger.info("[INFO] Запустите снова для продолжения")
-    except (FileNotFoundError, ValueError, RuntimeError) as e:
+        logger.warning(f"\n{messages.INFO_INTERRUPT}")
+        logger.info(messages.INFO_CONTINUE)
+        sys.exit(0)
+    except (FileNotFoundError, ValueError, RuntimeError, SystemExit) as e:
         logger.error(messages.ERR_CRITICAL.format(str(e)))
-        traceback.print_exc()
+        sys.exit(1)
+    except Exception as e:
+        logger.error(messages.ERR_CRITICAL.format(str(e)))
+        sys.exit(1)

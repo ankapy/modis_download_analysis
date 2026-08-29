@@ -9,6 +9,7 @@ import importlib
 from pathlib import Path
 
 from utils import messages
+from config import MODIS_PRODUCTS
 
 
 def _add_download_parser(subparsers):
@@ -22,21 +23,23 @@ def _add_download_parser(subparsers):
     parser.add_argument("--start-year", type=int, help="Начальный год (пример: 2015)")
     parser.add_argument("--end-year", type=int, help="Конечный год (пример: 2025)")
     parser.add_argument("--months", type=str, help="Месяцы: 1-12 или 5,6,7,8,9")
-    parser.add_argument("--products", type=str, help="Продукты через запятую: LST,NDVI")
+    parser.add_argument(
+        "--products",
+        type=str,
+        help=f"Продукты через запятую: {','.join(list(MODIS_PRODUCTS.keys())[:2])}",
+    )
 
 
 def _add_validate_parser(subparsers):
     """Добавление парсера для команды 02_validate."""
+    product_choices = list(MODIS_PRODUCTS.keys()) + ["all"]
     parser = subparsers.add_parser(
         "02_validate",
         help="Валидация HDF файлов",
         description="Проверка целостности HDF и удаление битых.",
     )
     parser.add_argument(
-        "--product",
-        choices=["LST", "NDVI", "all"],
-        default="all",
-        help="Продукт для проверки",
+        "--product", choices=product_choices, default="all", help="Продукт для проверки"
     )
     parser.add_argument("--year", type=int, help="Проверить только указанный год")
     parser.add_argument(
@@ -50,6 +53,7 @@ def _add_validate_parser(subparsers):
 
 def _add_convert_parser(subparsers):
     """Добавление парсера для команды 03_convert."""
+    product_choices = list(MODIS_PRODUCTS.keys()) + ["all"]
     parser = subparsers.add_parser(
         "03_convert",
         help="Конвертация HDF -> GeoTIFF",
@@ -57,11 +61,15 @@ def _add_convert_parser(subparsers):
     )
     parser.add_argument(
         "--product",
-        choices=["LST", "NDVI", "all"],
+        choices=product_choices,
         default="all",
         help="Продукт для конвертации",
     )
     parser.add_argument("--year", type=int, help="Только указанный год")
+    parser.add_argument("--workers", type=int, default=4, help="Количество потоков")
+    parser.add_argument(
+        "--mosaic", action="store_true", help="Сборка Mosaic Dataset (arcpy)"
+    )
 
 
 def _add_stats_parser(subparsers):
@@ -82,23 +90,69 @@ def _add_stats_parser(subparsers):
 
 def _add_analyze_parser(subparsers):
     """Добавление парсера для команды 05_analyze."""
+    product_choices = list(MODIS_PRODUCTS.keys()) + ["all"]
     parser = subparsers.add_parser(
         "05_analyze",
         help="Анализ и визуализация",
         description="Построение графиков и экспорт таблиц.",
     )
     parser.add_argument(
-        "--product",
-        choices=["LST", "NDVI", "all"],
-        default="all",
-        help="Продукт для анализа",
+        "--product", choices=product_choices, default="all", help="Продукт для анализа"
     )
     parser.add_argument("--output-dir", type=Path, help="Директория для графиков")
 
 
+def _add_run_all_parser(subparsers):
+    """Добавление парсера для команды run-all."""
+    parser = subparsers.add_parser(
+        "run-all",
+        help="Полный пайплайн: 01 → 05",
+        description="Последовательный запуск всех этапов.",
+    )
+    parser.add_argument(
+        "--zones", type=Path, required=True, help="Путь к GeoPackage с зонами"
+    )
+    parser.add_argument("--start-year", type=int, required=True, help="Начальный год")
+    parser.add_argument("--end-year", type=int, required=True, help="Конечный год")
+    parser.add_argument("--months", type=str, help="Месяцы: 1-12 или 5,6,7,8,9")
+    parser.add_argument("--products", type=str, help="Продукты через запятую")
+    parser.add_argument("--workers", type=int, default=4, help="Количество потоков")
+    parser.add_argument(
+        "--mosaic", action="store_true", help="Сборка Mosaic Dataset (arcpy)"
+    )
+
+
+def _run_all(args):
+    """Последовательный запуск всех этапов пайплайна."""
+    from argparse import Namespace
+
+    stage_args = {
+        "01_downloader": Namespace(
+            zones=args.zones,
+            start_year=args.start_year,
+            end_year=args.end_year,
+            months=args.months,
+            products=args.products,
+        ),
+        "02_validator": Namespace(
+            product="all", year=None, dry_run=False, workers=args.workers, quiet=True
+        ),
+        "03_converter": Namespace(
+            product="all", year=None, workers=args.workers, mosaic=args.mosaic
+        ),
+        "04_zonal_stats": Namespace(zones=args.zones, workers=args.workers, test=False),
+        "05_analyze": Namespace(product="all", output_dir=None),
+    }
+
+    print(messages.INFO_RUN_ALL_START)
+    for stage, s_args in stage_args.items():
+        print(messages.INFO_RUN_ALL_STAGE.format(stage))
+        module = importlib.import_module(f"core.{stage}")
+        module.main(s_args)
+
+
 def _dispatch(args):
     """Диспетчеризация команды на соответствующий модуль."""
-    command = args.command
     module_map = {
         "01_download": "core.01_downloader",
         "02_validate": "core.02_validator",
@@ -107,10 +161,10 @@ def _dispatch(args):
         "05_analyze": "core.05_analyzer",
     }
 
-    if command not in module_map:
-        raise ValueError(messages.ERR_INVALID_INPUT.format(command))
+    if args.command not in module_map:
+        raise ValueError(messages.ERR_INVALID_INPUT.format(args.command))
 
-    module = importlib.import_module(module_map[command])
+    module = importlib.import_module(module_map[args.command])
     module.main(args)
 
 
@@ -128,6 +182,7 @@ def main():
     _add_convert_parser(subparsers)
     _add_stats_parser(subparsers)
     _add_analyze_parser(subparsers)
+    _add_run_all_parser(subparsers)
 
     if len(sys.argv) < 2:
         parser.print_help()
@@ -140,15 +195,15 @@ def main():
         sys.exit(1)
 
     try:
-        _dispatch(args)
+        if args.command == "run-all":
+            _run_all(args)
+        else:
+            _dispatch(args)
     except KeyboardInterrupt:
-        print("\n[INTERRUPT] Прервано пользователем.")
+        print(f"\n{messages.INFO_INTERRUPT}")
         sys.exit(0)
     except (ValueError, RuntimeError, FileNotFoundError) as e:
-        print(f"[ERROR] {str(e)}")
-        import traceback
-
-        traceback.print_exc()
+        print(messages.ERR_CRITICAL.format(str(e)))
         sys.exit(1)
 
 

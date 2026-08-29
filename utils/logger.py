@@ -5,7 +5,7 @@
 import logging
 import sys
 from datetime import datetime
-from config import DATA_PATHS, LOG_FORMAT, LOG_DATE_FORMAT
+from config import LOG_FORMAT, LOG_DATE_FORMAT, DATA_PATHS, DATE_FORMAT_FILE
 
 
 def setup_logger(name: str, level: int = logging.INFO) -> logging.Logger:
@@ -25,7 +25,7 @@ def setup_logger(name: str, level: int = logging.INFO) -> logging.Logger:
 
     # Файловый handler.
     log_dir = DATA_PATHS["logs"]
-    log_file = log_dir / f"pipeline_{datetime.now().strftime('%Y%m%d')}.log"
+    log_file = log_dir / f"pipeline_{datetime.now().strftime(DATE_FORMAT_FILE)}.log"
     file_handler = logging.FileHandler(log_file, encoding="utf-8")
     file_handler.setLevel(logging.DEBUG)
     file_formatter = logging.Formatter(LOG_FORMAT, LOG_DATE_FORMAT)
