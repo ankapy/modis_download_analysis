@@ -16,6 +16,7 @@ from config import (
 )
 from utils.logger import setup_logger
 from utils import messages
+from utils.provenance import save_run_provenance
 
 gdal.UseExceptions()
 
@@ -25,11 +26,18 @@ logger = setup_logger(__name__)
 class MODISConverter:
     """Конвертер MODIS HDF в GeoTIFF."""
 
-    def __init__(self, max_workers: int = CONVERT_MAX_WORKERS):
+    def __init__(
+        self,
+        max_workers: int = CONVERT_MAX_WORKERS,
+        reproject_epsg: int = None,
+        as_cog: bool = False,
+    ):
         """Инициализация конвертера."""
         self.input_dir = DATA_PATHS["raw"]
         self.output_dir = DATA_PATHS["processed"]
         self.max_workers = max_workers
+        self.reproject_epsg = reproject_epsg
+        self.as_cog = as_cog
 
     def _find_subdataset(self, subdatasets: list, band_name: str):
         """Поиск поддатасета с приоритетом точного совпадения имени бэнда."""
@@ -112,40 +120,45 @@ class MODISConverter:
         unit: str,
         nodata: float,
     ):
-        """Сохранение массива в GeoTIFF."""
+        """Сохранение массива в GeoTIFF (опционально COG или репроекция)."""
         try:
-            geotransform = source_band.GetGeoTransform()
-            projection = source_band.GetProjection()
             rows, cols = data.shape
 
-            driver = gdal.GetDriverByName("GTiff")
-            out_dataset = driver.Create(
-                str(output_path),
-                cols,
-                rows,
-                1,
-                gdal.GDT_Float32,
-                options=["COMPRESS=LZW", "TILED=YES"],
+            mem_ds = gdal.GetDriverByName("MEM").Create(
+                "", cols, rows, 1, gdal.GDT_Float32
             )
-
-            out_band = out_dataset.GetRasterBand(1)
-            out_band.WriteArray(data)
-            out_band.SetNoDataValue(nodata)
-
-            out_dataset.SetGeoTransform(geotransform)
-            out_dataset.SetProjection(projection)
-            out_dataset.SetMetadataItem("PRODUCT", product_key)
-            out_dataset.SetMetadataItem("UNIT", unit)
-            out_dataset.SetMetadataItem(
+            mem_ds.SetGeoTransform(source_band.GetGeoTransform())
+            mem_ds.SetProjection(source_band.GetProjection())
+            mem_band = mem_ds.GetRasterBand(1)
+            mem_band.WriteArray(data)
+            mem_band.SetNoDataValue(nodata)
+            mem_ds.SetMetadataItem("PRODUCT", product_key)
+            mem_ds.SetMetadataItem("UNIT", unit)
+            mem_ds.SetMetadataItem(
                 "PROCESSING_DATE", datetime.now().strftime(DATE_FORMAT_ISO)
             )
-            out_dataset.SetMetadataItem("SOURCE", "MODIS Terra/Aqua")
+            mem_ds.SetMetadataItem("SOURCE", "MODIS Terra/Aqua")
 
-            out_band.FlushCache()
-            out_band = None
-            out_dataset = None
+            if self.as_cog:
+                fmt, opts = "COG", ["COMPRESS=LZW"]
+            else:
+                fmt, opts = "GTiff", ["COMPRESS=LZW", "TILED=YES"]
+
+            if self.reproject_epsg:
+                gdal.Warp(
+                    str(output_path),
+                    mem_ds,
+                    format=fmt,
+                    dstSRS=f"EPSG:{self.reproject_epsg}",
+                    creationOptions=opts,
+                )
+            else:
+                gdal.Translate(
+                    str(output_path), mem_ds, format=fmt, creationOptions=opts
+                )
+
+            mem_ds = None
             logger.info(messages.LOG_CONVERSION_FILE_OK.format(output_path.name))
-
         except RuntimeError as e:
             logger.error(messages.ERR_SAVE_GEOTIFF.format(str(e)))
 
@@ -238,8 +251,6 @@ def build_mosaic_dataset(product_key: str, year: int, year_dir: Path, gdb_dir: P
 
         srs = arcpy.Raster(tifs[0]).spatialReference
         arcpy.management.CreateMosaicDataset(str(gdb_path), md_name, srs)
-
-        # ИСПРАВЛЕНО: явные именованные параметры вместо позиционных
         arcpy.management.AddRastersToMosaicDataset(
             in_mosaic_dataset=md_path,
             raster_type="Raster Dataset",
@@ -260,7 +271,28 @@ def main(args):
     logger.info(messages.SEPARATOR)
     logger.info(messages.INFO_GDAL_VERSION.format(gdal.__version__))
 
-    converter = MODISConverter(max_workers=args.workers)
+    mode = "COG" if args.cog else "GTiff"
+    if args.reproject:
+        mode += f" -> EPSG:{args.reproject}"
+    logger.info(messages.INFO_RASTER_MODE.format(mode))
+
+    save_run_provenance(
+        "03_convert",
+        {
+            "product": args.product,
+            "year": args.year,
+            "workers": args.workers,
+            "mosaic": args.mosaic,
+            "cog": args.cog,
+            "reproject": args.reproject,
+        },
+    )
+
+    converter = MODISConverter(
+        max_workers=args.workers,
+        reproject_epsg=args.reproject,
+        as_cog=args.cog,
+    )
     raw_dir = DATA_PATHS["raw"]
 
     if args.product == "all":

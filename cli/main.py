@@ -9,7 +9,7 @@ import importlib
 from pathlib import Path
 
 from utils import messages
-from config import MODIS_PRODUCTS
+from config import MODIS_PRODUCTS, ZONES_GPKG
 
 
 def _add_download_parser(subparsers):
@@ -39,7 +39,10 @@ def _add_validate_parser(subparsers):
         description="Проверка целостности HDF и удаление битых.",
     )
     parser.add_argument(
-        "--product", choices=product_choices, default="all", help="Продукт для проверки"
+        "--product",
+        choices=product_choices,
+        default="all",
+        help="Продукт для проверки",
     )
     parser.add_argument("--year", type=int, help="Проверить только указанный год")
     parser.add_argument(
@@ -70,6 +73,17 @@ def _add_convert_parser(subparsers):
     parser.add_argument(
         "--mosaic", action="store_true", help="Сборка Mosaic Dataset (arcpy)"
     )
+    parser.add_argument(
+        "--cog",
+        action="store_true",
+        help="Запись в формате Cloud Optimized GeoTIFF",
+    )
+    parser.add_argument(
+        "--reproject",
+        type=int,
+        default=None,
+        help="Целевая EPSG для репроекции (пример: 4326)",
+    )
 
 
 def _add_stats_parser(subparsers):
@@ -97,16 +111,24 @@ def _add_analyze_parser(subparsers):
         description="Построение графиков и экспорт таблиц.",
     )
     parser.add_argument(
-        "--product", choices=product_choices, default="all", help="Продукт для анализа"
+        "--product",
+        choices=product_choices,
+        default="all",
+        help="Продукт для анализа",
     )
     parser.add_argument("--output-dir", type=Path, help="Директория для графиков")
+    parser.add_argument(
+        "--excel",
+        action="store_true",
+        help="Экспорт всех таблиц в один .xlsx (листы: flat, monthly, summary, trends)",
+    )
 
 
 def _add_run_all_parser(subparsers):
     """Добавление парсера для команды run-all."""
     parser = subparsers.add_parser(
         "run-all",
-        help="Полный пайплайн: 01 → 05",
+        help="Полный пайплайн: 01 -> 05",
         description="Последовательный запуск всех этапов.",
     )
     parser.add_argument(
@@ -120,6 +142,91 @@ def _add_run_all_parser(subparsers):
     parser.add_argument(
         "--mosaic", action="store_true", help="Сборка Mosaic Dataset (arcpy)"
     )
+    parser.add_argument(
+        "--cog",
+        action="store_true",
+        help="Запись в формате Cloud Optimized GeoTIFF",
+    )
+    parser.add_argument(
+        "--reproject",
+        type=int,
+        default=None,
+        help="Целевая EPSG для репроекции (пример: 4326)",
+    )
+    parser.add_argument(
+        "--excel",
+        action="store_true",
+        help="Экспорт всех таблиц в один .xlsx",
+    )
+
+
+def _add_selftest_parser(subparsers):
+    """Добавление парсера для команды selftest."""
+    subparsers.add_parser(
+        "selftest",
+        help="Самодиагностика окружения",
+        description="Проверка импортов, GDAL, авторизации и наличия зон.",
+    )
+
+
+def _selftest():
+    """Быстрая проверка окружения и конфигурации."""
+    print(messages.INFO_SELFTEST_START)
+
+    # 1. Проверка обязательных Python-зависимостей.
+    for module_name in (
+        "numpy",
+        "pandas",
+        "matplotlib",
+        "scipy",
+        "earthaccess",
+        "tqdm",
+    ):
+        try:
+            importlib.import_module(module_name)
+            print(messages.SELFTEST_OK.format(module_name))
+        except ImportError as e:
+            print(messages.SELFTEST_FAIL.format(f"{module_name}: {str(e)[:80]}"))
+
+    # 2. Опциональная зависимость для Excel-экспорта.
+    try:
+        importlib.import_module("openpyxl")
+        print(messages.SELFTEST_OK.format("openpyxl"))
+    except ImportError:
+        print(messages.SELFTEST_WARN.format("openpyxl (нужен только для --excel)"))
+
+    # 3. Проверка GDAL.
+    try:
+        from osgeo import gdal
+
+        print(messages.SELFTEST_OK.format(f"GDAL {gdal.__version__}"))
+    except ImportError as e:
+        print(messages.SELFTEST_FAIL.format(f"GDAL: {str(e)[:80]}"))
+
+    # 4. Конфигурация продуктов (validate_config() уже вызван при импорте config.py).
+    try:
+        import config  # noqa: F401
+
+        print(messages.SELFTEST_OK.format("config (MODIS_PRODUCTS)"))
+    except ValueError as e:
+        print(messages.SELFTEST_FAIL.format(f"config: {str(e)[:80]}"))
+
+    # 5. Авторизация в NASA Earthdata.
+    try:
+        import earthaccess
+
+        earthaccess.login(strategy="netrc", persist=True)
+        print(messages.SELFTEST_OK.format("earthaccess (netrc)"))
+    except Exception as e:
+        print(messages.SELFTEST_WARN.format(f"earthaccess: {str(e)[:80]}"))
+
+    # 6. Наличие файла зон.
+    if ZONES_GPKG.exists():
+        print(messages.SELFTEST_OK.format(str(ZONES_GPKG)))
+    else:
+        print(messages.SELFTEST_WARN.format(f"zones.gpkg не найден: {ZONES_GPKG}"))
+
+    print(messages.INFO_SELFTEST_DONE)
 
 
 def _run_all(args):
@@ -135,13 +242,22 @@ def _run_all(args):
             products=args.products,
         ),
         "02_validator": Namespace(
-            product="all", year=None, dry_run=False, workers=args.workers, quiet=True
+            product="all",
+            year=None,
+            dry_run=False,
+            workers=args.workers,
+            quiet=True,
         ),
         "03_converter": Namespace(
-            product="all", year=None, workers=args.workers, mosaic=args.mosaic
+            product="all",
+            year=None,
+            workers=args.workers,
+            mosaic=args.mosaic,
+            cog=args.cog,
+            reproject=args.reproject,
         ),
         "04_zonal_stats": Namespace(zones=args.zones, workers=args.workers, test=False),
-        "05_analyze": Namespace(product="all", output_dir=None),
+        "05_analyzer": Namespace(product="all", output_dir=None, excel=args.excel),
     }
 
     print(messages.INFO_RUN_ALL_START)
@@ -183,6 +299,7 @@ def main():
     _add_stats_parser(subparsers)
     _add_analyze_parser(subparsers)
     _add_run_all_parser(subparsers)
+    _add_selftest_parser(subparsers)
 
     if len(sys.argv) < 2:
         parser.print_help()
@@ -197,6 +314,8 @@ def main():
     try:
         if args.command == "run-all":
             _run_all(args)
+        elif args.command == "selftest":
+            _selftest()
         else:
             _dispatch(args)
     except KeyboardInterrupt:

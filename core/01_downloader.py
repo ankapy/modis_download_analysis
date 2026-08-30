@@ -32,6 +32,7 @@ from utils.config_loader import (
     prompt_zones_path,
 )
 from utils import messages
+from utils.provenance import save_run_provenance
 
 logger = setup_logger(__name__)
 
@@ -163,7 +164,6 @@ def process_product_year(
         logger.info(
             messages.INFO_EXISTING_FILES.format(existing_hdf, expected_granules)
         )
-        return 0, 0
 
     months = temporal_range["months"]
     min_month = min(months)
@@ -268,6 +268,17 @@ def main(args):
         total_success = 0
         total_failed = 0
         total_skipped = 0
+
+        save_run_provenance(
+            "01_download",
+            {
+                "zones": zones_path,
+                "bbox": bbox,
+                "years": years,
+                "months": temporal_range["months"],
+                "products": products,
+            },
+        )
 
         for product_idx, product_key in enumerate(products, 1):
             config = MODIS_PRODUCTS[product_key]

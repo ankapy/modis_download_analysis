@@ -19,6 +19,7 @@ from config import DATA_PATHS, LOG_DATE_FORMAT, MODIS_PRODUCTS
 from utils.logger import setup_logger
 from utils.geo_utils import generate_zone_colors
 from utils import messages
+from utils.provenance import save_run_provenance
 
 try:
     rcParams["font.family"] = "DejaVu Sans"
@@ -464,6 +465,24 @@ class MODISAnalyzer:
             logger.info(messages.LOG_ANALYSIS_OK.format(path))
         return agg
 
+    def export_excel(self, path: Path):
+        """Экспорт всех таблиц в один Excel-файл с несколькими листами."""
+        logger.info(messages.INFO_CREATING_EXCEL.format(path))
+        sheets = {
+            "flat": self.df,
+            "monthly": self.export_monthly_aggregated(save=False),
+            "summary": self.export_summary_table(save=False),
+            "trends": self.export_trend_significance(save=False),
+        }
+        logger.info(messages.INFO_EXCEL_SHEETS.format(", ".join(sheets)))
+        try:
+            with pd.ExcelWriter(path, engine="openpyxl") as writer:
+                for sheet, df in sheets.items():
+                    df.to_excel(writer, sheet_name=sheet, index=False)
+            logger.info(messages.INFO_EXCEL_SAVED.format(path))
+        except ImportError:
+            logger.error(messages.ERR_EXCEL_NO_OPENPYXL)
+
     def run_all(self, products: list = None):
         """Запуск всех визуализаций и экспорта."""
         available_products = self.df["product"].unique().tolist()
@@ -525,6 +544,7 @@ def main(args):
         messages.STATUS_START_TIME.format(datetime.now().strftime(LOG_DATE_FORMAT))
     )
 
+    # 1. Сначала определяем пути и продукты
     input_csv = DATA_PATHS["tables"] / "zonal_stats_flat.csv"
     output_dir = (
         args.output_dir if args.output_dir else DATA_PATHS["figures"] / "analysis"
@@ -536,9 +556,20 @@ def main(args):
 
     products = list(MODIS_PRODUCTS.keys()) if args.product == "all" else [args.product]
 
+    # 2. Сохраняем провенанс (теперь переменные существуют)
+    save_run_provenance(
+        "05_analyze",
+        {"product": args.product, "output_dir": str(output_dir), "excel": args.excel},
+    )
+
+    # 3. Запускаем анализ
     try:
         analyzer = MODISAnalyzer(input_csv, output_dir)
         analyzer.run_all(products=products)
+
+        if args.excel:
+            analyzer.export_excel(DATA_PATHS["tables_output"] / "modis_analysis.xlsx")
+
         logger.info(
             messages.STATUS_END_TIME.format(datetime.now().strftime(LOG_DATE_FORMAT))
         )

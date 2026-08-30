@@ -2724,3 +2724,1213 @@ ERROR 000800: Значение не включено в UPDATE_CELL_SIZES | NO_C
 2026-08-30 15:51:35 - core.03_converter - INFO - ============================================================
 2026-08-30 15:51:35 - core.03_converter - INFO - Конвертация завершена
 2026-08-30 15:51:35 - core.03_converter - INFO - ============================================================
+2026-08-30 18:36:00 - core.05_analyzer - INFO - Загрузка данных: D:\Dev\_ASP\modis_download_analysis1\data\tables\zonal_stats_flat.csv
+2026-08-30 18:36:00 - core.05_analyzer - INFO - Загружено записей: 97
+2026-08-30 18:37:26 - core.01_downloader - INFO - ============================================================
+2026-08-30 18:37:26 - core.01_downloader - INFO - MODIS Downloader via earthaccess
+2026-08-30 18:37:26 - core.01_downloader - INFO - ============================================================
+2026-08-30 18:37:26 - core.01_downloader - INFO - Время начала: 2026-08-30 18:37:26
+2026-08-30 18:37:26 - core.01_downloader - INFO - Нажмите Ctrl+C для принудительного прерывания
+2026-08-30 18:37:27 - core.01_downloader - INFO - Bounding box: (78.44499969482422, 50.81671142578125, 113.8901596069336, 77.73754119873047)
+2026-08-30 18:37:27 - core.01_downloader - INFO - Авторизация в NASA Earthdata...
+2026-08-30 18:37:30 - core.01_downloader - INFO - Авторизация через .netrc успешна.
+2026-08-30 18:37:30 - core.01_downloader - INFO - ZONES_GPKG: gis\zones.gpkg
+2026-08-30 18:37:30 - core.01_downloader - INFO - Продукты: ['LST']
+2026-08-30 18:37:31 - utils.provenance - INFO - Провенанс запуска сохранён: D:\Dev\_ASP\modis_download_analysis1\output\logs\run_01_download_20260830_183731.json
+2026-08-30 18:37:31 - core.01_downloader - INFO - ============================================================
+2026-08-30 18:37:31 - core.01_downloader - INFO - [1/1] MOD11A2 v061
+2026-08-30 18:37:31 - core.01_downloader - INFO - ============================================================
+2026-08-30 18:37:31 - core.01_downloader - INFO - >>> ГОД 2015 (1/1)
+2026-08-30 18:37:31 - core.01_downloader - INFO - Период: 2015-01-01 – 2015-01-31
+2026-08-30 18:37:31 - core.01_downloader - INFO - Директория: D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015
+2026-08-30 18:37:31 - core.01_downloader - INFO - Уже скачано 0/120 HDF-файлов
+2026-08-30 18:37:31 - core.01_downloader - INFO - Поиск гранул...
+2026-08-30 18:37:33 - core.01_downloader - INFO - Найдено гранул: 48
+2026-08-30 18:37:33 - core.01_downloader - INFO - К загрузке: 48 из 48
+2026-08-30 18:37:33 - core.01_downloader - INFO - [BATCH 1] Загрузка гранул 1-15...
+2026-08-30 18:37:38 - core.01_downloader - INFO - [1/48] OK
+2026-08-30 18:37:46 - core.01_downloader - INFO - [2/48] OK
+2026-08-30 18:37:52 - core.01_downloader - INFO - [3/48] OK
+2026-08-30 18:37:58 - core.01_downloader - INFO - [4/48] OK
+2026-08-30 18:38:00 - core.01_downloader - WARNING - Прервано на пакете 1
+2026-08-30 18:38:00 - core.01_downloader - INFO - [RESULT] MOD11A2/2015: скачано 4, ошибок 0
+2026-08-30 18:38:00 - core.01_downloader - WARNING - 
+Прервано пользователем
+2026-08-30 18:38:00 - core.01_downloader - INFO - Запустите снова для продолжения
+2026-08-30 18:39:32 - core.01_downloader - INFO - ============================================================
+2026-08-30 18:39:32 - core.01_downloader - INFO - MODIS Downloader via earthaccess
+2026-08-30 18:39:32 - core.01_downloader - INFO - ============================================================
+2026-08-30 18:39:32 - core.01_downloader - INFO - Время начала: 2026-08-30 18:39:32
+2026-08-30 18:39:32 - core.01_downloader - INFO - Нажмите Ctrl+C для принудительного прерывания
+2026-08-30 18:39:33 - core.01_downloader - INFO - Bounding box: (78.44499969482422, 50.81671142578125, 113.8901596069336, 77.73754119873047)
+2026-08-30 18:39:33 - core.01_downloader - INFO - Авторизация в NASA Earthdata...
+2026-08-30 18:39:36 - core.01_downloader - WARNING - 
+Прервано пользователем
+2026-08-30 18:39:36 - core.01_downloader - INFO - Запустите снова для продолжения
+2026-08-30 18:39:43 - core.01_downloader - INFO - ============================================================
+2026-08-30 18:39:43 - core.01_downloader - INFO - MODIS Downloader via earthaccess
+2026-08-30 18:39:43 - core.01_downloader - INFO - ============================================================
+2026-08-30 18:39:43 - core.01_downloader - INFO - Время начала: 2026-08-30 18:39:43
+2026-08-30 18:39:43 - core.01_downloader - INFO - Нажмите Ctrl+C для принудительного прерывания
+2026-08-30 18:39:43 - core.01_downloader - INFO - Bounding box: (78.44499969482422, 50.81671142578125, 113.8901596069336, 77.73754119873047)
+2026-08-30 18:39:43 - core.01_downloader - INFO - Авторизация в NASA Earthdata...
+2026-08-30 18:39:47 - core.01_downloader - INFO - Авторизация через .netrc успешна.
+2026-08-30 18:39:47 - core.01_downloader - INFO - ZONES_GPKG: gis\zones.gpkg
+2026-08-30 18:39:47 - core.01_downloader - INFO - Продукты: ['LST']
+2026-08-30 18:39:47 - utils.provenance - INFO - Провенанс запуска сохранён: D:\Dev\_ASP\modis_download_analysis1\output\logs\run_01_download_20260830_183947.json
+2026-08-30 18:39:47 - core.01_downloader - INFO - ============================================================
+2026-08-30 18:39:47 - core.01_downloader - INFO - [1/1] MOD11A2 v061
+2026-08-30 18:39:47 - core.01_downloader - INFO - ============================================================
+2026-08-30 18:39:47 - core.01_downloader - INFO - >>> ГОД 2015 (1/1)
+2026-08-30 18:39:47 - core.01_downloader - INFO - Период: 2015-01-01 – 2015-01-31
+2026-08-30 18:39:47 - core.01_downloader - INFO - Директория: D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015
+2026-08-30 18:39:47 - core.01_downloader - INFO - Уже скачано 4/120 HDF-файлов
+2026-08-30 18:39:47 - core.01_downloader - INFO - Поиск гранул...
+2026-08-30 18:39:49 - core.01_downloader - INFO - Найдено гранул: 48
+2026-08-30 18:39:49 - core.01_downloader - INFO - К загрузке: 44 из 48
+2026-08-30 18:39:49 - core.01_downloader - INFO - [BATCH 1] Загрузка гранул 1-15...
+2026-08-30 18:39:53 - core.01_downloader - INFO - [1/44] OK
+2026-08-30 18:40:00 - core.01_downloader - INFO - [2/44] OK
+2026-08-30 18:40:07 - core.01_downloader - INFO - [3/44] OK
+2026-08-30 18:40:13 - core.01_downloader - INFO - [4/44] OK
+2026-08-30 18:40:20 - core.01_downloader - INFO - [5/44] OK
+2026-08-30 18:40:26 - core.01_downloader - INFO - [6/44] OK
+2026-08-30 18:40:32 - core.01_downloader - INFO - [7/44] OK
+2026-08-30 18:40:39 - core.01_downloader - INFO - [8/44] OK
+2026-08-30 18:40:45 - core.01_downloader - INFO - [9/44] OK
+2026-08-30 18:40:51 - core.01_downloader - INFO - [10/44] OK
+2026-08-30 18:40:58 - core.01_downloader - INFO - [11/44] OK
+2026-08-30 18:41:03 - core.01_downloader - INFO - [12/44] OK
+2026-08-30 18:41:10 - core.01_downloader - INFO - [13/44] OK
+2026-08-30 18:41:16 - core.01_downloader - INFO - [14/44] OK
+2026-08-30 18:41:23 - core.01_downloader - INFO - [15/44] OK
+2026-08-30 18:41:23 - core.01_downloader - INFO - [PAUSE] Пауза 5с...
+2026-08-30 18:41:28 - core.01_downloader - INFO - [BATCH 2] Загрузка гранул 16-30...
+2026-08-30 18:41:32 - core.01_downloader - INFO - [16/44] OK
+2026-08-30 18:41:38 - core.01_downloader - INFO - [17/44] OK
+2026-08-30 18:41:45 - core.01_downloader - INFO - [18/44] OK
+2026-08-30 18:41:51 - core.01_downloader - INFO - [19/44] OK
+2026-08-30 18:41:57 - core.01_downloader - INFO - [20/44] OK
+2026-08-30 18:42:03 - core.01_downloader - INFO - [21/44] OK
+2026-08-30 18:42:10 - core.01_downloader - INFO - [22/44] OK
+2026-08-30 18:42:16 - core.01_downloader - INFO - [23/44] OK
+2026-08-30 18:42:22 - core.01_downloader - INFO - [24/44] OK
+2026-08-30 18:42:28 - core.01_downloader - INFO - [25/44] OK
+2026-08-30 18:42:35 - core.01_downloader - INFO - [26/44] OK
+2026-08-30 18:42:41 - core.01_downloader - INFO - [27/44] OK
+2026-08-30 18:42:47 - core.01_downloader - INFO - [28/44] OK
+2026-08-30 18:42:54 - core.01_downloader - INFO - [29/44] OK
+2026-08-30 18:43:00 - core.01_downloader - INFO - [30/44] OK
+2026-08-30 18:43:00 - core.01_downloader - INFO - [PAUSE] Пауза 5с...
+2026-08-30 18:43:05 - core.01_downloader - INFO - [BATCH 3] Загрузка гранул 31-44...
+2026-08-30 18:43:09 - core.01_downloader - INFO - [31/44] OK
+2026-08-30 18:43:15 - core.01_downloader - INFO - [32/44] OK
+2026-08-30 18:43:21 - core.01_downloader - INFO - [33/44] OK
+2026-08-30 18:43:28 - core.01_downloader - INFO - [34/44] OK
+2026-08-30 18:43:35 - core.01_downloader - INFO - [35/44] OK
+2026-08-30 18:43:42 - core.01_downloader - INFO - [36/44] OK
+2026-08-30 18:43:48 - core.01_downloader - INFO - [37/44] OK
+2026-08-30 18:43:53 - core.01_downloader - INFO - [38/44] OK
+2026-08-30 18:43:59 - core.01_downloader - INFO - [39/44] OK
+2026-08-30 18:44:06 - core.01_downloader - INFO - [40/44] OK
+2026-08-30 18:44:12 - core.01_downloader - INFO - [41/44] OK
+2026-08-30 18:44:18 - core.01_downloader - INFO - [42/44] OK
+2026-08-30 18:44:24 - core.01_downloader - INFO - [43/44] OK
+2026-08-30 18:44:30 - core.01_downloader - INFO - [44/44] OK
+2026-08-30 18:44:30 - core.01_downloader - INFO - [RESULT] MOD11A2/2015: скачано 44, ошибок 0
+2026-08-30 18:44:45 - core.01_downloader - INFO - ============================================================
+2026-08-30 18:44:45 - core.01_downloader - INFO - ИТОГИ ЗАГРУЗКИ
+2026-08-30 18:44:45 - core.01_downloader - INFO - ============================================================
+2026-08-30 18:44:45 - core.01_downloader - INFO - Успешно: 1
+2026-08-30 18:44:45 - core.01_downloader - INFO - Пропущено: 0
+2026-08-30 18:44:45 - core.01_downloader - INFO - Ошибок: 0
+2026-08-30 18:44:45 - core.01_downloader - INFO - Время окончания: 2026-08-30 18:44:45
+2026-08-30 18:44:45 - core.01_downloader - INFO - ============================================================
+2026-08-30 18:44:45 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:45 - core.02_validator - INFO - MODIS HDF Validator & Cleanup
+2026-08-30 18:44:45 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:45 - core.02_validator - INFO - Время начала: 2026-08-30 18:44:45
+2026-08-30 18:44:45 - core.02_validator - INFO - Потоков: 4
+2026-08-30 18:44:45 - core.02_validator - INFO - ПРОВЕРКА + УДАЛЕНИЕ
+2026-08-30 18:44:45 - utils.provenance - INFO - Провенанс запуска сохранён: D:\Dev\_ASP\modis_download_analysis1\output\logs\run_02_validate_20260830_184445.json
+2026-08-30 18:44:45 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:45 - core.02_validator - INFO - Проверка MOD11A2/2000
+2026-08-30 18:44:45 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:45 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:45 - core.02_validator - INFO - Проверка MOD11A2/2015
+2026-08-30 18:44:45 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:45 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:45 - core.02_validator - INFO - Проверка MOD11A2/2016
+2026-08-30 18:44:45 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:45 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:45 - core.02_validator - INFO - Проверка MOD11A2/2022
+2026-08-30 18:44:45 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:45 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:45 - core.02_validator - INFO - Проверка MOD13Q1/2000
+2026-08-30 18:44:45 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:45 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:45 - core.02_validator - INFO - Проверка MOD13Q1/2015
+2026-08-30 18:44:45 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:45 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:45 - core.02_validator - INFO - Проверка MOD13Q1/2016
+2026-08-30 18:44:45 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:45 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:45 - core.02_validator - INFO - Проверка MOD13Q1/2000
+2026-08-30 18:44:45 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:45 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:45 - core.02_validator - INFO - Проверка MOD13Q1/2015
+2026-08-30 18:44:45 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:46 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:46 - core.02_validator - INFO - Проверка MOD13Q1/2016
+2026-08-30 18:44:46 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:46 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:46 - core.02_validator - INFO - Проверка MOD13Q1/2000
+2026-08-30 18:44:46 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:46 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:46 - core.02_validator - INFO - Проверка MOD13Q1/2015
+2026-08-30 18:44:46 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:46 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:46 - core.02_validator - INFO - Проверка MOD13Q1/2016
+2026-08-30 18:44:46 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:46 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:46 - core.02_validator - INFO - Проверка MOD11A2/2000
+2026-08-30 18:44:46 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:46 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:46 - core.02_validator - INFO - Проверка MOD11A2/2015
+2026-08-30 18:44:46 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:46 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:46 - core.02_validator - INFO - Проверка MOD11A2/2016
+2026-08-30 18:44:46 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:46 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:46 - core.02_validator - INFO - Проверка MOD11A2/2022
+2026-08-30 18:44:46 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:46 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:46 - core.02_validator - INFO - Проверка MOD14A1/2015
+2026-08-30 18:44:46 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:46 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:46 - core.02_validator - INFO - Проверка MCD43A3/2013
+2026-08-30 18:44:46 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:46 - core.02_validator - INFO - Пропущено пустых директорий: 3 (проверено: 19)
+2026-08-30 18:44:46 - core.02_validator - INFO - Отчёт сохранён: D:\Dev\_ASP\modis_download_analysis1\data\tables\validation_report_20260830_184446.json
+2026-08-30 18:44:46 - core.02_validator - INFO - Список для перескачивания: D:\Dev\_ASP\modis_download_analysis1\data\tables\redownload_list_20260830_184446.json
+2026-08-30 18:44:46 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:46 - core.02_validator - INFO - Удаление повреждённых файлов
+2026-08-30 18:44:46 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015001.h19v01.061.2021347231111.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015001.h19v01.061.2021347231111.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015001.h20v01.061.2021347231416.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015001.h20v01.061.2021347231416.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015001.h21v01.061.2021347230847.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015001.h21v01.061.2021347230847.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015001.h20v02.061.2021347231646.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015001.h20v02.061.2021347231646.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015001.h21v02.061.2021347231113.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015001.h21v02.061.2021347231113.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015001.h21v03.061.2021347231125.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015001.h21v03.061.2021347231125.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015001.h22v02.061.2021347231420.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015001.h22v02.061.2021347231420.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015001.h22v03.061.2021347231954.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015001.h22v03.061.2021347231954.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015001.h23v02.061.2021347232216.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015001.h23v02.061.2021347232216.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015001.h23v03.061.2021347231112.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015001.h23v03.061.2021347231112.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015001.h24v03.061.2021347231648.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015001.h24v03.061.2021347231648.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015001.h25v03.061.2021347230812.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015001.h25v03.061.2021347230812.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015009.h19v01.061.2021348090432.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015009.h19v01.061.2021348090432.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015009.h20v01.061.2021348090439.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015009.h20v01.061.2021348090439.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015009.h20v02.061.2021348090436.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015009.h20v02.061.2021348090436.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015009.h21v01.061.2021348090453.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015009.h21v01.061.2021348090453.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015009.h21v02.061.2021348090508.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015009.h21v02.061.2021348090508.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015009.h21v03.061.2021348090514.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015009.h21v03.061.2021348090514.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015009.h22v02.061.2021348090640.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015009.h22v02.061.2021348090640.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015009.h22v03.061.2021348090641.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015009.h22v03.061.2021348090641.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015009.h23v02.061.2021348090757.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015009.h23v02.061.2021348090757.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015009.h23v03.061.2021348092201.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015009.h23v03.061.2021348092201.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015009.h24v03.061.2021348092206.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015009.h24v03.061.2021348092206.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015009.h25v03.061.2021348092219.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015009.h25v03.061.2021348092219.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015017.h19v01.061.2021348164239.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015017.h19v01.061.2021348164239.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015017.h20v01.061.2021348164238.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015017.h20v01.061.2021348164238.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015017.h20v02.061.2021348164837.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015017.h20v02.061.2021348164837.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015017.h21v01.061.2021348164837.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015017.h21v01.061.2021348164837.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015017.h21v02.061.2021348164846.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015017.h21v02.061.2021348164846.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015017.h21v03.061.2021348164849.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015017.h21v03.061.2021348164849.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015017.h22v02.061.2021348165309.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015017.h22v02.061.2021348165309.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015017.h22v03.061.2021348164508.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015017.h22v03.061.2021348164508.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015017.h23v02.061.2021348164854.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015017.h23v02.061.2021348164854.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015017.h23v03.061.2021348164241.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015017.h23v03.061.2021348164241.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015017.h24v03.061.2021348164901.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015017.h24v03.061.2021348164901.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015017.h25v03.061.2021348164910.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015017.h25v03.061.2021348164910.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015025.h19v01.061.2021349005854.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015025.h19v01.061.2021349005854.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015025.h20v01.061.2021349005637.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015025.h20v01.061.2021349005637.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015025.h20v02.061.2021349010654.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015025.h20v02.061.2021349010654.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015025.h21v01.061.2021349005628.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015025.h21v01.061.2021349005628.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015025.h21v02.061.2021349010438.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015025.h21v02.061.2021349010438.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015025.h21v03.061.2021349005635.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015025.h21v03.061.2021349005635.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015025.h22v02.061.2021349010443.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015025.h22v02.061.2021349010443.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015025.h23v02.061.2021349005846.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015025.h23v02.061.2021349005846.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015025.h22v03.061.2021349005634.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015025.h22v03.061.2021349005634.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015025.h23v03.061.2021349010225.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015025.h23v03.061.2021349010225.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015025.h24v03.061.2021349005846.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015025.h24v03.061.2021349005846.hdf'
+2026-08-30 18:44:46 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015025.h25v03.061.2021349011059.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015025.h25v03.061.2021349011059.hdf'
+2026-08-30 18:44:46 - core.02_validator - INFO - Удалено файлов: 48
+2026-08-30 18:44:46 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:46 - core.02_validator - INFO - ИТОГОВАЯ СТАТИСТИКА
+2026-08-30 18:44:46 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:46 - core.02_validator - INFO - Проверено файлов: 96
+2026-08-30 18:44:46 - core.02_validator - INFO - Валидных: 0
+2026-08-30 18:44:46 - core.02_validator - INFO - Повреждённых: 96
+2026-08-30 18:44:46 - core.02_validator - INFO - Удалено: 48
+2026-08-30 18:44:46 - core.02_validator - INFO - └─ Слишком малые: 0
+2026-08-30 18:44:46 - core.02_validator - INFO - └─ Ошибки чтения: 96
+2026-08-30 18:44:46 - core.02_validator - INFO - └─ Нет датасетов: 0
+2026-08-30 18:44:46 - core.02_validator - INFO - ============================================================
+2026-08-30 18:44:46 - core.02_validator - INFO - СЛЕДУЮЩИЕ ШАГИ:
+2026-08-30 18:44:46 - core.02_validator - INFO - 1. Проверьте отчёт: D:\Dev\_ASP\modis_download_analysis1\data\tables\validation_report_20260830_184446.json
+2026-08-30 18:44:46 - core.02_validator - INFO - 2. Запустите modis_pipeline.py 01_download
+2026-08-30 18:44:46 - core.02_validator - INFO - 3. Запустите modis_pipeline.py 03_convert
+2026-08-30 18:44:46 - core.03_converter - INFO - ============================================================
+2026-08-30 18:44:46 - core.03_converter - INFO - MODIS HDF to GeoTIFF Converter
+2026-08-30 18:44:46 - core.03_converter - INFO - ============================================================
+2026-08-30 18:44:46 - core.03_converter - INFO - GDAL версия: 3.12.4
+2026-08-30 18:44:46 - core.03_converter - INFO - Формат растра: GTiff
+2026-08-30 18:44:46 - utils.provenance - INFO - Провенанс запуска сохранён: D:\Dev\_ASP\modis_download_analysis1\output\logs\run_03_convert_20260830_184446.json
+2026-08-30 18:44:46 - core.03_converter - INFO - ============================================================
+2026-08-30 18:44:46 - core.03_converter - INFO - Конвертация завершена
+2026-08-30 18:44:46 - core.03_converter - INFO - ============================================================
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO - ============================================================
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO - Zonal Statistics: Pure GDAL + NumPy (OPTIMIZED)
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO - ============================================================
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO - [1/4] Загрузка зон из GeoPackage...
+2026-08-30 18:44:46 - utils.provenance - INFO - Провенанс запуска сохранён: D:\Dev\_ASP\modis_download_analysis1\output\logs\run_04_stats_20260830_184446.json
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO - Загружено зон: 9
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO -   1: Тундра
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO -   2: Лесотундра
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO -   3: Северная тайга
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO -   4: Средняя тайга
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO -   5: Южная тайга
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO -   6: Подтайга
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO -   7: Горная тайга
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO -   8: Лесостепь
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO -   9: Степь
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO - [2/4] Поиск растров...
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO - Найдено 80 растра для обработки.
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO - Найден существующий файл: D:\Dev\_ASP\modis_download_analysis1\data\tables\zonal_stats_flat.csv
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO - Загрузка индексов для пропуска сделанного...
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO - Пропущено 97 уже готовых записей.
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO - [3/4] Обработка растров...
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO - >>> РЕЖИМ: МНОГОПОТОЧНОСТЬ (4 потоков) <<<
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO - Обработано 20/80 растра...
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 18:44:46 - core.04_zonal_stats - INFO - Обработано 40/80 растра...
+2026-08-30 18:44:47 - core.04_zonal_stats - INFO - Обработано 60/80 растра...
+2026-08-30 18:44:47 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 18:44:47 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 18:44:47 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 18:44:47 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 18:44:47 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 18:44:47 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 18:44:47 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 18:44:47 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 18:44:47 - core.04_zonal_stats - INFO - Обработано 80/80 растра...
+2026-08-30 18:44:47 - core.04_zonal_stats - INFO - [4/4] Сохранение результатов...
+2026-08-30 18:44:47 - core.04_zonal_stats - INFO - Сохранена агрегированная сводка в D:\Dev\_ASP\modis_download_analysis1\data\tables\zonal_stats_flat_agg.csv
+2026-08-30 18:44:47 - core.04_zonal_stats - INFO - Завершено за 1.4 сек
+2026-08-30 18:44:48 - core.05_analyzer - INFO - ============================================================
+2026-08-30 18:44:48 - core.05_analyzer - INFO - MODIS Analyzer
+2026-08-30 18:44:48 - core.05_analyzer - INFO - ============================================================
+2026-08-30 18:44:48 - core.05_analyzer - INFO - Время начала: 2026-08-30 18:44:48
+2026-08-30 18:44:48 - utils.provenance - INFO - Провенанс запуска сохранён: D:\Dev\_ASP\modis_download_analysis1\output\logs\run_05_analyze_20260830_184448.json
+2026-08-30 18:44:48 - core.05_analyzer - INFO - Загрузка данных: D:\Dev\_ASP\modis_download_analysis1\data\tables\zonal_stats_flat.csv
+2026-08-30 18:44:48 - core.05_analyzer - INFO - Загружено записей: 97
+2026-08-30 18:44:48 - core.05_analyzer - INFO - [1/6] Сезонная динамика...
+2026-08-30 18:44:48 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\seasonal_lst.png
+2026-08-30 18:44:49 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\seasonal_lst_night.png
+2026-08-30 18:44:50 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\seasonal_albedo.png
+2026-08-30 18:44:50 - core.05_analyzer - INFO - [2/6] Межгодовые тренды...
+2026-08-30 18:44:51 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\trend_lst.png
+2026-08-30 18:44:51 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\trend_lst_night.png
+2026-08-30 18:44:51 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\trend_albedo.png
+2026-08-30 18:44:51 - core.05_analyzer - INFO - [3/6] Широтный градиент (месяц 7)...
+2026-08-30 18:44:52 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\gradient_lst_m7.png
+2026-08-30 18:44:52 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\gradient_lst_night_m7.png
+2026-08-30 18:44:52 - core.05_analyzer - WARNING - Нет данных для градиента Albedo в месяц 7
+2026-08-30 18:44:52 - core.05_analyzer - INFO - [4/6] Сезонная амплитуда...
+2026-08-30 18:44:52 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\amplitude_lst.png
+2026-08-30 18:44:52 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\amplitude_lst_night.png
+2026-08-30 18:44:53 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\amplitude_albedo.png
+2026-08-30 18:44:53 - core.05_analyzer - INFO - [5/6] Корреляция продуктов (месяц 7)...
+2026-08-30 18:44:53 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\correlation_lst_lst_night_m7.png
+2026-08-30 18:44:53 - core.05_analyzer - INFO - [6/6] Сводные таблицы...
+2026-08-30 18:44:53 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\summary_statistics.csv
+2026-08-30 18:44:53 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\trend_significance.csv
+2026-08-30 18:44:53 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\monthly_aggregated.csv
+2026-08-30 18:44:53 - core.05_analyzer - INFO - 
+Завершено.
+2026-08-30 18:44:53 - core.05_analyzer - INFO - Графики: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis
+2026-08-30 18:44:53 - core.05_analyzer - INFO - Время окончания: 2026-08-30 18:44:53
+2026-08-30 19:25:35 - core.01_downloader - INFO - ============================================================
+2026-08-30 19:25:35 - core.01_downloader - INFO - MODIS Downloader via earthaccess
+2026-08-30 19:25:35 - core.01_downloader - INFO - ============================================================
+2026-08-30 19:25:35 - core.01_downloader - INFO - Время начала: 2026-08-30 19:25:35
+2026-08-30 19:25:35 - core.01_downloader - INFO - Нажмите Ctrl+C для принудительного прерывания
+2026-08-30 19:25:35 - core.01_downloader - INFO - Bounding box: (78.44499969482422, 50.81671142578125, 113.8901596069336, 77.73754119873047)
+2026-08-30 19:25:35 - core.01_downloader - INFO - Авторизация в NASA Earthdata...
+2026-08-30 19:25:39 - core.01_downloader - INFO - Авторизация через .netrc успешна.
+2026-08-30 19:25:39 - core.01_downloader - INFO - ZONES_GPKG: gis\zones.gpkg
+2026-08-30 19:25:39 - core.01_downloader - INFO - Продукты: ['LST']
+2026-08-30 19:25:39 - utils.provenance - INFO - Провенанс запуска сохранён: D:\Dev\_ASP\modis_download_analysis1\output\logs\run_01_download_20260830_192539.json
+2026-08-30 19:25:39 - core.01_downloader - INFO - ============================================================
+2026-08-30 19:25:39 - core.01_downloader - INFO - [1/1] MOD11A2 v061
+2026-08-30 19:25:39 - core.01_downloader - INFO - ============================================================
+2026-08-30 19:25:39 - core.01_downloader - INFO - >>> ГОД 2015 (1/1)
+2026-08-30 19:25:39 - core.01_downloader - INFO - Период: 2015-01-01 – 2015-01-31
+2026-08-30 19:25:39 - core.01_downloader - INFO - Директория: D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015
+2026-08-30 19:25:39 - core.01_downloader - INFO - Уже скачано 0/120 HDF-файлов
+2026-08-30 19:25:39 - core.01_downloader - INFO - Поиск гранул...
+2026-08-30 19:25:41 - core.01_downloader - INFO - Найдено гранул: 48
+2026-08-30 19:25:41 - core.01_downloader - INFO - К загрузке: 48 из 48
+2026-08-30 19:25:41 - core.01_downloader - INFO - [BATCH 1] Загрузка гранул 1-15...
+2026-08-30 19:25:46 - core.01_downloader - INFO - [1/48] OK
+2026-08-30 19:25:53 - core.01_downloader - INFO - [2/48] OK
+2026-08-30 19:25:59 - core.01_downloader - INFO - [3/48] OK
+2026-08-30 19:26:05 - core.01_downloader - INFO - [4/48] OK
+2026-08-30 19:26:12 - core.01_downloader - INFO - [5/48] OK
+2026-08-30 19:26:19 - core.01_downloader - INFO - [6/48] OK
+2026-08-30 19:26:25 - core.01_downloader - INFO - [7/48] OK
+2026-08-30 19:26:31 - core.01_downloader - INFO - [8/48] OK
+2026-08-30 19:26:38 - core.01_downloader - INFO - [9/48] OK
+2026-08-30 19:26:44 - core.01_downloader - INFO - [10/48] OK
+2026-08-30 19:26:51 - core.01_downloader - INFO - [11/48] OK
+2026-08-30 19:26:57 - core.01_downloader - INFO - [12/48] OK
+2026-08-30 19:27:04 - core.01_downloader - INFO - [13/48] OK
+2026-08-30 19:27:10 - core.01_downloader - INFO - [14/48] OK
+2026-08-30 19:27:16 - core.01_downloader - INFO - [15/48] OK
+2026-08-30 19:27:16 - core.01_downloader - INFO - [PAUSE] Пауза 5с...
+2026-08-30 19:27:21 - core.01_downloader - INFO - [BATCH 2] Загрузка гранул 16-30...
+2026-08-30 19:27:26 - core.01_downloader - INFO - [16/48] OK
+2026-08-30 19:27:32 - core.01_downloader - INFO - [17/48] OK
+2026-08-30 19:27:38 - core.01_downloader - INFO - [18/48] OK
+2026-08-30 19:27:45 - core.01_downloader - INFO - [19/48] OK
+2026-08-30 19:27:52 - core.01_downloader - INFO - [20/48] OK
+2026-08-30 19:27:58 - core.01_downloader - INFO - [21/48] OK
+2026-08-30 19:28:05 - core.01_downloader - INFO - [22/48] OK
+2026-08-30 19:28:11 - core.01_downloader - INFO - [23/48] OK
+2026-08-30 19:28:17 - core.01_downloader - INFO - [24/48] OK
+2026-08-30 19:28:24 - core.01_downloader - INFO - [25/48] OK
+2026-08-30 19:28:30 - core.01_downloader - INFO - [26/48] OK
+2026-08-30 19:28:36 - core.01_downloader - INFO - [27/48] OK
+2026-08-30 19:28:42 - core.01_downloader - INFO - [28/48] OK
+2026-08-30 19:28:48 - core.01_downloader - INFO - [29/48] OK
+2026-08-30 19:28:54 - core.01_downloader - INFO - [30/48] OK
+2026-08-30 19:28:54 - core.01_downloader - INFO - [PAUSE] Пауза 5с...
+2026-08-30 19:28:59 - core.01_downloader - INFO - [BATCH 3] Загрузка гранул 31-45...
+2026-08-30 19:29:04 - core.01_downloader - INFO - [31/48] OK
+2026-08-30 19:29:10 - core.01_downloader - INFO - [32/48] OK
+2026-08-30 19:29:17 - core.01_downloader - INFO - [33/48] OK
+2026-08-30 19:29:23 - core.01_downloader - INFO - [34/48] OK
+2026-08-30 19:29:29 - core.01_downloader - INFO - [35/48] OK
+2026-08-30 19:29:36 - core.01_downloader - INFO - [36/48] OK
+2026-08-30 19:29:41 - core.01_downloader - INFO - [37/48] OK
+2026-08-30 19:29:48 - core.01_downloader - INFO - [38/48] OK
+2026-08-30 19:29:54 - core.01_downloader - INFO - [39/48] OK
+2026-08-30 19:30:00 - core.01_downloader - INFO - [40/48] OK
+2026-08-30 19:30:07 - core.01_downloader - INFO - [41/48] OK
+2026-08-30 19:30:13 - core.01_downloader - INFO - [42/48] OK
+2026-08-30 19:30:19 - core.01_downloader - INFO - [43/48] OK
+2026-08-30 19:30:25 - core.01_downloader - INFO - [44/48] OK
+2026-08-30 19:30:31 - core.01_downloader - INFO - [45/48] OK
+2026-08-30 19:30:31 - core.01_downloader - INFO - [PAUSE] Пауза 5с...
+2026-08-30 19:30:36 - core.01_downloader - INFO - [BATCH 4] Загрузка гранул 46-48...
+2026-08-30 19:30:40 - core.01_downloader - INFO - [46/48] OK
+2026-08-30 19:30:46 - core.01_downloader - INFO - [47/48] OK
+2026-08-30 19:30:52 - core.01_downloader - INFO - [48/48] OK
+2026-08-30 19:30:52 - core.01_downloader - INFO - [RESULT] MOD11A2/2015: скачано 48, ошибок 0
+2026-08-30 19:31:07 - core.01_downloader - INFO - ============================================================
+2026-08-30 19:31:07 - core.01_downloader - INFO - ИТОГИ ЗАГРУЗКИ
+2026-08-30 19:31:07 - core.01_downloader - INFO - ============================================================
+2026-08-30 19:31:07 - core.01_downloader - INFO - Успешно: 1
+2026-08-30 19:31:07 - core.01_downloader - INFO - Пропущено: 0
+2026-08-30 19:31:07 - core.01_downloader - INFO - Ошибок: 0
+2026-08-30 19:31:07 - core.01_downloader - INFO - Время окончания: 2026-08-30 19:31:07
+2026-08-30 19:31:07 - core.01_downloader - INFO - ============================================================
+2026-08-30 19:57:46 - core.02_validator - INFO - ============================================================
+2026-08-30 19:57:46 - core.02_validator - INFO - MODIS HDF Validator & Cleanup
+2026-08-30 19:57:46 - core.02_validator - INFO - ============================================================
+2026-08-30 19:57:46 - core.02_validator - INFO - Время начала: 2026-08-30 19:57:46
+2026-08-30 19:57:46 - core.02_validator - INFO - Потоков: 8
+2026-08-30 19:57:46 - core.02_validator - INFO - РЕЖИМ ПРОВЕРКИ — файлы не будут удалены
+2026-08-30 19:57:48 - utils.provenance - INFO - Провенанс запуска сохранён: D:\Dev\_ASP\modis_download_analysis1\output\logs\run_02_validate_20260830_195748.json
+2026-08-30 19:57:48 - core.02_validator - INFO - ============================================================
+2026-08-30 19:57:48 - core.02_validator - INFO - Проверка MOD11A2/2015
+2026-08-30 19:57:48 - core.02_validator - INFO - ============================================================
+2026-08-30 19:57:52 - core.02_validator - INFO - Отчёт сохранён: D:\Dev\_ASP\modis_download_analysis1\data\tables\validation_report_20260830_195752.json
+2026-08-30 19:57:52 - core.02_validator - INFO - Список для перескачивания: D:\Dev\_ASP\modis_download_analysis1\data\tables\redownload_list_20260830_195752.json
+2026-08-30 19:57:52 - core.02_validator - INFO - ============================================================
+2026-08-30 19:57:52 - core.02_validator - INFO - ИТОГОВАЯ СТАТИСТИКА
+2026-08-30 19:57:52 - core.02_validator - INFO - ============================================================
+2026-08-30 19:57:52 - core.02_validator - INFO - Проверено файлов: 48
+2026-08-30 19:57:52 - core.02_validator - INFO - Валидных: 48
+2026-08-30 19:57:52 - core.02_validator - INFO - Повреждённых: 0
+2026-08-30 19:57:52 - core.02_validator - INFO - └─ Слишком малые: 0
+2026-08-30 19:57:52 - core.02_validator - INFO - └─ Ошибки чтения: 0
+2026-08-30 19:57:52 - core.02_validator - INFO - └─ Нет датасетов: 0
+2026-08-30 19:57:52 - core.02_validator - INFO - ============================================================
+2026-08-30 20:00:57 - core.01_downloader - INFO - ============================================================
+2026-08-30 20:00:57 - core.01_downloader - INFO - MODIS Downloader via earthaccess
+2026-08-30 20:00:57 - core.01_downloader - INFO - ============================================================
+2026-08-30 20:00:57 - core.01_downloader - INFO - Время начала: 2026-08-30 20:00:57
+2026-08-30 20:00:57 - core.01_downloader - INFO - Нажмите Ctrl+C для принудительного прерывания
+2026-08-30 20:00:57 - core.01_downloader - ERROR - Критическая ошибка: GeoPackage не найден: no_such.gpkg
+2026-08-30 20:01:04 - core.01_downloader - INFO - ============================================================
+2026-08-30 20:01:04 - core.01_downloader - INFO - MODIS Downloader via earthaccess
+2026-08-30 20:01:04 - core.01_downloader - INFO - ============================================================
+2026-08-30 20:01:04 - core.01_downloader - INFO - Время начала: 2026-08-30 20:01:04
+2026-08-30 20:01:04 - core.01_downloader - INFO - Нажмите Ctrl+C для принудительного прерывания
+2026-08-30 20:01:05 - core.01_downloader - INFO - Bounding box: (78.44499969482422, 50.81671142578125, 113.8901596069336, 77.73754119873047)
+2026-08-30 20:01:05 - core.01_downloader - INFO - Авторизация в NASA Earthdata...
+2026-08-30 20:01:08 - core.01_downloader - INFO - Авторизация через .netrc успешна.
+2026-08-30 20:01:08 - core.01_downloader - ERROR - Критическая ошибка: Неизвестные продукты: FAKE. Доступные: LST, NDVI, EVI, EVI2, LST_Night, Snow, Snow_Daily, Land_Cover, Fire, Albedo
+2026-08-30 20:01:16 - core.03_converter - INFO - ============================================================
+2026-08-30 20:01:16 - core.03_converter - INFO - MODIS HDF to GeoTIFF Converter
+2026-08-30 20:01:16 - core.03_converter - INFO - ============================================================
+2026-08-30 20:01:16 - core.03_converter - INFO - GDAL версия: 3.13.3
+2026-08-30 20:01:16 - core.03_converter - INFO - Формат растра: GTiff
+2026-08-30 20:01:18 - utils.provenance - INFO - Провенанс запуска сохранён: D:\Dev\_ASP\modis_download_analysis1\output\logs\run_03_convert_20260830_200118.json
+2026-08-30 20:01:18 - core.03_converter - INFO - ============================================================
+2026-08-30 20:01:18 - core.03_converter - INFO - Конвертация завершена
+2026-08-30 20:01:18 - core.03_converter - INFO - ============================================================
+2026-08-30 20:01:29 - core.04_zonal_stats - INFO - ============================================================
+2026-08-30 20:01:29 - core.04_zonal_stats - INFO - Zonal Statistics: Pure GDAL + NumPy (OPTIMIZED)
+2026-08-30 20:01:29 - core.04_zonal_stats - INFO - ============================================================
+2026-08-30 20:01:29 - core.04_zonal_stats - INFO - [1/4] Загрузка зон из GeoPackage...
+2026-08-30 20:01:30 - utils.provenance - INFO - Провенанс запуска сохранён: D:\Dev\_ASP\modis_download_analysis1\output\logs\run_04_stats_20260830_200130.json
+2026-08-30 20:01:30 - core.04_zonal_stats - ERROR - GeoPackage не найден: missing.gpkg
+2026-08-30 20:16:08 - core.03_converter - INFO - ============================================================
+2026-08-30 20:16:08 - core.03_converter - INFO - MODIS HDF to GeoTIFF Converter
+2026-08-30 20:16:08 - core.03_converter - INFO - ============================================================
+2026-08-30 20:16:08 - core.03_converter - INFO - GDAL версия: 3.13.3
+2026-08-30 20:16:08 - core.03_converter - INFO - Формат растра: GTiff
+2026-08-30 20:16:09 - utils.provenance - INFO - Провенанс запуска сохранён: D:\Dev\_ASP\modis_download_analysis1\output\logs\run_03_convert_20260830_201609.json
+2026-08-30 20:16:09 - core.03_converter - INFO - Обработка MOD11A2 за 2015: 48 файлов
+2026-08-30 20:16:10 - core.03_converter - INFO - OK: MOD11A2.A2015001.h19v01.061.2021347231111.tif
+2026-08-30 20:16:10 - core.03_converter - INFO - OK: MOD11A2.A2015001.h21v01.061.2021347230847.tif
+2026-08-30 20:16:10 - core.03_converter - INFO - OK: MOD11A2.A2015001.h20v01.061.2021347231416.tif
+2026-08-30 20:16:10 - core.03_converter - INFO - OK: MOD11A2.A2015001.h20v02.061.2021347231646.tif
+2026-08-30 20:16:11 - core.03_converter - INFO - OK: MOD11A2.A2015001.h21v02.061.2021347231113.tif
+2026-08-30 20:16:11 - core.03_converter - INFO - OK: MOD11A2.A2015001.h22v02.061.2021347231420.tif
+2026-08-30 20:16:11 - core.03_converter - INFO - OK: MOD11A2.A2015001.h22v03.061.2021347231954.tif
+2026-08-30 20:16:11 - core.03_converter - INFO - OK: MOD11A2.A2015001.h21v03.061.2021347231125.tif
+2026-08-30 20:16:12 - core.03_converter - INFO - OK: MOD11A2.A2015001.h23v03.061.2021347231112.tif
+2026-08-30 20:16:12 - core.03_converter - INFO - OK: MOD11A2.A2015001.h23v02.061.2021347232216.tif
+2026-08-30 20:16:12 - core.03_converter - INFO - OK: MOD11A2.A2015001.h25v03.061.2021347230812.tif
+2026-08-30 20:16:12 - core.03_converter - INFO - OK: MOD11A2.A2015001.h24v03.061.2021347231648.tif
+2026-08-30 20:16:12 - core.03_converter - INFO - OK: MOD11A2.A2015009.h19v01.061.2021348090432.tif
+2026-08-30 20:16:12 - core.03_converter - INFO - OK: MOD11A2.A2015009.h20v01.061.2021348090439.tif
+2026-08-30 20:16:12 - core.03_converter - INFO - OK: MOD11A2.A2015009.h21v01.061.2021348090453.tif
+2026-08-30 20:16:12 - core.03_converter - INFO - OK: MOD11A2.A2015009.h20v02.061.2021348090436.tif
+2026-08-30 20:16:13 - core.03_converter - INFO - OK: MOD11A2.A2015009.h21v02.061.2021348090508.tif
+2026-08-30 20:16:13 - core.03_converter - INFO - OK: MOD11A2.A2015009.h21v03.061.2021348090514.tif
+2026-08-30 20:16:13 - core.03_converter - INFO - OK: MOD11A2.A2015009.h22v02.061.2021348090640.tif
+2026-08-30 20:16:13 - core.03_converter - INFO - OK: MOD11A2.A2015009.h22v03.061.2021348090641.tif
+2026-08-30 20:16:13 - core.03_converter - INFO - OK: MOD11A2.A2015009.h23v02.061.2021348090757.tif
+2026-08-30 20:16:14 - core.03_converter - INFO - OK: MOD11A2.A2015009.h23v03.061.2021348092201.tif
+2026-08-30 20:16:14 - core.03_converter - INFO - OK: MOD11A2.A2015009.h25v03.061.2021348092219.tif
+2026-08-30 20:16:14 - core.03_converter - INFO - OK: MOD11A2.A2015009.h24v03.061.2021348092206.tif
+2026-08-30 20:16:14 - core.03_converter - INFO - OK: MOD11A2.A2015017.h19v01.061.2021348164239.tif
+2026-08-30 20:16:14 - core.03_converter - INFO - OK: MOD11A2.A2015017.h20v01.061.2021348164238.tif
+2026-08-30 20:16:14 - core.03_converter - INFO - OK: MOD11A2.A2015017.h20v02.061.2021348164837.tif
+2026-08-30 20:16:14 - core.03_converter - INFO - OK: MOD11A2.A2015017.h21v01.061.2021348164837.tif
+2026-08-30 20:16:14 - core.03_converter - INFO - OK: MOD11A2.A2015017.h21v02.061.2021348164846.tif
+2026-08-30 20:16:15 - core.03_converter - INFO - OK: MOD11A2.A2015017.h22v02.061.2021348165309.tif
+2026-08-30 20:16:15 - core.03_converter - INFO - OK: MOD11A2.A2015017.h21v03.061.2021348164849.tif
+2026-08-30 20:16:15 - core.03_converter - INFO - OK: MOD11A2.A2015017.h22v03.061.2021348164508.tif
+2026-08-30 20:16:15 - core.03_converter - INFO - OK: MOD11A2.A2015017.h23v02.061.2021348164854.tif
+2026-08-30 20:16:15 - core.03_converter - INFO - OK: MOD11A2.A2015017.h23v03.061.2021348164241.tif
+2026-08-30 20:16:16 - core.03_converter - INFO - OK: MOD11A2.A2015025.h19v01.061.2021349005854.tif
+2026-08-30 20:16:16 - core.03_converter - INFO - OK: MOD11A2.A2015017.h24v03.061.2021348164901.tif
+2026-08-30 20:16:16 - core.03_converter - INFO - OK: MOD11A2.A2015017.h25v03.061.2021348164910.tif
+2026-08-30 20:16:16 - core.03_converter - INFO - OK: MOD11A2.A2015025.h20v01.061.2021349005637.tif
+2026-08-30 20:16:16 - core.03_converter - INFO - OK: MOD11A2.A2015025.h21v01.061.2021349005628.tif
+2026-08-30 20:16:16 - core.03_converter - INFO - OK: MOD11A2.A2015025.h20v02.061.2021349010654.tif
+2026-08-30 20:16:16 - core.03_converter - INFO - OK: MOD11A2.A2015025.h21v02.061.2021349010438.tif
+2026-08-30 20:16:17 - core.03_converter - INFO - OK: MOD11A2.A2015025.h21v03.061.2021349005635.tif
+2026-08-30 20:16:17 - core.03_converter - INFO - OK: MOD11A2.A2015025.h22v03.061.2021349005634.tif
+2026-08-30 20:16:17 - core.03_converter - INFO - OK: MOD11A2.A2015025.h23v02.061.2021349005846.tif
+2026-08-30 20:16:17 - core.03_converter - INFO - OK: MOD11A2.A2015025.h22v02.061.2021349010443.tif
+2026-08-30 20:16:17 - core.03_converter - INFO - OK: MOD11A2.A2015025.h23v03.061.2021349010225.tif
+2026-08-30 20:16:17 - core.03_converter - INFO - OK: MOD11A2.A2015025.h25v03.061.2021349011059.tif
+2026-08-30 20:16:17 - core.03_converter - INFO - OK: MOD11A2.A2015025.h24v03.061.2021349005846.tif
+2026-08-30 20:16:17 - core.03_converter - INFO - Сконвертировано: 48/48
+2026-08-30 20:16:18 - core.03_converter - INFO - VRT-мозаика сохранена: D:\Dev\_ASP\modis_download_analysis1\data\processed\LST\LST_2015.vrt
+2026-08-30 20:16:18 - core.03_converter - INFO - ============================================================
+2026-08-30 20:16:18 - core.03_converter - INFO - Конвертация завершена
+2026-08-30 20:16:18 - core.03_converter - INFO - ============================================================
+2026-08-30 20:16:24 - core.04_zonal_stats - INFO - ============================================================
+2026-08-30 20:16:24 - core.04_zonal_stats - INFO - Zonal Statistics: Pure GDAL + NumPy (OPTIMIZED)
+2026-08-30 20:16:24 - core.04_zonal_stats - INFO - ============================================================
+2026-08-30 20:16:24 - core.04_zonal_stats - INFO - [1/4] Загрузка зон из GeoPackage...
+2026-08-30 20:16:24 - utils.provenance - INFO - Провенанс запуска сохранён: D:\Dev\_ASP\modis_download_analysis1\output\logs\run_04_stats_20260830_201624.json
+2026-08-30 20:16:25 - core.04_zonal_stats - INFO - Загружено зон: 9
+2026-08-30 20:16:25 - core.04_zonal_stats - INFO -   1: Тундра
+2026-08-30 20:16:25 - core.04_zonal_stats - INFO -   2: Лесотундра
+2026-08-30 20:16:25 - core.04_zonal_stats - INFO -   3: Северная тайга
+2026-08-30 20:16:25 - core.04_zonal_stats - INFO -   4: Средняя тайга
+2026-08-30 20:16:25 - core.04_zonal_stats - INFO -   5: Южная тайга
+2026-08-30 20:16:25 - core.04_zonal_stats - INFO -   6: Подтайга
+2026-08-30 20:16:25 - core.04_zonal_stats - INFO -   7: Горная тайга
+2026-08-30 20:16:25 - core.04_zonal_stats - INFO -   8: Лесостепь
+2026-08-30 20:16:25 - core.04_zonal_stats - INFO -   9: Степь
+2026-08-30 20:16:25 - core.04_zonal_stats - INFO - [2/4] Поиск растров...
+2026-08-30 20:16:25 - core.04_zonal_stats - INFO - Найдено 128 растра для обработки.
+2026-08-30 20:16:25 - core.04_zonal_stats - INFO - Найден существующий файл: D:\Dev\_ASP\modis_download_analysis1\data\tables\zonal_stats_flat.csv
+2026-08-30 20:16:25 - core.04_zonal_stats - INFO - Загрузка индексов для пропуска сделанного...
+2026-08-30 20:16:25 - core.04_zonal_stats - INFO - Пропущено 97 уже готовых записей.
+2026-08-30 20:16:25 - core.04_zonal_stats - INFO - [3/4] Обработка растров...
+2026-08-30 20:16:25 - core.04_zonal_stats - INFO - >>> РЕЖИМ: МНОГОПОТОЧНОСТЬ (4 потоков) <<<
+2026-08-30 20:16:25 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 20:16:25 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 20:16:25 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 20:16:25 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 20:16:25 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 20:16:25 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 20:16:25 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 20:16:25 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 20:16:25 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 20:16:25 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 20:16:25 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 20:16:25 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 20:16:25 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 20:16:25 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 20:16:25 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 20:16:25 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 20:16:25 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 20:16:25 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 20:16:25 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 20:16:25 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 20:16:25 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 20:16:25 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 20:16:25 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 20:16:25 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 20:16:25 - core.04_zonal_stats - INFO - Обработано 20/128 растра...
+2026-08-30 20:16:26 - core.04_zonal_stats - INFO - Обработано 40/128 растра...
+2026-08-30 20:16:26 - core.04_zonal_stats - INFO - Обработано 60/128 растра...
+2026-08-30 20:16:26 - core.04_zonal_stats - INFO - Обработано 80/128 растра...
+2026-08-30 20:16:26 - core.04_zonal_stats - INFO - Обработано 100/128 растра...
+2026-08-30 20:16:26 - core.04_zonal_stats - INFO - Обработано 120/128 растра...
+2026-08-30 20:16:26 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 20:16:26 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 20:16:26 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 20:16:27 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 20:16:27 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 20:16:27 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 20:16:27 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 20:16:27 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 20:16:27 - core.04_zonal_stats - INFO - [4/4] Сохранение результатов...
+2026-08-30 20:16:27 - core.04_zonal_stats - INFO - Сохранено 36 записей в D:\Dev\_ASP\modis_download_analysis1\data\tables\zonal_stats_flat.csv
+2026-08-30 20:16:27 - core.04_zonal_stats - INFO - Сохранена агрегированная сводка в D:\Dev\_ASP\modis_download_analysis1\data\tables\zonal_stats_flat_agg.csv
+2026-08-30 20:16:27 - core.04_zonal_stats - INFO - Завершено за 2.8 сек
+2026-08-30 20:16:33 - core.05_analyzer - INFO - ============================================================
+2026-08-30 20:16:33 - core.05_analyzer - INFO - MODIS Analyzer
+2026-08-30 20:16:33 - core.05_analyzer - INFO - ============================================================
+2026-08-30 20:16:33 - core.05_analyzer - INFO - Время начала: 2026-08-30 20:16:33
+2026-08-30 20:16:34 - utils.provenance - INFO - Провенанс запуска сохранён: D:\Dev\_ASP\modis_download_analysis1\output\logs\run_05_analyze_20260830_201634.json
+2026-08-30 20:16:34 - core.05_analyzer - INFO - Загрузка данных: D:\Dev\_ASP\modis_download_analysis1\data\tables\zonal_stats_flat.csv
+2026-08-30 20:16:34 - core.05_analyzer - INFO - Загружено записей: 133
+2026-08-30 20:16:34 - core.05_analyzer - INFO - [1/6] Сезонная динамика...
+2026-08-30 20:16:34 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\seasonal_lst.png
+2026-08-30 20:16:34 - core.05_analyzer - INFO - [2/6] Межгодовые тренды...
+2026-08-30 20:16:35 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\trend_lst.png
+2026-08-30 20:16:35 - core.05_analyzer - INFO - [3/6] Широтный градиент (месяц 7)...
+2026-08-30 20:16:35 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\gradient_lst_m7.png
+2026-08-30 20:16:35 - core.05_analyzer - INFO - [4/6] Сезонная амплитуда...
+2026-08-30 20:16:36 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\amplitude_lst.png
+2026-08-30 20:16:36 - core.05_analyzer - INFO - [5/6] Корреляция продуктов (месяц 7)...
+2026-08-30 20:16:36 - core.05_analyzer - INFO - Пропуск корреляции: недостаточно данных для продуктов N/A и N/A.
+2026-08-30 20:16:36 - core.05_analyzer - INFO - [6/6] Сводные таблицы...
+2026-08-30 20:16:36 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\summary_statistics.csv
+2026-08-30 20:16:36 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\trend_significance.csv
+2026-08-30 20:16:36 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\monthly_aggregated.csv
+2026-08-30 20:16:36 - core.05_analyzer - INFO - 
+Завершено.
+2026-08-30 20:16:36 - core.05_analyzer - INFO - Графики: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis
+2026-08-30 20:16:36 - core.05_analyzer - INFO - Время окончания: 2026-08-30 20:16:36
+2026-08-30 20:16:55 - core.03_converter - INFO - ============================================================
+2026-08-30 20:16:55 - core.03_converter - INFO - MODIS HDF to GeoTIFF Converter
+2026-08-30 20:16:55 - core.03_converter - INFO - ============================================================
+2026-08-30 20:16:55 - core.03_converter - INFO - GDAL версия: 3.13.3
+2026-08-30 20:16:55 - core.03_converter - INFO - Формат растра: COG -> EPSG:4326
+2026-08-30 20:16:56 - utils.provenance - INFO - Провенанс запуска сохранён: D:\Dev\_ASP\modis_download_analysis1\output\logs\run_03_convert_20260830_201656.json
+2026-08-30 20:16:56 - core.03_converter - INFO - Обработка MOD11A2 за 2015: 48 файлов
+2026-08-30 20:16:56 - core.03_converter - INFO - Сконвертировано: 0/48
+2026-08-30 20:16:56 - core.03_converter - INFO - Пропущено (уже существует): 48
+2026-08-30 20:16:57 - core.03_converter - INFO - VRT-мозаика сохранена: D:\Dev\_ASP\modis_download_analysis1\data\processed\LST\LST_2015.vrt
+2026-08-30 20:16:57 - core.03_converter - INFO - ============================================================
+2026-08-30 20:16:57 - core.03_converter - INFO - Конвертация завершена
+2026-08-30 20:16:57 - core.03_converter - INFO - ============================================================
+2026-08-30 20:17:08 - core.05_analyzer - INFO - ============================================================
+2026-08-30 20:17:08 - core.05_analyzer - INFO - MODIS Analyzer
+2026-08-30 20:17:08 - core.05_analyzer - INFO - ============================================================
+2026-08-30 20:17:08 - core.05_analyzer - INFO - Время начала: 2026-08-30 20:17:08
+2026-08-30 20:17:09 - utils.provenance - INFO - Провенанс запуска сохранён: D:\Dev\_ASP\modis_download_analysis1\output\logs\run_05_analyze_20260830_201709.json
+2026-08-30 20:17:09 - core.05_analyzer - INFO - Загрузка данных: D:\Dev\_ASP\modis_download_analysis1\data\tables\zonal_stats_flat.csv
+2026-08-30 20:17:09 - core.05_analyzer - INFO - Загружено записей: 133
+2026-08-30 20:17:09 - core.05_analyzer - INFO - [1/6] Сезонная динамика...
+2026-08-30 20:17:09 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\seasonal_lst.png
+2026-08-30 20:17:09 - core.05_analyzer - INFO - [2/6] Межгодовые тренды...
+2026-08-30 20:17:10 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\trend_lst.png
+2026-08-30 20:17:10 - core.05_analyzer - INFO - [3/6] Широтный градиент (месяц 7)...
+2026-08-30 20:17:10 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\gradient_lst_m7.png
+2026-08-30 20:17:10 - core.05_analyzer - INFO - [4/6] Сезонная амплитуда...
+2026-08-30 20:17:11 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\amplitude_lst.png
+2026-08-30 20:17:11 - core.05_analyzer - INFO - [5/6] Корреляция продуктов (месяц 7)...
+2026-08-30 20:17:11 - core.05_analyzer - INFO - Пропуск корреляции: недостаточно данных для продуктов N/A и N/A.
+2026-08-30 20:17:11 - core.05_analyzer - INFO - [6/6] Сводные таблицы...
+2026-08-30 20:17:11 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\summary_statistics.csv
+2026-08-30 20:17:11 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\trend_significance.csv
+2026-08-30 20:17:11 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\monthly_aggregated.csv
+2026-08-30 20:17:11 - core.05_analyzer - INFO - 
+Завершено.
+2026-08-30 20:17:11 - core.05_analyzer - INFO - Графики: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis
+2026-08-30 20:17:11 - core.05_analyzer - INFO - Создание Excel-файла: D:\Dev\_ASP\modis_download_analysis1\output\tables\modis_analysis.xlsx
+2026-08-30 20:17:11 - core.05_analyzer - INFO - Листы: flat, monthly, summary, trends
+2026-08-30 20:17:11 - core.05_analyzer - ERROR - Для экспорта Excel установите openpyxl
+2026-08-30 20:17:11 - core.05_analyzer - INFO - Время окончания: 2026-08-30 20:17:11
+2026-08-30 20:24:03 - core.05_analyzer - INFO - ============================================================
+2026-08-30 20:24:03 - core.05_analyzer - INFO - MODIS Analyzer
+2026-08-30 20:24:03 - core.05_analyzer - INFO - ============================================================
+2026-08-30 20:24:03 - core.05_analyzer - INFO - Время начала: 2026-08-30 20:24:03
+2026-08-30 20:24:03 - utils.provenance - INFO - Провенанс запуска сохранён: D:\Dev\_ASP\modis_download_analysis1\output\logs\run_05_analyze_20260830_202403.json
+2026-08-30 20:24:03 - core.05_analyzer - INFO - Загрузка данных: D:\Dev\_ASP\modis_download_analysis1\data\tables\zonal_stats_flat.csv
+2026-08-30 20:24:03 - core.05_analyzer - INFO - Загружено записей: 133
+2026-08-30 20:24:03 - core.05_analyzer - INFO - [1/6] Сезонная динамика...
+2026-08-30 20:24:04 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\seasonal_lst.png
+2026-08-30 20:24:04 - core.05_analyzer - INFO - [2/6] Межгодовые тренды...
+2026-08-30 20:24:05 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\trend_lst.png
+2026-08-30 20:24:05 - core.05_analyzer - INFO - [3/6] Широтный градиент (месяц 7)...
+2026-08-30 20:24:05 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\gradient_lst_m7.png
+2026-08-30 20:24:05 - core.05_analyzer - INFO - [4/6] Сезонная амплитуда...
+2026-08-30 20:24:05 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\amplitude_lst.png
+2026-08-30 20:24:05 - core.05_analyzer - INFO - [5/6] Корреляция продуктов (месяц 7)...
+2026-08-30 20:24:05 - core.05_analyzer - INFO - Пропуск корреляции: недостаточно данных для продуктов N/A и N/A.
+2026-08-30 20:24:05 - core.05_analyzer - INFO - [6/6] Сводные таблицы...
+2026-08-30 20:24:05 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\summary_statistics.csv
+2026-08-30 20:24:05 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\trend_significance.csv
+2026-08-30 20:24:05 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\monthly_aggregated.csv
+2026-08-30 20:24:05 - core.05_analyzer - INFO - 
+Завершено.
+2026-08-30 20:24:05 - core.05_analyzer - INFO - Графики: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis
+2026-08-30 20:24:05 - core.05_analyzer - INFO - Создание Excel-файла: D:\Dev\_ASP\modis_download_analysis1\output\tables\modis_analysis.xlsx
+2026-08-30 20:24:06 - core.05_analyzer - INFO - Листы: flat, monthly, summary, trends
+2026-08-30 20:24:06 - core.05_analyzer - INFO - Excel сохранён: D:\Dev\_ASP\modis_download_analysis1\output\tables\modis_analysis.xlsx
+2026-08-30 20:24:06 - core.05_analyzer - INFO - Время окончания: 2026-08-30 20:24:06
+2026-08-30 20:31:24 - core.03_converter - INFO - ============================================================
+2026-08-30 20:31:24 - core.03_converter - INFO - MODIS HDF to GeoTIFF Converter
+2026-08-30 20:31:24 - core.03_converter - INFO - ============================================================
+2026-08-30 20:31:24 - core.03_converter - INFO - GDAL версия: 3.13.3
+2026-08-30 20:31:24 - core.03_converter - INFO - Формат растра: COG -> EPSG:4326
+2026-08-30 20:31:25 - utils.provenance - INFO - Провенанс запуска сохранён: D:\Dev\_ASP\modis_download_analysis1\output\logs\run_03_convert_20260830_203125.json
+2026-08-30 20:31:25 - core.03_converter - INFO - Обработка MOD11A2 за 2015: 48 файлов
+2026-08-30 20:31:27 - core.03_converter - INFO - OK: MOD11A2.A2015001.h21v01.061.2021347230847.tif
+2026-08-30 20:31:27 - core.03_converter - INFO - OK: MOD11A2.A2015001.h20v01.061.2021347231416.tif
+2026-08-30 20:31:28 - core.03_converter - INFO - OK: MOD11A2.A2015001.h20v02.061.2021347231646.tif
+2026-08-30 20:31:29 - core.03_converter - INFO - OK: MOD11A2.A2015001.h21v03.061.2021347231125.tif
+2026-08-30 20:31:29 - core.03_converter - INFO - OK: MOD11A2.A2015001.h21v02.061.2021347231113.tif
+2026-08-30 20:31:29 - core.03_converter - INFO - OK: MOD11A2.A2015001.h19v01.061.2021347231111.tif
+2026-08-30 20:31:29 - core.03_converter - INFO - OK: MOD11A2.A2015001.h22v02.061.2021347231420.tif
+2026-08-30 20:31:29 - core.03_converter - INFO - OK: MOD11A2.A2015001.h23v02.061.2021347232216.tif
+2026-08-30 20:31:30 - core.03_converter - INFO - OK: MOD11A2.A2015001.h25v03.061.2021347230812.tif
+2026-08-30 20:31:30 - core.03_converter - INFO - OK: MOD11A2.A2015001.h22v03.061.2021347231954.tif
+2026-08-30 20:31:30 - core.03_converter - INFO - OK: MOD11A2.A2015001.h23v03.061.2021347231112.tif
+2026-08-30 20:31:31 - core.03_converter - INFO - OK: MOD11A2.A2015001.h24v03.061.2021347231648.tif
+2026-08-30 20:31:31 - core.03_converter - INFO - OK: MOD11A2.A2015009.h21v01.061.2021348090453.tif
+2026-08-30 20:31:31 - core.03_converter - INFO - OK: MOD11A2.A2015009.h20v01.061.2021348090439.tif
+2026-08-30 20:31:33 - core.03_converter - INFO - OK: MOD11A2.A2015009.h20v02.061.2021348090436.tif
+2026-08-30 20:31:33 - core.03_converter - INFO - OK: MOD11A2.A2015009.h21v03.061.2021348090514.tif
+2026-08-30 20:31:33 - core.03_converter - INFO - OK: MOD11A2.A2015009.h21v02.061.2021348090508.tif
+2026-08-30 20:31:33 - core.03_converter - INFO - OK: MOD11A2.A2015009.h19v01.061.2021348090432.tif
+2026-08-30 20:31:34 - core.03_converter - INFO - OK: MOD11A2.A2015009.h22v02.061.2021348090640.tif
+2026-08-30 20:31:34 - core.03_converter - INFO - OK: MOD11A2.A2015009.h23v02.061.2021348090757.tif
+2026-08-30 20:31:35 - core.03_converter - INFO - OK: MOD11A2.A2015009.h25v03.061.2021348092219.tif
+2026-08-30 20:31:35 - core.03_converter - INFO - OK: MOD11A2.A2015009.h23v03.061.2021348092201.tif
+2026-08-30 20:31:35 - core.03_converter - INFO - OK: MOD11A2.A2015009.h22v03.061.2021348090641.tif
+2026-08-30 20:31:35 - core.03_converter - INFO - OK: MOD11A2.A2015009.h24v03.061.2021348092206.tif
+2026-08-30 20:31:36 - core.03_converter - INFO - OK: MOD11A2.A2015017.h21v01.061.2021348164837.tif
+2026-08-30 20:31:36 - core.03_converter - INFO - OK: MOD11A2.A2015017.h20v01.061.2021348164238.tif
+2026-08-30 20:31:37 - core.03_converter - INFO - OK: MOD11A2.A2015017.h20v02.061.2021348164837.tif
+2026-08-30 20:31:37 - core.03_converter - INFO - OK: MOD11A2.A2015017.h21v02.061.2021348164846.tif
+2026-08-30 20:31:37 - core.03_converter - INFO - OK: MOD11A2.A2015017.h21v03.061.2021348164849.tif
+2026-08-30 20:31:38 - core.03_converter - INFO - OK: MOD11A2.A2015017.h19v01.061.2021348164239.tif
+2026-08-30 20:31:38 - core.03_converter - INFO - OK: MOD11A2.A2015017.h22v02.061.2021348165309.tif
+2026-08-30 20:31:38 - core.03_converter - INFO - OK: MOD11A2.A2015017.h23v02.061.2021348164854.tif
+2026-08-30 20:31:39 - core.03_converter - INFO - OK: MOD11A2.A2015017.h23v03.061.2021348164241.tif
+2026-08-30 20:31:39 - core.03_converter - INFO - OK: MOD11A2.A2015017.h22v03.061.2021348164508.tif
+2026-08-30 20:31:39 - core.03_converter - INFO - OK: MOD11A2.A2015017.h25v03.061.2021348164910.tif
+2026-08-30 20:31:39 - core.03_converter - INFO - OK: MOD11A2.A2015017.h24v03.061.2021348164901.tif
+2026-08-30 20:31:40 - core.03_converter - INFO - OK: MOD11A2.A2015025.h21v01.061.2021349005628.tif
+2026-08-30 20:31:40 - core.03_converter - INFO - OK: MOD11A2.A2015025.h20v01.061.2021349005637.tif
+2026-08-30 20:31:41 - core.03_converter - INFO - OK: MOD11A2.A2015025.h20v02.061.2021349010654.tif
+2026-08-30 20:31:41 - core.03_converter - INFO - OK: MOD11A2.A2015025.h19v01.061.2021349005854.tif
+2026-08-30 20:31:41 - core.03_converter - INFO - OK: MOD11A2.A2015025.h21v02.061.2021349010438.tif
+2026-08-30 20:31:42 - core.03_converter - INFO - OK: MOD11A2.A2015025.h21v03.061.2021349005635.tif
+2026-08-30 20:31:42 - core.03_converter - INFO - OK: MOD11A2.A2015025.h22v02.061.2021349010443.tif
+2026-08-30 20:31:42 - core.03_converter - INFO - OK: MOD11A2.A2015025.h23v02.061.2021349005846.tif
+2026-08-30 20:31:43 - core.03_converter - INFO - OK: MOD11A2.A2015025.h24v03.061.2021349005846.tif
+2026-08-30 20:31:43 - core.03_converter - INFO - OK: MOD11A2.A2015025.h23v03.061.2021349010225.tif
+2026-08-30 20:31:43 - core.03_converter - INFO - OK: MOD11A2.A2015025.h25v03.061.2021349011059.tif
+2026-08-30 20:31:43 - core.03_converter - INFO - OK: MOD11A2.A2015025.h22v03.061.2021349005634.tif
+2026-08-30 20:31:43 - core.03_converter - INFO - Сконвертировано: 48/48
+2026-08-30 20:31:43 - core.03_converter - INFO - VRT-мозаика сохранена: D:\Dev\_ASP\modis_download_analysis1\data\processed\LST\LST_2015.vrt
+2026-08-30 20:31:43 - core.03_converter - INFO - ============================================================
+2026-08-30 20:31:43 - core.03_converter - INFO - Конвертация завершена
+2026-08-30 20:31:43 - core.03_converter - INFO - ============================================================
+2026-08-30 20:31:58 - core.03_converter - INFO - ============================================================
+2026-08-30 20:31:58 - core.03_converter - INFO - MODIS HDF to GeoTIFF Converter
+2026-08-30 20:31:58 - core.03_converter - INFO - ============================================================
+2026-08-30 20:31:58 - core.03_converter - INFO - GDAL версия: 3.13.3
+2026-08-30 20:31:58 - core.03_converter - INFO - Формат растра: GTiff
+2026-08-30 20:31:59 - utils.provenance - INFO - Провенанс запуска сохранён: D:\Dev\_ASP\modis_download_analysis1\output\logs\run_03_convert_20260830_203159.json
+2026-08-30 20:31:59 - core.03_converter - INFO - Обработка MOD11A2 за 2015: 48 файлов
+2026-08-30 20:31:59 - core.03_converter - INFO - Сконвертировано: 0/48
+2026-08-30 20:31:59 - core.03_converter - INFO - Пропущено (уже существует): 48
+2026-08-30 20:32:00 - core.03_converter - INFO - VRT-мозаика сохранена: D:\Dev\_ASP\modis_download_analysis1\data\processed\LST\LST_2015.vrt
+2026-08-30 20:32:00 - core.03_converter - WARNING - arcpy недоступен: сборка Mosaic Dataset пропущена.
+2026-08-30 20:32:00 - core.03_converter - INFO - ============================================================
+2026-08-30 20:32:00 - core.03_converter - INFO - Конвертация завершена
+2026-08-30 20:32:00 - core.03_converter - INFO - ============================================================
+2026-08-30 20:32:06 - core.04_zonal_stats - INFO - ============================================================
+2026-08-30 20:32:06 - core.04_zonal_stats - INFO - Zonal Statistics: Pure GDAL + NumPy (OPTIMIZED)
+2026-08-30 20:32:06 - core.04_zonal_stats - INFO - ============================================================
+2026-08-30 20:32:06 - core.04_zonal_stats - INFO - [1/4] Загрузка зон из GeoPackage...
+2026-08-30 20:32:07 - utils.provenance - INFO - Провенанс запуска сохранён: D:\Dev\_ASP\modis_download_analysis1\output\logs\run_04_stats_20260830_203207.json
+2026-08-30 20:32:07 - core.04_zonal_stats - INFO - Загружено зон: 9
+2026-08-30 20:32:07 - core.04_zonal_stats - INFO -   1: Тундра
+2026-08-30 20:32:07 - core.04_zonal_stats - INFO -   2: Лесотундра
+2026-08-30 20:32:07 - core.04_zonal_stats - INFO -   3: Северная тайга
+2026-08-30 20:32:07 - core.04_zonal_stats - INFO -   4: Средняя тайга
+2026-08-30 20:32:07 - core.04_zonal_stats - INFO -   5: Южная тайга
+2026-08-30 20:32:07 - core.04_zonal_stats - INFO -   6: Подтайга
+2026-08-30 20:32:07 - core.04_zonal_stats - INFO -   7: Горная тайга
+2026-08-30 20:32:07 - core.04_zonal_stats - INFO -   8: Лесостепь
+2026-08-30 20:32:07 - core.04_zonal_stats - INFO -   9: Степь
+2026-08-30 20:32:07 - core.04_zonal_stats - INFO - [2/4] Поиск растров...
+2026-08-30 20:32:07 - core.04_zonal_stats - INFO - Найдено 48 растра для обработки.
+2026-08-30 20:32:07 - core.04_zonal_stats - INFO - [3/4] Обработка растров...
+2026-08-30 20:32:07 - core.04_zonal_stats - INFO - >>> РЕЖИМ: МНОГОПОТОЧНОСТЬ (4 потоков) <<<
+2026-08-30 20:32:07 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 20:32:07 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 20:32:07 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 20:32:07 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 20:32:07 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 20:32:07 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 20:32:07 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 20:32:07 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 20:32:07 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 20:32:07 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 20:32:07 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 20:32:07 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 20:32:07 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 20:32:07 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 20:32:07 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 20:32:07 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 20:32:07 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 20:32:07 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 20:32:07 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 20:32:08 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 20:32:08 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 20:32:08 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 20:32:08 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 20:32:08 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 20:32:08 - core.04_zonal_stats - INFO - Обработано 20/48 растра...
+2026-08-30 20:32:09 - core.04_zonal_stats - INFO - Обработано 40/48 растра...
+2026-08-30 20:32:10 - core.04_zonal_stats - INFO - [4/4] Сохранение результатов...
+2026-08-30 20:32:10 - core.04_zonal_stats - INFO - Сохранено 36 записей в D:\Dev\_ASP\modis_download_analysis1\data\tables\zonal_stats_flat.csv
+2026-08-30 20:32:10 - core.04_zonal_stats - INFO - Сохранена агрегированная сводка в D:\Dev\_ASP\modis_download_analysis1\data\tables\zonal_stats_flat_agg.csv
+2026-08-30 20:32:10 - core.04_zonal_stats - INFO - Завершено за 3.9 сек
+2026-08-30 20:32:15 - core.05_analyzer - INFO - ============================================================
+2026-08-30 20:32:15 - core.05_analyzer - INFO - MODIS Analyzer
+2026-08-30 20:32:15 - core.05_analyzer - INFO - ============================================================
+2026-08-30 20:32:15 - core.05_analyzer - INFO - Время начала: 2026-08-30 20:32:15
+2026-08-30 20:32:16 - utils.provenance - INFO - Провенанс запуска сохранён: D:\Dev\_ASP\modis_download_analysis1\output\logs\run_05_analyze_20260830_203216.json
+2026-08-30 20:32:16 - core.05_analyzer - INFO - Загрузка данных: D:\Dev\_ASP\modis_download_analysis1\data\tables\zonal_stats_flat.csv
+2026-08-30 20:32:16 - core.05_analyzer - INFO - Загружено записей: 36
+2026-08-30 20:32:16 - core.05_analyzer - INFO - [1/6] Сезонная динамика...
+2026-08-30 20:32:17 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\seasonal_lst.png
+2026-08-30 20:32:17 - core.05_analyzer - INFO - [2/6] Межгодовые тренды...
+2026-08-30 20:32:17 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\trend_lst.png
+2026-08-30 20:32:17 - core.05_analyzer - INFO - [3/6] Широтный градиент (месяц 1)...
+2026-08-30 20:32:18 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\gradient_lst_m1.png
+2026-08-30 20:32:18 - core.05_analyzer - INFO - [4/6] Сезонная амплитуда...
+2026-08-30 20:32:18 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\amplitude_lst.png
+2026-08-30 20:32:18 - core.05_analyzer - INFO - [5/6] Корреляция продуктов (месяц 1)...
+2026-08-30 20:32:18 - core.05_analyzer - INFO - Пропуск корреляции: недостаточно данных для продуктов N/A и N/A.
+2026-08-30 20:32:18 - core.05_analyzer - INFO - [6/6] Сводные таблицы...
+2026-08-30 20:32:18 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\summary_statistics.csv
+2026-08-30 20:32:18 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\trend_significance.csv
+2026-08-30 20:32:18 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\monthly_aggregated.csv
+2026-08-30 20:32:18 - core.05_analyzer - INFO - 
+Завершено.
+2026-08-30 20:32:18 - core.05_analyzer - INFO - Графики: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis
+2026-08-30 20:32:18 - core.05_analyzer - INFO - Создание Excel-файла: D:\Dev\_ASP\modis_download_analysis1\output\tables\modis_analysis.xlsx
+2026-08-30 20:32:18 - core.05_analyzer - INFO - Листы: flat, monthly, summary, trends
+2026-08-30 20:32:19 - core.05_analyzer - INFO - Excel сохранён: D:\Dev\_ASP\modis_download_analysis1\output\tables\modis_analysis.xlsx
+2026-08-30 20:32:19 - core.05_analyzer - INFO - Время окончания: 2026-08-30 20:32:19
+2026-08-30 20:37:02 - core.01_downloader - INFO - ============================================================
+2026-08-30 20:37:02 - core.01_downloader - INFO - MODIS Downloader via earthaccess
+2026-08-30 20:37:02 - core.01_downloader - INFO - ============================================================
+2026-08-30 20:37:02 - core.01_downloader - INFO - Время начала: 2026-08-30 20:37:02
+2026-08-30 20:37:02 - core.01_downloader - INFO - Нажмите Ctrl+C для принудительного прерывания
+2026-08-30 20:37:02 - core.01_downloader - INFO - Bounding box: (78.44499969482422, 50.81671142578125, 113.8901596069336, 77.73754119873047)
+2026-08-30 20:37:02 - core.01_downloader - INFO - Авторизация в NASA Earthdata...
+2026-08-30 20:37:05 - core.01_downloader - INFO - Авторизация через .netrc успешна.
+2026-08-30 20:37:05 - core.01_downloader - INFO - ZONES_GPKG: gis\zones.gpkg
+2026-08-30 20:37:05 - core.01_downloader - INFO - Продукты: ['LST']
+2026-08-30 20:37:06 - utils.provenance - INFO - Провенанс запуска сохранён: D:\Dev\_ASP\modis_download_analysis1\output\logs\run_01_download_20260830_203706.json
+2026-08-30 20:37:06 - core.01_downloader - INFO - ============================================================
+2026-08-30 20:37:06 - core.01_downloader - INFO - [1/1] MOD11A2 v061
+2026-08-30 20:37:06 - core.01_downloader - INFO - ============================================================
+2026-08-30 20:37:06 - core.01_downloader - INFO - >>> ГОД 2015 (1/1)
+2026-08-30 20:37:06 - core.01_downloader - INFO - Период: 2015-01-01 – 2015-12-31
+2026-08-30 20:37:06 - core.01_downloader - INFO - Директория: D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015
+2026-08-30 20:37:06 - core.01_downloader - INFO - Уже скачано 48/120 HDF-файлов
+2026-08-30 20:37:06 - core.01_downloader - INFO - Поиск гранул...
+2026-08-30 20:37:09 - core.01_downloader - INFO - Найдено гранул: 552
+2026-08-30 20:37:09 - core.01_downloader - INFO - К загрузке: 504 из 552
+2026-08-30 20:37:09 - core.01_downloader - INFO - [BATCH 1] Загрузка гранул 1-15...
+2026-08-30 20:37:14 - core.01_downloader - INFO - [1/504] OK
+2026-08-30 20:37:21 - core.01_downloader - INFO - [2/504] OK
+2026-08-30 20:37:27 - core.01_downloader - INFO - [3/504] OK
+2026-08-30 20:37:34 - core.01_downloader - INFO - [4/504] OK
+2026-08-30 20:37:41 - core.01_downloader - INFO - [5/504] OK
+2026-08-30 20:37:47 - core.01_downloader - INFO - [6/504] OK
+2026-08-30 20:37:54 - core.01_downloader - INFO - [7/504] OK
+2026-08-30 20:38:01 - core.01_downloader - INFO - [8/504] OK
+2026-08-30 20:38:08 - core.01_downloader - INFO - [9/504] OK
+2026-08-30 20:38:15 - core.01_downloader - INFO - [10/504] OK
+2026-08-30 20:38:22 - core.01_downloader - INFO - [11/504] OK
+2026-08-30 20:38:29 - core.01_downloader - INFO - [12/504] OK
+2026-08-30 20:38:36 - core.01_downloader - INFO - [13/504] OK
+2026-08-30 20:38:43 - core.01_downloader - INFO - [14/504] OK
+2026-08-30 20:38:51 - core.01_downloader - INFO - [15/504] OK
+2026-08-30 20:38:51 - core.01_downloader - INFO - [PAUSE] Пауза 5с...
+2026-08-30 20:38:56 - core.01_downloader - INFO - [BATCH 2] Загрузка гранул 16-30...
+2026-08-30 20:39:01 - core.01_downloader - INFO - [16/504] OK
+2026-08-30 20:39:07 - core.01_downloader - INFO - [17/504] OK
+2026-08-30 20:39:14 - core.01_downloader - INFO - [18/504] OK
+2026-08-30 20:39:21 - core.01_downloader - INFO - [19/504] OK
+2026-08-30 20:39:29 - core.01_downloader - INFO - [20/504] OK
+2026-08-30 20:39:37 - core.01_downloader - INFO - [21/504] OK
+2026-08-30 20:39:43 - core.01_downloader - INFO - [22/504] OK
+2026-08-30 20:39:51 - core.01_downloader - INFO - [23/504] OK
+2026-08-30 20:39:58 - core.01_downloader - INFO - [24/504] OK
+2026-08-30 20:40:05 - core.01_downloader - INFO - [25/504] OK
+2026-08-30 20:40:12 - core.01_downloader - INFO - [26/504] OK
+2026-08-30 20:40:18 - core.01_downloader - INFO - [27/504] OK
+2026-08-30 20:40:25 - core.01_downloader - INFO - [28/504] OK
+2026-08-30 20:40:31 - core.01_downloader - INFO - [29/504] OK
+2026-08-30 20:40:38 - core.01_downloader - INFO - [30/504] OK
+2026-08-30 20:40:38 - core.01_downloader - INFO - [PAUSE] Пауза 5с...
+2026-08-30 20:40:43 - core.01_downloader - INFO - [BATCH 3] Загрузка гранул 31-45...
+2026-08-30 20:40:47 - core.01_downloader - INFO - [31/504] OK
+2026-08-30 20:40:53 - core.01_downloader - INFO - [32/504] OK
+2026-08-30 20:41:00 - core.01_downloader - INFO - [33/504] OK
+2026-08-30 20:41:06 - core.01_downloader - INFO - [34/504] OK
+2026-08-30 20:41:12 - core.01_downloader - INFO - [35/504] OK
+2026-08-30 20:41:19 - core.01_downloader - INFO - [36/504] OK
+2026-08-30 20:41:25 - core.01_downloader - INFO - [37/504] OK
+2026-08-30 20:41:32 - core.01_downloader - INFO - [38/504] OK
+2026-08-30 20:41:38 - core.01_downloader - INFO - [39/504] OK
+2026-08-30 20:41:44 - core.01_downloader - INFO - [40/504] OK
+2026-08-30 20:41:51 - core.01_downloader - INFO - [41/504] OK
+2026-08-30 20:41:58 - core.01_downloader - INFO - [42/504] OK
+2026-08-30 20:42:04 - core.01_downloader - INFO - [43/504] OK
+2026-08-30 20:42:10 - core.01_downloader - INFO - [44/504] OK
+2026-08-30 20:42:17 - core.01_downloader - INFO - [45/504] OK
+2026-08-30 20:42:17 - core.01_downloader - INFO - [PAUSE] Пауза 5с...
+2026-08-30 20:42:22 - core.01_downloader - INFO - [BATCH 4] Загрузка гранул 46-60...
+2026-08-30 20:42:26 - core.01_downloader - INFO - [46/504] OK
+2026-08-30 20:42:34 - core.01_downloader - INFO - [47/504] OK
+2026-08-30 20:42:41 - core.01_downloader - INFO - [48/504] OK
+2026-08-30 20:42:47 - core.01_downloader - INFO - [49/504] OK
+2026-08-30 20:42:54 - core.01_downloader - INFO - [50/504] OK
+2026-08-30 20:43:00 - core.01_downloader - INFO - [51/504] OK
+2026-08-30 20:43:06 - core.01_downloader - INFO - [52/504] OK
+2026-08-30 20:43:12 - core.01_downloader - INFO - [53/504] OK
+2026-08-30 20:43:19 - core.01_downloader - INFO - [54/504] OK
+2026-08-30 20:43:25 - core.01_downloader - INFO - [55/504] OK
+2026-08-30 20:43:32 - core.01_downloader - INFO - [56/504] OK
+2026-08-30 20:43:38 - core.01_downloader - INFO - [57/504] OK
+2026-08-30 20:43:45 - core.01_downloader - INFO - [58/504] OK
+2026-08-30 20:43:51 - core.01_downloader - INFO - [59/504] OK
+2026-08-30 20:43:57 - core.01_downloader - INFO - [60/504] OK
+2026-08-30 20:43:57 - core.01_downloader - INFO - [PAUSE] Пауза 5с...
+2026-08-30 20:44:02 - core.01_downloader - INFO - [BATCH 5] Загрузка гранул 61-75...
+2026-08-30 20:44:06 - core.01_downloader - INFO - [61/504] OK
+2026-08-30 20:44:12 - core.01_downloader - INFO - [62/504] OK
+2026-08-30 20:44:19 - core.01_downloader - INFO - [63/504] OK
+2026-08-30 20:44:25 - core.01_downloader - INFO - [64/504] OK
+2026-08-30 20:44:31 - core.01_downloader - INFO - [65/504] OK
+2026-08-30 20:44:38 - core.01_downloader - INFO - [66/504] OK
+2026-08-30 20:44:45 - core.01_downloader - INFO - [67/504] OK
+2026-08-30 20:44:51 - core.01_downloader - INFO - [68/504] OK
+2026-08-30 20:44:58 - core.01_downloader - INFO - [69/504] OK
+2026-08-30 20:45:13 - core.01_downloader - ERROR - [ERROR 1/3] [Errno 28] No space left on device...
+2026-08-30 20:45:30 - core.01_downloader - ERROR - [ERROR 2/3] [Errno 28] No space left on device...
+2026-08-30 20:45:49 - core.01_downloader - WARNING - Прервано на пакете 5
+2026-08-30 20:45:49 - core.01_downloader - INFO - [RESULT] MOD11A2/2015: скачано 69, ошибок 0
+2026-08-30 20:46:04 - core.01_downloader - INFO - ============================================================
+2026-08-30 20:46:04 - core.01_downloader - INFO - ИТОГИ ЗАГРУЗКИ
+2026-08-30 20:46:04 - core.01_downloader - INFO - ============================================================
+2026-08-30 20:46:04 - core.01_downloader - INFO - Успешно: 1
+2026-08-30 20:46:04 - core.01_downloader - INFO - Пропущено: 0
+2026-08-30 20:46:04 - core.01_downloader - INFO - Ошибок: 0
+2026-08-30 20:46:04 - core.01_downloader - INFO - Время окончания: 2026-08-30 20:46:04
+2026-08-30 20:46:04 - core.01_downloader - INFO - ============================================================
+2026-08-30 20:46:04 - core.02_validator - INFO - ============================================================
+2026-08-30 20:46:04 - core.02_validator - INFO - MODIS HDF Validator & Cleanup
+2026-08-30 20:46:04 - core.02_validator - INFO - ============================================================
+2026-08-30 20:46:04 - core.02_validator - INFO - Время начала: 2026-08-30 20:46:04
+2026-08-30 20:46:04 - core.02_validator - INFO - Потоков: 4
+2026-08-30 20:46:04 - core.02_validator - INFO - ПРОВЕРКА + УДАЛЕНИЕ
+2026-08-30 20:46:04 - utils.provenance - INFO - Провенанс запуска сохранён: D:\Dev\_ASP\modis_download_analysis1\output\logs\run_02_validate_20260830_204604.json
+2026-08-30 20:46:04 - core.02_validator - INFO - ============================================================
+2026-08-30 20:46:04 - core.02_validator - INFO - Проверка MOD11A2/2000
+2026-08-30 20:46:04 - core.02_validator - INFO - ============================================================
+2026-08-30 20:46:04 - core.02_validator - INFO - ============================================================
+2026-08-30 20:46:04 - core.02_validator - INFO - Проверка MOD11A2/2015
+2026-08-30 20:46:04 - core.02_validator - INFO - ============================================================
+2026-08-30 20:46:16 - core.02_validator - INFO - ============================================================
+2026-08-30 20:46:16 - core.02_validator - INFO - Проверка MOD11A2/2016
+2026-08-30 20:46:16 - core.02_validator - INFO - ============================================================
+2026-08-30 20:46:16 - core.02_validator - INFO - ============================================================
+2026-08-30 20:46:16 - core.02_validator - INFO - Проверка MOD11A2/2022
+2026-08-30 20:46:16 - core.02_validator - INFO - ============================================================
+2026-08-30 20:46:16 - core.02_validator - INFO - ============================================================
+2026-08-30 20:46:16 - core.02_validator - INFO - Проверка MOD13Q1/2000
+2026-08-30 20:46:16 - core.02_validator - INFO - ============================================================
+2026-08-30 20:46:16 - core.02_validator - INFO - ============================================================
+2026-08-30 20:46:16 - core.02_validator - INFO - Проверка MOD13Q1/2015
+2026-08-30 20:46:16 - core.02_validator - INFO - ============================================================
+2026-08-30 20:46:16 - core.02_validator - INFO - ============================================================
+2026-08-30 20:46:16 - core.02_validator - INFO - Проверка MOD13Q1/2016
+2026-08-30 20:46:16 - core.02_validator - INFO - ============================================================
+2026-08-30 20:46:16 - core.02_validator - INFO - ============================================================
+2026-08-30 20:46:16 - core.02_validator - INFO - Проверка MOD13Q1/2000
+2026-08-30 20:46:16 - core.02_validator - INFO - ============================================================
+2026-08-30 20:46:16 - core.02_validator - INFO - ============================================================
+2026-08-30 20:46:16 - core.02_validator - INFO - Проверка MOD13Q1/2015
+2026-08-30 20:46:16 - core.02_validator - INFO - ============================================================
+2026-08-30 20:46:16 - core.02_validator - INFO - ============================================================
+2026-08-30 20:46:16 - core.02_validator - INFO - Проверка MOD13Q1/2016
+2026-08-30 20:46:16 - core.02_validator - INFO - ============================================================
+2026-08-30 20:46:16 - core.02_validator - INFO - ============================================================
+2026-08-30 20:46:16 - core.02_validator - INFO - Проверка MOD13Q1/2000
+2026-08-30 20:46:16 - core.02_validator - INFO - ============================================================
+2026-08-30 20:46:16 - core.02_validator - INFO - ============================================================
+2026-08-30 20:46:16 - core.02_validator - INFO - Проверка MOD13Q1/2015
+2026-08-30 20:46:16 - core.02_validator - INFO - ============================================================
+2026-08-30 20:46:16 - core.02_validator - INFO - ============================================================
+2026-08-30 20:46:16 - core.02_validator - INFO - Проверка MOD13Q1/2016
+2026-08-30 20:46:16 - core.02_validator - INFO - ============================================================
+2026-08-30 20:46:16 - core.02_validator - INFO - ============================================================
+2026-08-30 20:46:16 - core.02_validator - INFO - Проверка MOD11A2/2000
+2026-08-30 20:46:16 - core.02_validator - INFO - ============================================================
+2026-08-30 20:46:16 - core.02_validator - INFO - ============================================================
+2026-08-30 20:46:16 - core.02_validator - INFO - Проверка MOD11A2/2015
+2026-08-30 20:46:16 - core.02_validator - INFO - ============================================================
+2026-08-30 20:46:25 - core.02_validator - INFO - ============================================================
+2026-08-30 20:46:25 - core.02_validator - INFO - Проверка MOD11A2/2016
+2026-08-30 20:46:25 - core.02_validator - INFO - ============================================================
+2026-08-30 20:46:25 - core.02_validator - INFO - ============================================================
+2026-08-30 20:46:25 - core.02_validator - INFO - Проверка MOD11A2/2022
+2026-08-30 20:46:25 - core.02_validator - INFO - ============================================================
+2026-08-30 20:46:25 - core.02_validator - INFO - ============================================================
+2026-08-30 20:46:25 - core.02_validator - INFO - Проверка MOD14A1/2015
+2026-08-30 20:46:25 - core.02_validator - INFO - ============================================================
+2026-08-30 20:46:25 - core.02_validator - INFO - ============================================================
+2026-08-30 20:46:25 - core.02_validator - INFO - Проверка MCD43A3/2013
+2026-08-30 20:46:25 - core.02_validator - INFO - ============================================================
+2026-08-30 20:46:25 - core.02_validator - INFO - Пропущено пустых директорий: 3 (проверено: 19)
+2026-08-30 20:46:25 - core.02_validator - INFO - Отчёт сохранён: D:\Dev\_ASP\modis_download_analysis1\data\tables\validation_report_20260830_204625.json
+2026-08-30 20:46:25 - core.02_validator - INFO - Список для перескачивания: D:\Dev\_ASP\modis_download_analysis1\data\tables\redownload_list_20260830_204625.json
+2026-08-30 20:46:25 - core.02_validator - INFO - ============================================================
+2026-08-30 20:46:25 - core.02_validator - INFO - ИТОГОВАЯ СТАТИСТИКА
+2026-08-30 20:46:25 - core.02_validator - INFO - ============================================================
+2026-08-30 20:46:25 - core.02_validator - INFO - Проверено файлов: 234
+2026-08-30 20:46:25 - core.02_validator - INFO - Валидных: 234
+2026-08-30 20:46:25 - core.02_validator - INFO - Повреждённых: 0
+2026-08-30 20:46:25 - core.02_validator - INFO - Удалено: 0
+2026-08-30 20:46:25 - core.02_validator - INFO - └─ Слишком малые: 0
+2026-08-30 20:46:25 - core.02_validator - INFO - └─ Ошибки чтения: 0
+2026-08-30 20:46:25 - core.02_validator - INFO - └─ Нет датасетов: 0
+2026-08-30 20:46:25 - core.02_validator - INFO - ============================================================
+2026-08-30 20:46:25 - core.03_converter - INFO - ============================================================
+2026-08-30 20:46:25 - core.03_converter - INFO - MODIS HDF to GeoTIFF Converter
+2026-08-30 20:46:25 - core.03_converter - INFO - ============================================================
+2026-08-30 20:46:25 - core.03_converter - INFO - GDAL версия: 3.13.3
+2026-08-30 20:46:25 - core.03_converter - INFO - Формат растра: GTiff
+2026-08-30 20:46:25 - utils.provenance - INFO - Провенанс запуска сохранён: D:\Dev\_ASP\modis_download_analysis1\output\logs\run_03_convert_20260830_204625.json
+2026-08-30 20:46:25 - core.03_converter - INFO - Обработка MOD11A2 за 2015: 117 файлов
+2026-08-30 20:46:26 - core.03_converter - INFO - OK: MOD11A2.A2015033.h19v01.061.2021349094625.tif
+2026-08-30 20:46:26 - core.03_converter - INFO - OK: MOD11A2.A2015033.h21v01.061.2021349093651.tif
+2026-08-30 20:46:26 - core.03_converter - INFO - OK: MOD11A2.A2015033.h20v02.061.2021349094633.tif
+2026-08-30 20:46:26 - core.03_converter - INFO - OK: MOD11A2.A2015033.h20v01.061.2021349094633.tif
+2026-08-30 20:46:26 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 768
+2026-08-30 20:46:26 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 256
+2026-08-30 20:46:26 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 1024
+2026-08-30 20:46:26 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 256
+2026-08-30 20:46:26 - core.03_converter - INFO - OK: MOD11A2.A2015033.h23v02.061.2021349094640.tif
+2026-08-30 20:46:27 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 0
+2026-08-30 20:46:27 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 0
+2026-08-30 20:46:27 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 0
+2026-08-30 20:46:27 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 512
+2026-08-30 20:46:27 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 256
+2026-08-30 20:46:27 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 768
+2026-08-30 20:46:28 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 768
+2026-08-30 20:46:28 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 768
+2026-08-30 20:46:28 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 512
+2026-08-30 20:46:28 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 256
+2026-08-30 20:46:28 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 0
+2026-08-30 20:46:28 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 256
+2026-08-30 20:46:28 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 1024
+2026-08-30 20:46:28 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 512
+2026-08-30 20:46:29 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 1024
+2026-08-30 20:46:29 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 256
+2026-08-30 20:46:29 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 256
+2026-08-30 20:46:29 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 512
+2026-08-30 20:46:30 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 768
+2026-08-30 20:46:30 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 512
+2026-08-30 20:46:30 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 256
+2026-08-30 20:46:30 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 256
+2026-08-30 20:46:31 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 512
+2026-08-30 20:46:31 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 512
+2026-08-30 20:46:31 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 768
+2026-08-30 20:46:31 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 1024
+2026-08-30 20:46:32 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 512
+2026-08-30 20:46:32 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 256
+2026-08-30 20:46:32 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 256
+2026-08-30 20:46:32 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 768
+2026-08-30 20:46:33 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 512
+2026-08-30 20:46:33 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 256
+2026-08-30 20:46:33 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 512
+2026-08-30 20:46:33 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 768
+2026-08-30 20:46:34 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 768
+2026-08-30 20:46:34 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 1024
+2026-08-30 20:46:34 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 0
+2026-08-30 20:46:34 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 768
+2026-08-30 20:46:35 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 768
+2026-08-30 20:46:36 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 512
+2026-08-30 20:46:36 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 768
+2026-08-30 20:46:36 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 768
+2026-08-30 20:46:36 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 256
+2026-08-30 20:46:36 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 512
+2026-08-30 20:46:37 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 256
+2026-08-30 20:46:37 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 512
+2026-08-30 20:46:37 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 256
+2026-08-30 20:46:37 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 256
+2026-08-30 20:46:37 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 1024
+2026-08-30 20:46:37 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 768
+2026-08-30 20:46:37 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 256
+2026-08-30 20:46:37 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 512
+2026-08-30 20:46:38 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 768
+2026-08-30 20:46:38 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 768
+2026-08-30 20:46:38 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 512
+2026-08-30 20:46:38 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 256
+2026-08-30 20:46:38 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 512
+2026-08-30 20:46:38 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 256
+2026-08-30 20:46:38 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 768
+2026-08-30 20:46:38 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 768
+2026-08-30 20:46:38 - core.03_converter - INFO - Сконвертировано: 69/117
+2026-08-30 20:46:38 - core.03_converter - INFO - Пропущено (уже существует): 48
+2026-08-30 20:46:38 - core.03_converter - INFO - VRT-мозаика сохранена: D:\Dev\_ASP\modis_download_analysis1\data\processed\LST\LST_2015.vrt
+2026-08-30 20:46:38 - core.03_converter - INFO - Обработка MOD11A2 за 2015: 117 файлов
+2026-08-30 20:46:39 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 512
+2026-08-30 20:46:39 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 1024
+2026-08-30 20:46:39 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 512
+2026-08-30 20:46:39 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 768
+2026-08-30 20:46:40 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 256
+2026-08-30 20:46:40 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 0
+2026-08-30 20:46:40 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 0
+2026-08-30 20:46:40 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 256
+2026-08-30 20:46:40 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 256
+2026-08-30 20:46:40 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 256
+2026-08-30 20:46:40 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 0
+2026-08-30 20:46:40 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 0
+2026-08-30 20:46:41 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 512
+2026-08-30 20:46:41 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 256
+2026-08-30 20:46:41 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 1024
+2026-08-30 20:46:41 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 512
+2026-08-30 20:46:41 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 256
+2026-08-30 20:46:41 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 0
+2026-08-30 20:46:41 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 256
+2026-08-30 20:46:41 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 0
+2026-08-30 20:46:42 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 256
+2026-08-30 20:46:42 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 0
+2026-08-30 20:46:42 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 0
+2026-08-30 20:46:42 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 0
+2026-08-30 20:46:42 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 512
+2026-08-30 20:46:42 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 512
+2026-08-30 20:46:42 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 512
+2026-08-30 20:46:42 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 1024
+2026-08-30 20:46:43 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 512
+2026-08-30 20:46:43 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 0
+2026-08-30 20:46:43 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 256
+2026-08-30 20:46:43 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 0
+2026-08-30 20:46:43 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 512
+2026-08-30 20:46:43 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 1024
+2026-08-30 20:46:43 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 256
+2026-08-30 20:46:44 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 0
+2026-08-30 20:46:44 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 512
+2026-08-30 20:46:44 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 512
+2026-08-30 20:46:44 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 1024
+2026-08-30 20:46:44 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 512
+2026-08-30 20:46:44 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 1024
+2026-08-30 20:46:44 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 0
+2026-08-30 20:46:44 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 0
+2026-08-30 20:46:44 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 256
+2026-08-30 20:46:45 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 512
+2026-08-30 20:46:45 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 256
+2026-08-30 20:46:45 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 256
+2026-08-30 20:46:45 - core.03_converter - ERROR - Ошибка сохранения GeoTIFF: TIFFAppendToStrip:Write error at scanline 1024
+2026-08-30 20:47:36 - core.01_downloader - INFO - ============================================================
+2026-08-30 20:47:36 - core.01_downloader - INFO - MODIS Downloader via earthaccess
+2026-08-30 20:47:36 - core.01_downloader - INFO - ============================================================
+2026-08-30 20:47:36 - core.01_downloader - INFO - Время начала: 2026-08-30 20:47:36
+2026-08-30 20:47:36 - core.01_downloader - INFO - Нажмите Ctrl+C для принудительного прерывания
+2026-08-30 20:47:36 - core.01_downloader - INFO - Bounding box: (78.44499969482422, 50.81671142578125, 113.8901596069336, 77.73754119873047)
+2026-08-30 20:47:36 - core.01_downloader - INFO - Авторизация в NASA Earthdata...
+2026-08-30 20:47:40 - core.01_downloader - INFO - Авторизация через .netrc успешна.
+2026-08-30 20:47:40 - core.01_downloader - INFO - ZONES_GPKG: gis\zones.gpkg
+2026-08-30 20:47:40 - core.01_downloader - INFO - Продукты: ['NDVI']
+2026-08-30 20:47:41 - utils.provenance - INFO - Провенанс запуска сохранён: D:\Dev\_ASP\modis_download_analysis1\output\logs\run_01_download_20260830_204741.json
+2026-08-30 20:47:41 - core.01_downloader - INFO - ============================================================
+2026-08-30 20:47:41 - core.01_downloader - INFO - [1/1] MOD13Q1 v061
+2026-08-30 20:47:41 - core.01_downloader - INFO - ============================================================
+2026-08-30 20:47:41 - core.01_downloader - INFO - >>> ГОД 2015 (1/1)
+2026-08-30 20:47:41 - core.01_downloader - INFO - Период: 2015-01-01 – 2015-03-31
+2026-08-30 20:47:41 - core.01_downloader - INFO - Директория: D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD13Q1\2015
+2026-08-30 20:47:41 - core.01_downloader - INFO - Уже скачано 0/77 HDF-файлов
+2026-08-30 20:47:41 - core.01_downloader - INFO - Поиск гранул...
+2026-08-30 20:47:43 - core.01_downloader - INFO - Найдено гранул: 94
+2026-08-30 20:47:43 - core.01_downloader - INFO - К загрузке: 94 из 94
+2026-08-30 20:47:43 - core.01_downloader - INFO - [BATCH 1] Загрузка гранул 1-15...
+2026-08-30 20:47:55 - core.01_downloader - ERROR - [ERROR 1/3] [Errno 28] No space left on device...
+2026-08-30 20:48:13 - core.01_downloader - WARNING - Прервано на пакете 1
+2026-08-30 20:48:13 - core.01_downloader - INFO - [RESULT] MOD13Q1/2015: скачано 0, ошибок 0
+2026-08-30 20:48:14 - core.01_downloader - WARNING - 
+Прервано пользователем
+2026-08-30 20:48:14 - core.01_downloader - INFO - Запустите снова для продолжения

@@ -4,6 +4,7 @@
 
 from pathlib import Path
 from datetime import datetime
+from utils import messages
 
 # Базовая директория проекта (корень репозитория).
 BASE_DIR = Path(__file__).parent.resolve()
@@ -217,3 +218,25 @@ MODIS_PRODUCTS = {
         "qa_good": 0,
     },
 }
+
+# Обязательные ключи конфигурации продукта.
+REQUIRED_PRODUCT_KEYS = (
+    "product",
+    "band",
+    "scale_factor",
+    "offset",
+    "no_data_value",
+    "unit",
+)
+
+
+def validate_config():
+    """Проверка целостности конфигурации продуктов MODIS."""
+    for name, cfg in MODIS_PRODUCTS.items():
+        for key in REQUIRED_PRODUCT_KEYS:
+            if key not in cfg:
+                raise ValueError(messages.ERR_CONFIG_MISSING_KEY.format(name, key))
+
+
+# Выполняется при импорте: опечатка в конфиге падает сразу, а не в глубине GDAL.
+validate_config()

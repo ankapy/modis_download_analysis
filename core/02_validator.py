@@ -21,6 +21,7 @@ from config import (
 )
 from utils.logger import setup_logger
 from utils import messages
+from utils.provenance import save_run_provenance
 
 gdal.UseExceptions()
 ogr.UseExceptions()
@@ -249,6 +250,16 @@ def main(args):
     logger.info(mode)
 
     validator = HDFValidator(max_workers=args.workers)
+
+    save_run_provenance(
+        "02_validate",
+        {
+            "product": args.product,
+            "year": args.year,
+            "dry_run": args.dry_run,
+            "workers": args.workers,
+        },
+    )
 
     products_to_check = (
         list(MODIS_PRODUCTS.keys()) if args.product == "all" else [args.product]

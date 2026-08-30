@@ -1,0 +1,32 @@
+{
+  "stage": "01_download",
+  "started_at": "2026-08-30T19:25:39.354710",
+  "params": {
+    "zones": "gis\\zones.gpkg",
+    "bbox": [
+      78.44499969482422,
+      50.81671142578125,
+      113.8901596069336,
+      77.73754119873047
+    ],
+    "years": [
+      2015
+    ],
+    "months": [
+      1
+    ],
+    "products": [
+      "LST"
+    ]
+  },
+  "environment": {
+    "python": "3.13.13",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "versions": {
+      "numpy": "2.3.2",
+      "pandas": "2.3.1",
+      "earthaccess": "0.18.0",
+      "osgeo.gdal": "3.13.3"
+    }
+  }
+}

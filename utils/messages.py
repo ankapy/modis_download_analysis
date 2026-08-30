@@ -72,7 +72,7 @@ INFO_SKIPPED_EXISTING = "Пропущено (уже существует): {}"
 # === ЛОГИРОВАНИЕ: ЗОНАЛЬНАЯ СТАТИСТИКА ===
 LOG_ZONES_LOADED = "Загружено зон: {}"
 LOG_ZONE_INFO = "  {}: {}"
-LOG_RASTERIZE_START = "Растеризация маски зон (первый раз для этого формата растра)..."
+LOG_RASTERIZE_START = "Растеризация маски зон"
 LOG_RASTERIZE_OK = "Маска зон растеризована."
 INFO_RASTERS_FOUND = "Найдено {} растра для обработки."
 INFO_TEST_FILE = "[TEST] Найден {}"
@@ -143,6 +143,8 @@ ERR_FILE_NOT_GPKG = "Файл не найден или неверный форм
 ERR_DELETE_FILE = "Не удалось удалить {}: {}"
 ERR_AUTH_FAILED = "Ошибка авторизации. Проверьте наличие файла .netrc или переменные окружения EARTHDATA_USERNAME и EARTHDATA_PASSWORD."
 ERR_CONVERSION_FAILED = "Ошибка конвертации продукта {} (файл {}): {}"
+ERR_CONFIG_MISSING_KEY = "Конфигурация продукта '{}' не содержит обязательный ключ: {}"
+
 
 # === ПРЕДУПРЕЖДЕНИЯ ===
 WARN_FILE_TOO_SMALL = "Файл слишком мал: {:.2f} МБ"
@@ -216,7 +218,26 @@ VALIDATION_STATS_DELETED = "Удалено: {}"
 VALIDATION_STATS_TOO_SMALL = "└─ Слишком малые: {}"
 VALIDATION_STATS_READ_ERROR = "└─ Ошибки чтения: {}"
 VALIDATION_STATS_MISSING_DATASETS = "└─ Нет датасетов: {}"
-VALIDATION_FILE_NOT_FOUND = "Файл не существует"
 VALIDATION_GDAL_OPEN_FAIL = "GDAL не может открыть файл"
 VALIDATION_FORMAT_NOT_RECOGNIZED = "Формат файла не распознан (повреждён)"
 VALIDATION_ERROR_PREFIX = "Ошибка: {}"
+
+# === EXCEL-ЭКСПОРТ ===
+INFO_CREATING_EXCEL = "Создание Excel-файла: {}"
+INFO_EXCEL_SHEETS = "Листы: {}"
+INFO_EXCEL_SAVED = "Excel сохранён: {}"
+ERR_EXCEL_NO_OPENPYXL = "Для экспорта Excel установите openpyxl"
+
+# === ГИС-ОПЦИИ КОНВЕРТЕРА ===
+INFO_RASTER_MODE = "Формат растра: {}"
+
+# === ПРОВЕНАНС ===
+INFO_PROVENANCE_SAVED = "Провенанс запуска сохранён: {}"
+WARN_PROVENANCE_FAILED = "Не удалось сохранить провенанс: {}"
+
+# === SELFTEST ===
+INFO_SELFTEST_START = "Запуск самодиагностики..."
+INFO_SELFTEST_DONE = "Самодиагностика завершена."
+SELFTEST_OK = "[OK] {}"
+SELFTEST_WARN = "[WARN] {}"
+SELFTEST_FAIL = "[FAIL] {}"

@@ -23,6 +23,7 @@ from config import (
 from utils.logger import setup_logger
 from utils.geo_utils import load_zones
 from utils import messages
+from utils.provenance import save_run_provenance
 
 gdal.UseExceptions()
 ogr.UseExceptions()
@@ -258,6 +259,12 @@ def main(args):
     start_time = time.time()
 
     logger.info(messages.STATS_STEP_ZONES)
+
+    save_run_provenance(
+        "04_stats",
+        {"zones": args.zones, "workers": args.workers, "test": args.test},
+    )
+
     try:
         zones = load_zones(args.zones)
         if not zones:

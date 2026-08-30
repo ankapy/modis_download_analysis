@@ -1,0 +1,19 @@
+{
+  "stage": "04_stats",
+  "started_at": "2026-08-30T20:01:29.031849",
+  "params": {
+    "zones": "missing.gpkg",
+    "workers": 4,
+    "test": false
+  },
+  "environment": {
+    "python": "3.13.13",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "versions": {
+      "numpy": "2.3.2",
+      "pandas": "2.3.1",
+      "earthaccess": "0.18.0",
+      "osgeo.gdal": "3.13.3"
+    }
+  }
+}

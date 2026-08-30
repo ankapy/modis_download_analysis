@@ -1,9 +1,0 @@
-earthaccess==0.18.0
-numpy==2.5.2
-pandas==2.2.3
-scipy==1.18.1
-matplotlib==3.10.0
-tqdm==4.66.2
-
-# Установка GDAL отдельной командой
-# conda install -c conda-forge gdal --forceы
