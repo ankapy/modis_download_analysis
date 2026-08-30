@@ -238,8 +238,15 @@ def build_mosaic_dataset(product_key: str, year: int, year_dir: Path, gdb_dir: P
 
         srs = arcpy.Raster(tifs[0]).spatialReference
         arcpy.management.CreateMosaicDataset(str(gdb_path), md_name, srs)
+
+        # ИСПРАВЛЕНО: явные именованные параметры вместо позиционных
         arcpy.management.AddRastersToMosaicDataset(
-            md_path, "Raster Dataset", str(year_dir), "*.tif"
+            in_mosaic_dataset=md_path,
+            raster_type="Raster Dataset",
+            input_path=str(year_dir),
+            update_cellsize_ranges="UPDATE_CELL_SIZES",
+            update_boundary="UPDATE_BOUNDARY",
+            filter="*.tif",
         )
         logger.info(messages.INFO_MOSAIC_SAVED.format(md_path))
     except (RuntimeError, arcpy.ExecuteError) as e:

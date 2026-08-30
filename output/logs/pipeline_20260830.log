@@ -557,3 +557,2170 @@
 2026-08-30 04:36:19 - core.05_analyzer - INFO - [1/6] Сезонная динамика...
 2026-08-30 04:36:22 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\seasonal_lst.png
 2026-08-30 04:36:22 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\seasonal_lst_night.png
+2026-08-30 14:19:44 - core.05_analyzer - INFO - ============================================================
+2026-08-30 14:19:44 - core.05_analyzer - INFO - MODIS Analyzer
+2026-08-30 14:19:44 - core.05_analyzer - INFO - ============================================================
+2026-08-30 14:19:44 - core.05_analyzer - INFO - Время начала: 2026-08-30 14:19:44
+2026-08-30 14:19:44 - core.05_analyzer - INFO - Загрузка данных: D:\Dev\_ASP\modis_download_analysis1\data\tables\zonal_stats_flat.csv
+2026-08-30 14:19:44 - core.05_analyzer - INFO - Загружено записей: 457
+2026-08-30 14:19:44 - core.05_analyzer - INFO - [1/6] Сезонная динамика...
+2026-08-30 14:19:45 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\seasonal_lst.png
+2026-08-30 14:19:45 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\seasonal_lst_night.png
+2026-08-30 14:19:45 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\seasonal_albedo.png
+2026-08-30 14:19:45 - core.05_analyzer - INFO - [2/6] Межгодовые тренды...
+2026-08-30 14:27:11 - core.05_analyzer - INFO - ============================================================
+2026-08-30 14:27:11 - core.05_analyzer - INFO - MODIS Analyzer
+2026-08-30 14:27:11 - core.05_analyzer - INFO - ============================================================
+2026-08-30 14:27:11 - core.05_analyzer - INFO - Время начала: 2026-08-30 14:27:11
+2026-08-30 14:27:11 - core.05_analyzer - INFO - Загрузка данных: D:\Dev\_ASP\modis_download_analysis1\data\tables\zonal_stats_flat.csv
+2026-08-30 14:27:11 - core.05_analyzer - INFO - Загружено записей: 457
+2026-08-30 14:27:11 - core.05_analyzer - INFO - [1/6] Сезонная динамика...
+2026-08-30 14:27:11 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\seasonal_lst.png
+2026-08-30 14:27:12 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\seasonal_lst_night.png
+2026-08-30 14:27:12 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\seasonal_albedo.png
+2026-08-30 14:27:12 - core.05_analyzer - INFO - [2/6] Межгодовые тренды...
+2026-08-30 14:27:13 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\trend_lst.png
+2026-08-30 14:27:13 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\trend_lst_night.png
+2026-08-30 14:27:14 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\trend_albedo.png
+2026-08-30 14:27:14 - core.05_analyzer - INFO - [3/6] Широтный градиент (месяц 7)...
+2026-08-30 14:27:14 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\gradient_lst_m7.png
+2026-08-30 14:27:14 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\gradient_lst_night_m7.png
+2026-08-30 14:27:14 - core.05_analyzer - WARNING - Нет данных для градиента Albedo в месяц 7
+2026-08-30 14:27:14 - core.05_analyzer - INFO - [4/6] Сезонная амплитуда...
+2026-08-30 14:27:15 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\amplitude_lst.png
+2026-08-30 14:27:15 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\amplitude_lst_night.png
+2026-08-30 14:27:16 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\amplitude_albedo.png
+2026-08-30 14:27:16 - core.05_analyzer - INFO - [5/6] Корреляция продуктов (месяц 7)...
+2026-08-30 14:27:16 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\correlation_lst_lst_night_m7.png
+2026-08-30 14:27:16 - core.05_analyzer - INFO - [6/6] Сводные таблицы...
+2026-08-30 14:27:16 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\summary_statistics.csv
+2026-08-30 14:27:16 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\trend_significance.csv
+2026-08-30 14:27:16 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\monthly_aggregated.csv
+2026-08-30 14:27:16 - core.05_analyzer - INFO - 
+Завершено.
+2026-08-30 14:27:16 - core.05_analyzer - INFO - Графики: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis
+2026-08-30 14:27:16 - core.05_analyzer - INFO - Время окончания: 2026-08-30 14:27:16
+2026-08-30 15:03:43 - core.01_downloader - INFO - ============================================================
+2026-08-30 15:03:43 - core.01_downloader - INFO - MODIS Downloader via earthaccess
+2026-08-30 15:03:43 - core.01_downloader - INFO - ============================================================
+2026-08-30 15:03:43 - core.01_downloader - INFO - Время начала: 2026-08-30 15:03:43
+2026-08-30 15:03:43 - core.01_downloader - INFO - Нажмите Ctrl+C для принудительного прерывания
+2026-08-30 15:03:45 - core.01_downloader - WARNING - 
+Прервано пользователем
+2026-08-30 15:03:45 - core.01_downloader - INFO - Запустите снова для продолжения
+2026-08-30 15:03:58 - core.01_downloader - INFO - ============================================================
+2026-08-30 15:03:58 - core.01_downloader - INFO - MODIS Downloader via earthaccess
+2026-08-30 15:03:58 - core.01_downloader - INFO - ============================================================
+2026-08-30 15:03:58 - core.01_downloader - INFO - Время начала: 2026-08-30 15:03:58
+2026-08-30 15:03:58 - core.01_downloader - INFO - Нажмите Ctrl+C для принудительного прерывания
+2026-08-30 15:03:58 - core.01_downloader - INFO - Bounding box: (78.44499969482422, 50.81671142578125, 113.8901596069336, 77.73754119873047)
+2026-08-30 15:03:58 - core.01_downloader - INFO - Авторизация в NASA Earthdata...
+2026-08-30 15:04:01 - core.01_downloader - INFO - Авторизация через .netrc успешна.
+2026-08-30 15:04:11 - core.01_downloader - INFO - ZONES_GPKG: gis\zones.gpkg
+2026-08-30 15:04:11 - core.01_downloader - INFO - Продукты: ['LST']
+2026-08-30 15:04:11 - core.01_downloader - INFO - ============================================================
+2026-08-30 15:04:11 - core.01_downloader - INFO - [1/1] MOD11A2 v061
+2026-08-30 15:04:11 - core.01_downloader - INFO - ============================================================
+2026-08-30 15:04:11 - core.01_downloader - INFO - >>> ГОД 2022 (1/1)
+2026-08-30 15:04:11 - core.01_downloader - INFO - Период: 2022-01-01 – 2022-01-31
+2026-08-30 15:04:11 - core.01_downloader - INFO - Директория: D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2022
+2026-08-30 15:04:11 - core.01_downloader - INFO - Уже скачано 0/120 HDF-файлов
+2026-08-30 15:04:11 - core.01_downloader - INFO - Поиск гранул...
+2026-08-30 15:04:13 - core.01_downloader - INFO - Найдено гранул: 48
+2026-08-30 15:04:13 - core.01_downloader - INFO - К загрузке: 48 из 48
+2026-08-30 15:04:13 - core.01_downloader - INFO - [BATCH 1] Загрузка гранул 1-15...
+2026-08-30 15:04:18 - core.01_downloader - INFO - [1/48] OK
+2026-08-30 15:04:24 - core.01_downloader - INFO - [2/48] OK
+2026-08-30 15:04:30 - core.01_downloader - INFO - [3/48] OK
+2026-08-30 15:04:31 - core.01_downloader - WARNING - Прервано на пакете 1
+2026-08-30 15:04:31 - core.01_downloader - INFO - [RESULT] MOD11A2/2022: скачано 3, ошибок 0
+2026-08-30 15:04:40 - core.01_downloader - WARNING - 
+Прервано пользователем
+2026-08-30 15:04:40 - core.01_downloader - INFO - Запустите снова для продолжения
+2026-08-30 15:04:52 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:52 - core.02_validator - INFO - MODIS HDF Validator & Cleanup
+2026-08-30 15:04:52 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:52 - core.02_validator - INFO - Время начала: 2026-08-30 15:04:52
+2026-08-30 15:04:52 - core.02_validator - INFO - Потоков: 8
+2026-08-30 15:04:52 - core.02_validator - INFO - ПРОВЕРКА + УДАЛЕНИЕ
+2026-08-30 15:04:52 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:52 - core.02_validator - INFO - Проверка MOD11A2/2000
+2026-08-30 15:04:52 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:52 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:52 - core.02_validator - INFO - Проверка MOD11A2/2015
+2026-08-30 15:04:52 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:52 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:52 - core.02_validator - INFO - Проверка MOD11A2/2016
+2026-08-30 15:04:52 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:53 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:53 - core.02_validator - INFO - Проверка MOD11A2/2022
+2026-08-30 15:04:53 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:53 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:53 - core.02_validator - INFO - Проверка MOD13Q1/2000
+2026-08-30 15:04:53 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:53 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:53 - core.02_validator - INFO - Проверка MOD13Q1/2015
+2026-08-30 15:04:53 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:53 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:53 - core.02_validator - INFO - Проверка MOD13Q1/2016
+2026-08-30 15:04:53 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:53 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:53 - core.02_validator - INFO - Проверка MOD13Q1/2000
+2026-08-30 15:04:53 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:53 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:53 - core.02_validator - INFO - Проверка MOD13Q1/2015
+2026-08-30 15:04:53 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:53 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:53 - core.02_validator - INFO - Проверка MOD13Q1/2016
+2026-08-30 15:04:53 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:53 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:53 - core.02_validator - INFO - Проверка MOD13Q1/2000
+2026-08-30 15:04:53 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:53 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:53 - core.02_validator - INFO - Проверка MOD13Q1/2015
+2026-08-30 15:04:53 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:53 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:53 - core.02_validator - INFO - Проверка MOD13Q1/2016
+2026-08-30 15:04:53 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:53 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:53 - core.02_validator - INFO - Проверка MOD11A2/2000
+2026-08-30 15:04:53 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:53 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:53 - core.02_validator - INFO - Проверка MOD11A2/2015
+2026-08-30 15:04:53 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:53 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:53 - core.02_validator - INFO - Проверка MOD11A2/2016
+2026-08-30 15:04:53 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:53 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:53 - core.02_validator - INFO - Проверка MOD11A2/2022
+2026-08-30 15:04:53 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:53 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:53 - core.02_validator - INFO - Проверка MOD14A1/2015
+2026-08-30 15:04:53 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:53 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:53 - core.02_validator - INFO - Проверка MCD43A3/2013
+2026-08-30 15:04:53 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:53 - core.02_validator - INFO - Пропущено пустых директорий: 3 (проверено: 19)
+2026-08-30 15:04:53 - core.02_validator - INFO - Отчёт сохранён: D:\Dev\_ASP\modis_download_analysis1\data\tables\validation_report_20260830_150453.json
+2026-08-30 15:04:53 - core.02_validator - INFO - Список для перескачивания: D:\Dev\_ASP\modis_download_analysis1\data\tables\redownload_list_20260830_150453.json
+2026-08-30 15:04:53 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:53 - core.02_validator - INFO - Удаление повреждённых файлов
+2026-08-30 15:04:53 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:53 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2000\MOD11A2.A2000329.h21v01.061.2020060091225.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2000\\MOD11A2.A2000329.h21v01.061.2020060091225.hdf'
+2026-08-30 15:04:53 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2000\MOD11A2.A2000329.h21v02.061.2020060091226.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2000\\MOD11A2.A2000329.h21v02.061.2020060091226.hdf'
+2026-08-30 15:04:53 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2000\MOD11A2.A2000329.h23v02.061.2020060091228.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2000\\MOD11A2.A2000329.h23v02.061.2020060091228.hdf'
+2026-08-30 15:04:53 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2000\MOD11A2.A2000329.h23v03.061.2020060091229.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2000\\MOD11A2.A2000329.h23v03.061.2020060091229.hdf'
+2026-08-30 15:04:53 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2000\MOD11A2.A2000329.h24v03.061.2020060091230.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2000\\MOD11A2.A2000329.h24v03.061.2020060091230.hdf'
+2026-08-30 15:04:53 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2000\MOD11A2.A2000329.h25v03.061.2020060091755.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2000\\MOD11A2.A2000329.h25v03.061.2020060091755.hdf'
+2026-08-30 15:04:53 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015305.h19v01.061.2021364183627.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015305.h19v01.061.2021364183627.hdf'
+2026-08-30 15:04:53 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015305.h21v01.061.2021364183645.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015305.h21v01.061.2021364183645.hdf'
+2026-08-30 15:04:53 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015305.h23v02.061.2021364183644.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015305.h23v02.061.2021364183644.hdf'
+2026-08-30 15:04:53 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015305.h25v03.061.2021364183644.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015305.h25v03.061.2021364183644.hdf'
+2026-08-30 15:04:53 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015329.h20v02.061.2022001095920.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015329.h20v02.061.2022001095920.hdf'
+2026-08-30 15:04:53 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015329.h22v02.061.2022001095925.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015329.h22v02.061.2022001095925.hdf'
+2026-08-30 15:04:53 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2015\MOD11A2.A2015329.h23v03.061.2022001095923.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2015\\MOD11A2.A2015329.h23v03.061.2022001095923.hdf'
+2026-08-30 15:04:53 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2016\MOD11A2.A2016121.h20v02.061.2022015072644.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2016\\MOD11A2.A2016121.h20v02.061.2022015072644.hdf'
+2026-08-30 15:04:53 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2016\MOD11A2.A2016121.h21v02.061.2022015072800.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2016\\MOD11A2.A2016121.h21v02.061.2022015072800.hdf'
+2026-08-30 15:04:53 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2016\MOD11A2.A2016121.h21v03.061.2022015072802.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2016\\MOD11A2.A2016121.h21v03.061.2022015072802.hdf'
+2026-08-30 15:04:53 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2016\MOD11A2.A2016121.h22v02.061.2022015072640.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2016\\MOD11A2.A2016121.h22v02.061.2022015072640.hdf'
+2026-08-30 15:04:53 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2016\MOD11A2.A2016121.h23v02.061.2022015072641.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2016\\MOD11A2.A2016121.h23v02.061.2022015072641.hdf'
+2026-08-30 15:04:53 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2016\MOD11A2.A2016121.h23v03.061.2022015072641.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2016\\MOD11A2.A2016121.h23v03.061.2022015072641.hdf'
+2026-08-30 15:04:53 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2016\MOD11A2.A2016121.h24v03.061.2022015072647.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2016\\MOD11A2.A2016121.h24v03.061.2022015072647.hdf'
+2026-08-30 15:04:53 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2016\MOD11A2.A2016121.h25v03.061.2022015072643.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2016\\MOD11A2.A2016121.h25v03.061.2022015072643.hdf'
+2026-08-30 15:04:53 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2016\MOD11A2.A2016177.h19v01.061.2022016233329.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2016\\MOD11A2.A2016177.h19v01.061.2022016233329.hdf'
+2026-08-30 15:04:53 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2016\MOD11A2.A2016177.h20v01.061.2022016233327.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2016\\MOD11A2.A2016177.h20v01.061.2022016233327.hdf'
+2026-08-30 15:04:53 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2016\MOD11A2.A2016177.h21v01.061.2022016233327.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2016\\MOD11A2.A2016177.h21v01.061.2022016233327.hdf'
+2026-08-30 15:04:53 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2016\MOD11A2.A2016177.h20v02.061.2022016233329.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2016\\MOD11A2.A2016177.h20v02.061.2022016233329.hdf'
+2026-08-30 15:04:53 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2016\MOD11A2.A2016177.h21v02.061.2022016233330.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2016\\MOD11A2.A2016177.h21v02.061.2022016233330.hdf'
+2026-08-30 15:04:53 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2016\MOD11A2.A2016177.h21v03.061.2022016233329.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2016\\MOD11A2.A2016177.h21v03.061.2022016233329.hdf'
+2026-08-30 15:04:53 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2016\MOD11A2.A2016177.h22v02.061.2022016233332.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2016\\MOD11A2.A2016177.h22v02.061.2022016233332.hdf'
+2026-08-30 15:04:53 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2016\MOD11A2.A2016177.h22v03.061.2022016233330.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2016\\MOD11A2.A2016177.h22v03.061.2022016233330.hdf'
+2026-08-30 15:04:53 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2016\MOD11A2.A2016177.h23v02.061.2022016233452.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2016\\MOD11A2.A2016177.h23v02.061.2022016233452.hdf'
+2026-08-30 15:04:53 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2016\MOD11A2.A2016177.h23v03.061.2022016233453.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2016\\MOD11A2.A2016177.h23v03.061.2022016233453.hdf'
+2026-08-30 15:04:53 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2016\MOD11A2.A2016177.h24v03.061.2022016233335.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2016\\MOD11A2.A2016177.h24v03.061.2022016233335.hdf'
+2026-08-30 15:04:53 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2016\MOD11A2.A2016177.h25v03.061.2022016233332.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2016\\MOD11A2.A2016177.h25v03.061.2022016233332.hdf'
+2026-08-30 15:04:53 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2016\MOD11A2.A2016185.h20v02.061.2022017051334.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2016\\MOD11A2.A2016185.h20v02.061.2022017051334.hdf'
+2026-08-30 15:04:53 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2016\MOD11A2.A2016185.h23v02.061.2022017051422.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2016\\MOD11A2.A2016185.h23v02.061.2022017051422.hdf'
+2026-08-30 15:04:53 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2016\MOD11A2.A2016185.h23v03.061.2022017051423.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2016\\MOD11A2.A2016185.h23v03.061.2022017051423.hdf'
+2026-08-30 15:04:53 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2016\MOD11A2.A2016185.h24v03.061.2022017051425.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2016\\MOD11A2.A2016185.h24v03.061.2022017051425.hdf'
+2026-08-30 15:04:53 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2016\MOD11A2.A2016185.h25v03.061.2022017051330.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2016\\MOD11A2.A2016185.h25v03.061.2022017051330.hdf'
+2026-08-30 15:04:53 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2022\MOD11A2.A2022001.h19v01.061.2022010035447.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2022\\MOD11A2.A2022001.h19v01.061.2022010035447.hdf'
+2026-08-30 15:04:53 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2022\MOD11A2.A2022001.h20v01.061.2022010034855.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2022\\MOD11A2.A2022001.h20v01.061.2022010034855.hdf'
+2026-08-30 15:04:53 - core.02_validator - WARNING - Не удалось удалить D:\Dev\_ASP\modis_download_analysis1\data\raw\MOD11A2\2022\MOD11A2.A2022001.h21v01.061.2022010034527.hdf: [WinError 2] Не удается найти указанный файл: 'D:\\Dev\\_ASP\\modis_download_analysis1\\data\\raw\\MOD11A2\\2022\\MOD11A2.A2022001.h21v01.061.2022010034527.hdf'
+2026-08-30 15:04:53 - core.02_validator - INFO - Удалено файлов: 45
+2026-08-30 15:04:53 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:53 - core.02_validator - INFO - ИТОГОВАЯ СТАТИСТИКА
+2026-08-30 15:04:53 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:53 - core.02_validator - INFO - Проверено файлов: 86
+2026-08-30 15:04:53 - core.02_validator - INFO - Валидных: 0
+2026-08-30 15:04:53 - core.02_validator - INFO - Повреждённых: 86
+2026-08-30 15:04:53 - core.02_validator - INFO - Удалено: 45
+2026-08-30 15:04:53 - core.02_validator - INFO - └─ Слишком малые: 0
+2026-08-30 15:04:53 - core.02_validator - INFO - └─ Ошибки чтения: 86
+2026-08-30 15:04:53 - core.02_validator - INFO - └─ Нет датасетов: 0
+2026-08-30 15:04:53 - core.02_validator - INFO - ============================================================
+2026-08-30 15:04:53 - core.02_validator - INFO - СЛЕДУЮЩИЕ ШАГИ:
+2026-08-30 15:04:53 - core.02_validator - INFO - 1. Проверьте отчёт: D:\Dev\_ASP\modis_download_analysis1\data\tables\validation_report_20260830_150453.json
+2026-08-30 15:04:53 - core.02_validator - INFO - 2. Запустите modis_pipeline.py 01_download
+2026-08-30 15:04:53 - core.02_validator - INFO - 3. Запустите modis_pipeline.py 03_convert
+2026-08-30 15:04:59 - core.03_converter - INFO - ============================================================
+2026-08-30 15:04:59 - core.03_converter - INFO - MODIS HDF to GeoTIFF Converter
+2026-08-30 15:04:59 - core.03_converter - INFO - ============================================================
+2026-08-30 15:04:59 - core.03_converter - INFO - GDAL версия: 3.12.4
+2026-08-30 15:04:59 - core.03_converter - INFO - ============================================================
+2026-08-30 15:04:59 - core.03_converter - INFO - Конвертация завершена
+2026-08-30 15:04:59 - core.03_converter - INFO - ============================================================
+2026-08-30 15:05:09 - core.04_zonal_stats - INFO - ============================================================
+2026-08-30 15:05:09 - core.04_zonal_stats - INFO - Zonal Statistics: Pure GDAL + NumPy (OPTIMIZED)
+2026-08-30 15:05:09 - core.04_zonal_stats - INFO - ============================================================
+2026-08-30 15:05:09 - core.04_zonal_stats - INFO - [1/4] Загрузка зон из GeoPackage...
+2026-08-30 15:05:09 - core.04_zonal_stats - INFO - Загружено зон: 9
+2026-08-30 15:05:09 - core.04_zonal_stats - INFO -   1: Тундра
+2026-08-30 15:05:09 - core.04_zonal_stats - INFO -   2: Лесотундра
+2026-08-30 15:05:09 - core.04_zonal_stats - INFO -   3: Северная тайга
+2026-08-30 15:05:09 - core.04_zonal_stats - INFO -   4: Средняя тайга
+2026-08-30 15:05:09 - core.04_zonal_stats - INFO -   5: Южная тайга
+2026-08-30 15:05:09 - core.04_zonal_stats - INFO -   6: Подтайга
+2026-08-30 15:05:09 - core.04_zonal_stats - INFO -   7: Горная тайга
+2026-08-30 15:05:09 - core.04_zonal_stats - INFO -   8: Лесостепь
+2026-08-30 15:05:09 - core.04_zonal_stats - INFO -   9: Степь
+2026-08-30 15:05:09 - core.04_zonal_stats - INFO - [2/4] Поиск растров...
+2026-08-30 15:05:09 - core.04_zonal_stats - INFO - Найдено 80 растра для обработки.
+2026-08-30 15:05:09 - core.04_zonal_stats - INFO - Найден существующий файл: D:\Dev\_ASP\modis_download_analysis1\data\tables\zonal_stats_flat.csv
+2026-08-30 15:05:09 - core.04_zonal_stats - INFO - Загрузка индексов для пропуска сделанного...
+2026-08-30 15:05:09 - core.04_zonal_stats - INFO - Пропущено 457 уже готовых записей.
+2026-08-30 15:05:09 - core.04_zonal_stats - INFO - [3/4] Обработка растров...
+2026-08-30 15:05:09 - core.04_zonal_stats - INFO - >>> РЕЖИМ: МНОГОПОТОЧНОСТЬ (4 потоков) <<<
+2026-08-30 15:05:09 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:05:09 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Тундра': Full reprojection failed, but partial is possible if you define OGR_ENABLE_PARTIAL_REPROJECTION configuration option to TRUE
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid l
+2026-08-30 15:05:09 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Лесотундра': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:09 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Северная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:09 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Средняя тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:09 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Южная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:09 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Подтайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:09 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Горная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:09 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Лесостепь': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:09 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Степь': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:09 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:05:09 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:05:09 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Тундра': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:09 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Лесотундра': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:09 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Северная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:09 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Средняя тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:09 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Южная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:09 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Подтайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:09 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Горная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:09 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Лесостепь': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:09 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Степь': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:09 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:05:09 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:05:09 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Тундра': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:09 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Лесотундра': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:09 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Северная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Средняя тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Южная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Подтайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Горная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Лесостепь': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Степь': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:05:10 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Тундра': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Лесотундра': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Северная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Средняя тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Южная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Подтайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Горная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Лесостепь': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Степь': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:05:10 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Тундра': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Лесотундра': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Северная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Средняя тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Южная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Подтайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Горная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Лесостепь': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Степь': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:05:10 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Тундра': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Лесотундра': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Северная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Средняя тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Южная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Подтайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Горная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Лесостепь': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Степь': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:05:10 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Тундра': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Лесотундра': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Северная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Средняя тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Южная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Подтайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Горная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Лесостепь': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Степь': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:05:10 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Тундра': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Лесотундра': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Северная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Средняя тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Южная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Подтайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Горная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Лесостепь': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Степь': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:10 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:05:10 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:05:11 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Тундра': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:11 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Лесотундра': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:11 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Северная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:11 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Средняя тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:11 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Южная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:11 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Подтайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:11 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Горная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:11 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Лесостепь': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:11 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Степь': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:11 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:05:11 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:05:11 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Тундра': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:11 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Лесотундра': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:11 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Северная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:11 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Средняя тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:11 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Южная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:11 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Подтайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:11 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Горная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:11 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Лесостепь': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:11 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Степь': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:11 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:05:11 - core.04_zonal_stats - INFO - Обработано 20/80 растра...
+2026-08-30 15:05:11 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:05:11 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Тундра': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:11 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Лесотундра': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:11 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Северная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:11 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Средняя тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:11 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Южная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:11 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Подтайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:11 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Горная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:11 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Лесостепь': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:11 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Степь': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:11 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:05:12 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:05:12 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Тундра': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:12 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Лесотундра': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:12 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Северная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:12 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Средняя тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:12 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Южная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:12 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Подтайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:12 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Горная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:12 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Лесостепь': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:12 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Степь': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:12 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:05:12 - core.04_zonal_stats - INFO - Обработано 40/80 растра...
+2026-08-30 15:05:13 - core.04_zonal_stats - INFO - Обработано 60/80 растра...
+2026-08-30 15:05:14 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:05:14 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Тундра': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:14 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Лесотундра': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:14 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Северная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:15 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Средняя тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:15 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Южная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:15 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Подтайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:15 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Горная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:15 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Лесостепь': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:15 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Степь': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:15 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:05:15 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:05:15 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Тундра': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:15 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Лесотундра': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:15 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Северная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:15 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Средняя тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:15 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Южная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:15 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Подтайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:15 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Горная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:15 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Лесостепь': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:15 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Степь': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:15 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:05:15 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:05:15 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Тундра': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:15 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Лесотундра': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:15 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Северная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:15 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Средняя тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:15 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Южная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:15 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Подтайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:15 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Горная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:15 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Лесостепь': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:15 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Степь': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:15 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:05:15 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:05:15 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Тундра': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:15 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Лесотундра': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:15 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Северная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:15 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Средняя тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:16 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Южная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:16 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Подтайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:16 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Горная тайга': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:16 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Лесостепь': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:16 - core.04_zonal_stats - WARNING - Ошибка трансформации геометрии для зоны 'Степь': PROJ: sinu: Invalid latitude
+[...]
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid latitude
+May be caused by: PROJ: sinu: Invalid lat
+2026-08-30 15:05:16 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:05:16 - core.04_zonal_stats - INFO - Обработано 80/80 растра...
+2026-08-30 15:05:16 - core.04_zonal_stats - INFO - [4/4] Сохранение результатов...
+2026-08-30 15:05:16 - core.04_zonal_stats - INFO - Сохранена агрегированная сводка в D:\Dev\_ASP\modis_download_analysis1\data\tables\zonal_stats_flat_agg.csv
+2026-08-30 15:05:16 - core.04_zonal_stats - INFO - Завершено за 6.8 сек
+2026-08-30 15:10:46 - core.04_zonal_stats - INFO - ============================================================
+2026-08-30 15:10:46 - core.04_zonal_stats - INFO - Zonal Statistics: Pure GDAL + NumPy (OPTIMIZED)
+2026-08-30 15:10:46 - core.04_zonal_stats - INFO - ============================================================
+2026-08-30 15:10:46 - core.04_zonal_stats - INFO - [1/4] Загрузка зон из GeoPackage...
+2026-08-30 15:10:46 - core.04_zonal_stats - INFO - Загружено зон: 9
+2026-08-30 15:10:46 - core.04_zonal_stats - INFO -   1: Тундра
+2026-08-30 15:10:46 - core.04_zonal_stats - INFO -   2: Лесотундра
+2026-08-30 15:10:46 - core.04_zonal_stats - INFO -   3: Северная тайга
+2026-08-30 15:10:46 - core.04_zonal_stats - INFO -   4: Средняя тайга
+2026-08-30 15:10:46 - core.04_zonal_stats - INFO -   5: Южная тайга
+2026-08-30 15:10:46 - core.04_zonal_stats - INFO -   6: Подтайга
+2026-08-30 15:10:46 - core.04_zonal_stats - INFO -   7: Горная тайга
+2026-08-30 15:10:46 - core.04_zonal_stats - INFO -   8: Лесостепь
+2026-08-30 15:10:46 - core.04_zonal_stats - INFO -   9: Степь
+2026-08-30 15:10:46 - core.04_zonal_stats - INFO - [2/4] Поиск растров...
+2026-08-30 15:10:46 - core.04_zonal_stats - INFO - Найдено 80 растра для обработки.
+2026-08-30 15:10:46 - core.04_zonal_stats - INFO - Найден существующий файл: D:\Dev\_ASP\modis_download_analysis1\data\tables\zonal_stats_flat.csv
+2026-08-30 15:10:46 - core.04_zonal_stats - INFO - Загрузка индексов для пропуска сделанного...
+2026-08-30 15:10:46 - core.04_zonal_stats - INFO - Пропущено 457 уже готовых записей.
+2026-08-30 15:10:46 - core.04_zonal_stats - INFO - [3/4] Обработка растров...
+2026-08-30 15:10:46 - core.04_zonal_stats - INFO - >>> РЕЖИМ: МНОГОПОТОЧНОСТЬ (4 потоков) <<<
+2026-08-30 15:10:46 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:10:46 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:10:46 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:10:46 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:10:46 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:10:46 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:10:46 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:10:46 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:10:46 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:10:46 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:10:46 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:10:46 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:10:46 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:10:46 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:10:46 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:10:46 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:10:46 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:10:46 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:10:46 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:10:46 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:10:47 - core.04_zonal_stats - INFO - Обработано 20/80 растра...
+2026-08-30 15:10:47 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:10:47 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:10:47 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:10:47 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:10:47 - core.04_zonal_stats - INFO - Обработано 40/80 растра...
+2026-08-30 15:10:47 - core.04_zonal_stats - INFO - Обработано 60/80 растра...
+2026-08-30 15:10:47 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:10:47 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:10:47 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:10:47 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:10:47 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:10:47 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:10:47 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:10:47 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:10:47 - core.04_zonal_stats - INFO - Обработано 80/80 растра...
+2026-08-30 15:10:47 - core.04_zonal_stats - INFO - [4/4] Сохранение результатов...
+2026-08-30 15:10:48 - core.04_zonal_stats - INFO - Сохранена агрегированная сводка в D:\Dev\_ASP\modis_download_analysis1\data\tables\zonal_stats_flat_agg.csv
+2026-08-30 15:10:48 - core.04_zonal_stats - INFO - Завершено за 1.7 сек
+2026-08-30 15:11:16 - core.04_zonal_stats - INFO - ============================================================
+2026-08-30 15:11:16 - core.04_zonal_stats - INFO - Zonal Statistics: Pure GDAL + NumPy (OPTIMIZED)
+2026-08-30 15:11:16 - core.04_zonal_stats - INFO - ============================================================
+2026-08-30 15:11:16 - core.04_zonal_stats - INFO - [1/4] Загрузка зон из GeoPackage...
+2026-08-30 15:11:16 - core.04_zonal_stats - INFO - Загружено зон: 9
+2026-08-30 15:11:16 - core.04_zonal_stats - INFO -   1: Тундра
+2026-08-30 15:11:16 - core.04_zonal_stats - INFO -   2: Лесотундра
+2026-08-30 15:11:16 - core.04_zonal_stats - INFO -   3: Северная тайга
+2026-08-30 15:11:16 - core.04_zonal_stats - INFO -   4: Средняя тайга
+2026-08-30 15:11:16 - core.04_zonal_stats - INFO -   5: Южная тайга
+2026-08-30 15:11:16 - core.04_zonal_stats - INFO -   6: Подтайга
+2026-08-30 15:11:16 - core.04_zonal_stats - INFO -   7: Горная тайга
+2026-08-30 15:11:16 - core.04_zonal_stats - INFO -   8: Лесостепь
+2026-08-30 15:11:16 - core.04_zonal_stats - INFO -   9: Степь
+2026-08-30 15:11:16 - core.04_zonal_stats - INFO - [2/4] Поиск растров...
+2026-08-30 15:11:16 - core.04_zonal_stats - INFO - Найдено 80 растра для обработки.
+2026-08-30 15:11:16 - core.04_zonal_stats - INFO - [3/4] Обработка растров...
+2026-08-30 15:11:16 - core.04_zonal_stats - INFO - >>> РЕЖИМ: МНОГОПОТОЧНОСТЬ (4 потоков) <<<
+2026-08-30 15:11:16 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:11:16 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:11:16 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:11:16 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:11:16 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:11:16 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:11:16 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:11:16 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:11:16 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:11:16 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:11:16 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:11:17 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:11:17 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:11:17 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:11:17 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:11:17 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:11:17 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:11:17 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:11:17 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:11:17 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:11:17 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:11:17 - core.04_zonal_stats - INFO - Обработано 20/80 растра...
+2026-08-30 15:11:17 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:11:17 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:11:17 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:11:17 - core.04_zonal_stats - INFO - Обработано 40/80 растра...
+2026-08-30 15:11:17 - core.04_zonal_stats - INFO - Обработано 60/80 растра...
+2026-08-30 15:11:17 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:11:17 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:11:17 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:11:18 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:11:18 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:11:18 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:11:18 - core.04_zonal_stats - INFO - Растеризация маски зон (первый раз для этого формата растра)...
+2026-08-30 15:11:18 - core.04_zonal_stats - INFO - Маска зон растеризована.
+2026-08-30 15:11:18 - core.04_zonal_stats - INFO - Обработано 80/80 растра...
+2026-08-30 15:11:18 - core.04_zonal_stats - INFO - [4/4] Сохранение результатов...
+2026-08-30 15:11:18 - core.04_zonal_stats - INFO - Сохранено 97 записей в D:\Dev\_ASP\modis_download_analysis1\data\tables\zonal_stats_flat.csv
+2026-08-30 15:11:18 - core.04_zonal_stats - INFO - Сохранена агрегированная сводка в D:\Dev\_ASP\modis_download_analysis1\data\tables\zonal_stats_flat_agg.csv
+2026-08-30 15:11:18 - core.04_zonal_stats - INFO - Завершено за 1.7 сек
+2026-08-30 15:14:26 - core.05_analyzer - INFO - ============================================================
+2026-08-30 15:14:26 - core.05_analyzer - INFO - MODIS Analyzer
+2026-08-30 15:14:26 - core.05_analyzer - INFO - ============================================================
+2026-08-30 15:14:26 - core.05_analyzer - INFO - Время начала: 2026-08-30 15:14:26
+2026-08-30 15:14:26 - core.05_analyzer - INFO - Загрузка данных: D:\Dev\_ASP\modis_download_analysis1\data\tables\zonal_stats_flat.csv
+2026-08-30 15:14:26 - core.05_analyzer - INFO - Загружено записей: 97
+2026-08-30 15:14:26 - core.05_analyzer - INFO - [1/6] Сезонная динамика...
+2026-08-30 15:14:27 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\seasonal_lst.png
+2026-08-30 15:14:27 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\seasonal_lst_night.png
+2026-08-30 15:14:27 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\seasonal_albedo.png
+2026-08-30 15:14:27 - core.05_analyzer - INFO - [2/6] Межгодовые тренды...
+2026-08-30 15:14:28 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\trend_lst.png
+2026-08-30 15:14:28 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\trend_lst_night.png
+2026-08-30 15:14:28 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\trend_albedo.png
+2026-08-30 15:14:28 - core.05_analyzer - INFO - [3/6] Широтный градиент (месяц 7)...
+2026-08-30 15:14:29 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\gradient_lst_m7.png
+2026-08-30 15:14:29 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\gradient_lst_night_m7.png
+2026-08-30 15:14:29 - core.05_analyzer - WARNING - Нет данных для градиента Albedo в месяц 7
+2026-08-30 15:14:29 - core.05_analyzer - INFO - [4/6] Сезонная амплитуда...
+2026-08-30 15:14:29 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\amplitude_lst.png
+2026-08-30 15:14:30 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\amplitude_lst_night.png
+2026-08-30 15:14:30 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\amplitude_albedo.png
+2026-08-30 15:14:30 - core.05_analyzer - INFO - [5/6] Корреляция продуктов (месяц 7)...
+2026-08-30 15:14:30 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\correlation_lst_lst_night_m7.png
+2026-08-30 15:14:30 - core.05_analyzer - INFO - [6/6] Сводные таблицы...
+2026-08-30 15:14:30 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\summary_statistics.csv
+2026-08-30 15:14:30 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\trend_significance.csv
+2026-08-30 15:14:30 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis\monthly_aggregated.csv
+2026-08-30 15:14:30 - core.05_analyzer - INFO - 
+Завершено.
+2026-08-30 15:14:30 - core.05_analyzer - INFO - Графики: D:\Dev\_ASP\modis_download_analysis1\output\figures\analysis
+2026-08-30 15:14:30 - core.05_analyzer - INFO - Время окончания: 2026-08-30 15:14:30
+2026-08-30 15:43:16 - core.03_converter - INFO - ============================================================
+2026-08-30 15:43:16 - core.03_converter - INFO - MODIS HDF to GeoTIFF Converter
+2026-08-30 15:43:16 - core.03_converter - INFO - ============================================================
+2026-08-30 15:43:16 - core.03_converter - INFO - GDAL версия: 3.12.2e
+2026-08-30 15:43:41 - core.03_converter - WARNING - Не удалось создать Mosaic Dataset LST_2015: ERROR 000622: Не удалось выполнить (Добавить растры в набор данных мозаики). Параметры некорректны
+ERROR 000800: Значение не включено в UPDATE_CELL_SIZES | NO_CELL_SIZES.
+
+2026-08-30 15:43:41 - core.03_converter - INFO - ============================================================
+2026-08-30 15:43:41 - core.03_converter - INFO - Конвертация завершена
+2026-08-30 15:43:41 - core.03_converter - INFO - ============================================================
+2026-08-30 15:51:04 - core.03_converter - INFO - ============================================================
+2026-08-30 15:51:04 - core.03_converter - INFO - MODIS HDF to GeoTIFF Converter
+2026-08-30 15:51:04 - core.03_converter - INFO - ============================================================
+2026-08-30 15:51:04 - core.03_converter - INFO - GDAL версия: 3.12.2e
+2026-08-30 15:51:35 - core.03_converter - INFO - Mosaic Dataset создан: D:\Dev\_ASP\modis_download_analysis1\output\gis\modis_mosaics.gdb\LST_2015
+2026-08-30 15:51:35 - core.03_converter - INFO - ============================================================
+2026-08-30 15:51:35 - core.03_converter - INFO - Конвертация завершена
+2026-08-30 15:51:35 - core.03_converter - INFO - ============================================================

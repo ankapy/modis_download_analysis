@@ -35,6 +35,8 @@ from utils import messages
 
 logger = setup_logger(__name__)
 
+AUTH_STRATEGIES = ("netrc", "environment")
+
 
 def count_hdf_files(output_dir: Path) -> int:
     """Подсчёт HDF-файлов в директории (без загрузки списка в память)."""
@@ -46,21 +48,13 @@ def count_hdf_files(output_dir: Path) -> int:
 def authenticate():
     """Авторизация в NASA Earthdata с каскадным перебором стратегий."""
     logger.info(messages.LOG_AUTH_START)
-
-    try:
-        earthaccess.login(strategy="netrc", persist=True)
-        logger.info(messages.LOG_AUTH_OK)
-        return
-    except Exception as e:
-        logger.debug(f"Авторизация через netrc не удалась: {e}")
-
-    try:
-        earthaccess.login(strategy="environment", persist=True)
-        logger.info(messages.LOG_AUTH_OK)
-        return
-    except Exception as e:
-        logger.debug(f"Авторизация через окружение не удалась: {e}")
-
+    for strategy in AUTH_STRATEGIES:
+        try:
+            earthaccess.login(strategy=strategy, persist=True)
+            logger.info(messages.LOG_AUTH_OK)
+            return
+        except Exception as e:
+            logger.debug(messages.LOG_AUTH_STRATEGY_FAIL.format(strategy, str(e)))
     logger.error(messages.ERR_AUTH_FAILED)
     sys.exit(1)
 

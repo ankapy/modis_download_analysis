@@ -270,7 +270,7 @@ def main(args):
             logger.debug(messages.LOG_VALIDATION_SKIP.format(product_raw_dir))
             continue
 
-        # Сканируем только существующие годы, как в 03_converter.
+        # Сканируем только существующие годы.
         if args.year:
             target_years = [args.year]
         else:

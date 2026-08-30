@@ -78,6 +78,8 @@ def get_zone_mask(raster_path: str, zones: list):
         v_ds = mem_driver.CreateDataSource("mem")
         srs = osr.SpatialReference()
         srs.ImportFromWkt(projection)
+        # Фиксируем порядок координат (lon, lat) независимо от версии GDAL.
+        srs.SetAxisMappingStrategy(osr.OAMS_TRADITIONAL_GIS_ORDER)
         v_layer = v_ds.CreateLayer("zones", srs=srs, geom_type=ogr.wkbPolygon)
 
         field_def = ogr.FieldDefn("zone_id", ogr.OFTInteger)
@@ -85,18 +87,21 @@ def get_zone_mask(raster_path: str, zones: list):
 
         wgs84_srs = osr.SpatialReference()
         wgs84_srs.ImportFromEPSG(4326)
+        wgs84_srs.SetAxisMappingStrategy(osr.OAMS_TRADITIONAL_GIS_ORDER)
         transform = osr.CoordinateTransformation(wgs84_srs, srs)
 
         for zone in zones:
-            feat = ogr.Feature(v_layer.GetLayerDefn())
-            feat.SetField("zone_id", zone["id"])
             geom = ogr.CreateGeometryFromWkt(zone["wkt"])
-
             try:
                 geom.Transform(transform)
             except RuntimeError as e:
-                logger.warning(messages.ERR_GEOM_TRANSFORM.format(zone["name"], str(e)))
+                logger.warning(
+                    messages.ERR_GEOM_TRANSFORM.format(zone["name"], str(e)[:80])
+                )
+                continue
 
+            feat = ogr.Feature(v_layer.GetLayerDefn())
+            feat.SetField("zone_id", zone["id"])
             feat.SetGeometry(geom)
             v_layer.CreateFeature(feat)
             feat = None
