@@ -1,0 +1,22 @@
+{
+  "stage": "03_convert",
+  "started_at": "2026-08-30T21:33:39.905292",
+  "params": {
+    "product": "all",
+    "year": null,
+    "workers": 4,
+    "mosaic": false,
+    "cog": false,
+    "reproject": null
+  },
+  "environment": {
+    "python": "3.13.13",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "versions": {
+      "numpy": "2.3.2",
+      "pandas": "2.3.1",
+      "earthaccess": "0.18.0",
+      "osgeo.gdal": "3.13.3"
+    }
+  }
+}
