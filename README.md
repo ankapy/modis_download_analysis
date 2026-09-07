@@ -38,7 +38,7 @@
 
 ## Схема пайплайна
 
-[![FastPic.Org](https://i128.fastpic.org/thumb/2026/0907/2d/13ff427c668af4aa56c5188a92e7e72d.jpeg)](https://fastpic.org/view/128/2026/0907/13ff427c668af4aa56c5188a92e7e72d.jpg.html)
+![Схема пайплайна](https://i128.fastpic.org/big/2026/0907/cb/989f374ba228b9d94911e3b54c090bcb.jpg)
 
 | Этап | Что делает | Вход | Выход |
 |------|------------|------|-------|
