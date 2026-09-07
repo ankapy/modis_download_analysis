@@ -3,9 +3,7 @@ project_dump.txt
 # test*
 gis/
 data/
-00_zonal_stats_arcgis.py
-00_zonal_stats.py
-
+pipeline_schema/
 
 # Python
 __pycache__/

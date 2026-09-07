@@ -1,11 +1,10 @@
-"""
-Система логирования для пайплайна MODIS.
-"""
+"""Система логирования для пайплайна MODIS."""
 
 import logging
 import sys
 from datetime import datetime
-from config import LOG_FORMAT, LOG_DATE_FORMAT, DATA_PATHS, DATE_FORMAT_FILE
+
+from config import DATA_PATHS, DATE_FORMAT_FILE, LOG_DATE_FORMAT, LOG_FORMAT
 
 
 def setup_logger(name: str, level: int = logging.INFO) -> logging.Logger:
@@ -24,9 +23,11 @@ def setup_logger(name: str, level: int = logging.INFO) -> logging.Logger:
     logger.addHandler(console_handler)
 
     # Файловый handler.
-    log_dir = DATA_PATHS["logs"]
-    log_file = log_dir / f"pipeline_{datetime.now().strftime(DATE_FORMAT_FILE)}.log"
-    file_handler = logging.FileHandler(log_file, encoding="utf-8")
+    log_dir = DATA_PATHS['logs']
+    log_file = (
+        log_dir / f'pipeline_{datetime.now().strftime(DATE_FORMAT_FILE)}.log'
+    )
+    file_handler = logging.FileHandler(log_file, encoding='utf-8')
     file_handler.setLevel(logging.DEBUG)
     file_formatter = logging.Formatter(LOG_FORMAT, LOG_DATE_FORMAT)
     file_handler.setFormatter(file_formatter)

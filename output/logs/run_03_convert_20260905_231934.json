@@ -1,10 +1,13 @@
 {
-  "stage": "05_analyze",
-  "started_at": "2026-08-30T20:32:15.816261",
+  "stage": "03_convert",
+  "started_at": "2026-09-05T23:19:33.453159",
   "params": {
-    "product": "LST",
-    "output_dir": "D:\\Dev\\_ASP\\modis_download_analysis1\\output\\figures\\analysis",
-    "excel": true
+    "product": "all",
+    "year": null,
+    "workers": 4,
+    "mosaic": false,
+    "cog": false,
+    "reproject": null
   },
   "environment": {
     "python": "3.13.13",

@@ -1,32 +1,33 @@
-"""
-Утилиты для работы с геоданными.
-"""
+"""Утилиты для работы с геоданными."""
 
-import numpy as np
-import matplotlib.pyplot as plt
 from pathlib import Path
-from typing import List, Dict, Tuple
-from osgeo import ogr, osr
+from typing import Dict, List, Tuple
+
+import matplotlib.pyplot as plt
+import numpy as np
+from osgeo import ogr
 
 # Явно включаем исключения OGR
 ogr.UseExceptions()
 
 
-def calculate_bbox_from_gpkg(gpkg_path: Path) -> Tuple[float, float, float, float]:
-    """
-    Расчёт bounding box из GeoPackage.
+def calculate_bbox_from_gpkg(
+    gpkg_path: Path,
+) -> Tuple[float, float, float, float]:
+    """Расчёт bounding box из GeoPackage.
+
     Возвращает строго (lon_min, lat_min, lon_max, lat_max).
     """
     if not gpkg_path.exists():
-        raise FileNotFoundError(f"GeoPackage не найден: {gpkg_path}")
+        raise FileNotFoundError(f'GeoPackage не найден: {gpkg_path}')
 
     ds = ogr.Open(str(gpkg_path))
     if ds is None:
-        raise RuntimeError(f"Не удалось открыть: {gpkg_path}")
+        raise RuntimeError(f'Не удалось открыть: {gpkg_path}')
 
     layer = ds.GetLayerByIndex(0)
     if layer is None:
-        raise RuntimeError("Слой не найден в GeoPackage")
+        raise RuntimeError('Слой не найден в GeoPackage')
 
     # GetExtent возвращает (minX, maxX, minY, maxY)
     extent = layer.GetExtent()
@@ -40,7 +41,7 @@ def calculate_bbox_from_gpkg(gpkg_path: Path) -> Tuple[float, float, float, floa
 def load_zones(gpkg_path: Path) -> List[Dict]:
     """Загрузка зон из GeoPackage с автоматической нумерацией."""
     if not gpkg_path.exists():
-        raise FileNotFoundError(f"GeoPackage не найден: {gpkg_path}")
+        raise FileNotFoundError(f'GeoPackage не найден: {gpkg_path}')
 
     ds = ogr.Open(str(gpkg_path))
     layer = ds.GetLayerByIndex(0)
@@ -50,18 +51,18 @@ def load_zones(gpkg_path: Path) -> List[Dict]:
 
     for feat in layer:
         name = None
-        for field_name in ["name", "zone_name", "NAME", "ZONE_NAME"]:
+        for field_name in ['name', 'zone_name', 'NAME', 'ZONE_NAME']:
             name = feat.GetField(field_name)
             if name and str(name).strip():
                 name = str(name).strip()
                 break
 
         if not name:
-            name = f"zone_{auto_id}"
+            name = f'zone_{auto_id}'
             auto_id += 1
 
         zone_id = None
-        for field_name in ["id", "ID", "zone_id", "ZONE_ID"]:
+        for field_name in ['id', 'ID', 'zone_id', 'ZONE_ID']:
             zone_id = feat.GetField(field_name)
             if zone_id is not None:
                 zone_id = int(zone_id)
@@ -76,16 +77,16 @@ def load_zones(gpkg_path: Path) -> List[Dict]:
 
         zones.append(
             {
-                "id": zone_id,
-                "name": name,
-                "wkt": geom.ExportToWkt(),
-                "lat_center": float(centroid.GetY()),
-                "lon_center": float(centroid.GetX()),
-            }
+                'id': zone_id,
+                'name': name,
+                'wkt': geom.ExportToWkt(),
+                'lat_center': float(centroid.GetY()),
+                'lon_center': float(centroid.GetX()),
+            },
         )
 
     ds = None
-    zones.sort(key=lambda z: z["id"])
+    zones.sort(key=lambda z: z['id'])
 
     return zones
 
@@ -115,8 +116,10 @@ def generate_zone_colors(zone_names: List[str]) -> Dict[str, str]:
     color_map = {}
     for i, zone_name in enumerate(zone_names):
         rgb = colors[i][:3]
-        hex_color = "#{:02x}{:02x}{:02x}".format(
-            int(rgb[0] * 255), int(rgb[1] * 255), int(rgb[2] * 255)
+        hex_color = '#{:02x}{:02x}{:02x}'.format(
+            int(rgb[0] * 255),
+            int(rgb[1] * 255),
+            int(rgb[2] * 255),
         )
         color_map[zone_name] = hex_color
 

@@ -6,11 +6,10 @@
 
 - [Ключевые возможности](#ключевые-возможности)
 - [Схема пайплайна](#схема-пайплайна)
-- [Требования](#требования)
 - [Структура проекта](#структура-проекта)
 - [Установка и развертывание](#установка-и-развертывание)
 - [Конфигурация](#конфигурация)
-- [Быстрый старт](#быстрый-старт)
+- [Запуск приложения](#запуск-приложения)
 - [Справочник команд CLI](#справочник-команд-cli)
 - [Результаты и выходные файлы](#результаты-и-выходные-файлы)
   - [Растровые данные (GeoTIFF)](#растровые-данные-geotiff)
@@ -21,7 +20,6 @@
   - [Логи и провенанс](#логи-и-провенанс)
   - [Работа в ГИС](#работа-в-гис)
 - [Типовые сценарии](#типовые-сценарии)
-- [Troubleshooting](#troubleshooting)
 - [Тестирование](#тестирование)
 - [Примечания и ограничения](#примечания-и-ограничения)
 
@@ -40,9 +38,8 @@
 
 ## Схема пайплайна
 
-```text
-01_download -> 02_validate -> 03_convert -> 04_stats -> 05_analyze
-```
+[![FastPic.Org](https://i128.fastpic.org/thumb/2026/0907/2a/_3ba4962de5521182b19d81ddb2094d2a.jpeg)](https://fastpic.org/view/128/2026/0907/_3ba4962de5521182b19d81ddb2094d2a.jpg.html)
+
 | Этап | Что делает | Вход | Выход |
 |------|------------|------|-------|
 | `01_download` | Ищет и скачивает снимки NASA за выбранный период | `zones.gpkg`, параметры из `config.py` | HDF-файлы: `data/raw/<PRODUCT>/<год>/*.hdf` |
@@ -90,7 +87,7 @@ modis_download_analysis/
 ├── gis/
 │   └── zones.gpkg                 # Входные полигоны зон (WGS84)
 └── output/
-    ├── figures/analysis/          # PNG-графики и CSV-сводки анализа
+    ├── figures/          # PNG-графики и CSV-сводки анализа
     ├── tables/                    # modis_analysis.xlsx (флаг --excel)
     ├── logs/                      # pipeline_*.log и provenance run_<этап>_*.json
     └── gis/                       # modis_mosaics.gdb (флаг --mosaic, ArcGIS Pro)
@@ -150,6 +147,26 @@ python modis_pipeline.py selftest
 
 Команда проверяет зависимости, GDAL с HDF4, конфигурацию, авторизацию в NASA, файл зон. Если все строки `[OK]` — установка завершена.
 
+### Активация созданного окружения
+
+Активация окружения выполняется в зависимости от того, каким дистрибутивом
+Python оно создано и где расположена папка окружения.
+
+**Вариант 1. Через окружение ArcGIS Pro** (если `.\venv` клонировалось из pro-окружения):
+
+```bash
+"C:\Program Files\ArcGIS\Pro\bin\Python\Scripts\proenv.bat"
+cd <полный путь к папке проекта>
+conda activate .\venv
+```
+
+**Вариант 2. Через Anaconda / Miniconda**:
+
+```bash
+cd <полный путь к папке venv>
+conda activate .\venv
+```
+
 ## Конфигурация
 
 Все пользовательские настройки собраны в одном файле — `config.py` в корне проекта. Каждый этап читает параметры из конфига.
@@ -188,9 +205,14 @@ python modis_pipeline.py selftest
 
 `DOWNLOAD_*` управляют темпом скачивания: размер пакета, число повторов, паузы между гранулами, пакетами, продуктами и годами. Паузы защищают от ограничений сервера NASA — не убирайте их полностью, иначе аккаунт могут временно заблокировать. `EXPECTED_GRANULES` — приблизительная оценка числа гранул за год: по ней пайплайн понимает, что год уже скачан целиком, и не тратит время на повторный поиск.
 
-## Быстрый старт
+## Запуск приложения
 
 После успешной установки и `selftest` у вас два пути: либо запустить весь пайплайн одной командой, либо пройти по этапам вручную. Подробное описание команд — в разделе [Справочник команд CLI](#справочник-команд-cli).
+
+В общем виде запуск пайплайна осуществляется командами в виде 
+```bash
+python modis_pipeline.py <команда> <флаги>
+```
 
 ### Вариант 1: полный цикл одной командой
 
@@ -203,29 +225,30 @@ python modis_pipeline.py run-all --zones gis/zones.gpkg --start-year 2015 --end-
 анализ. Уже скачанные и посчитанные данные при повторных запусках пропускаются, поэтому команду можно запускать сколько угодно раз для докачки и дорасчёта.
 
 ### Вариант 2: пошагово
-
+Минимальный набор команд без дополнительных флагов:
 ```bash
-# 1. Самодиагностика окружения
+# 0. Самодиагностика окружения
 python modis_pipeline.py selftest
 
-# 2. Загрузка HDF-гранул
-python modis_pipeline.py 01_download --zones gis/zones.gpkg --start-year 2015 --end-year 2015 --months 1 --products LST
+# 1. Загрузка HDF-гранул
+python modis_pipeline.py 01_download
 
-# 3. Проверка целостности скачанных файлов (без удаления)
-python modis_pipeline.py 02_validate --product LST --year 2015 --dry-run
+# 2. Проверка целостности скачанных файлов, удаление битых
+python modis_pipeline.py 02_validate
 
-# 4. Конвертация в GeoTIFF с QA-фильтрацией
-python modis_pipeline.py 03_convert --product LST --year 2015
+# 3. Конвертация в GeoTIFF с QA-фильтрацией
+python modis_pipeline.py 03_convert
 
-# 5. Зональная статистика по полигонам
-python modis_pipeline.py 04_stats --zones gis/zones.gpkg
+# 4. Зональная статистика по полигонам
+python modis_pipeline.py 04_stats
 
-# 6. Анализ, графики и Excel-экспорт
-python modis_pipeline.py 05_analyze --product LST --excel
+# 5. Анализ, графики и Excel-экспорт
+python modis_pipeline.py 05_analyze
 ```
 
 Если на любом этапе произошёл сбой (обрыв связи, Ctrl+C, отключение питания),
 просто перезапустите эту же команду — работа продолжится с места остановки.
+Чтобы не вводить минимальные входные данные (пути, интервалы дат) интерактивно, можно к командам добавить флаги. Полный доступный перечень флагов и примеры указаны в разделах [Справочник команд CLI](#справочник-команд-cli) и и [Типовые сценарии](#типовые-сценарии).
 
 ## Справочник команд CLI
 
@@ -494,8 +517,7 @@ output/
 Быстрая проверка пайплайна на малом объёме данных:
 
 ```bash
-python modis_pipeline.py 01_download --zones gis/zones.gpkg ^
-    --start-year 2015 --end-year 2015 --months 1 --products LST
+python modis_pipeline.py 01_download --zones gis/zones.gpkg --start-year 2015 --end-year 2015 --months 1 --products LST
 ```
 
 ### Проверить файлы, ничего не удаляя
@@ -514,8 +536,7 @@ python modis_pipeline.py 02_validate --product LST --year 2015 --dry-run
 Собрать GeoTIFF в формате COG с перепроекцией в WGS84:
 
 ```bash
-python modis_pipeline.py 03_convert --product LST --year 2015 ^
-    --cog --reproject 4326
+python modis_pipeline.py 03_convert --product LST --year 2015 --cog --reproject 4326
 ```
 
 После этого откройте `data/processed/LST/LST_2015.vrt` — все тайлы года
@@ -617,7 +638,7 @@ python modis_pipeline.py 05_analyze --product LST --excel
 - `data/raw/MOD11A2/2015/` — скачанные `.hdf` файлы;
 - `data/processed/LST/2015/` — GeoTIFF + `LST_2015.vrt`;
 - `data/tables/zonal_stats_flat.csv` и `_agg.csv` — непустые таблицы;
-- `output/figures/analysis/` — PNG-графики и CSV-сводки;
+- `output/figures/` — PNG-графики и CSV-сводки;
 - `output/tables/modis_analysis.xlsx` — Excel-книга с 4 листами;
 - `output/logs/` — provenance-JSON для каждого этапа.
 
@@ -682,4 +703,3 @@ python modis_pipeline.py bad_command
   пропустятся с предупреждением.
 
 Это сделано для работы с частичными выборками (например, только зимниеили только летние месяцы).
-

@@ -1,0 +1,57 @@
+# Ruff для MODIS Pipeline.
+# Стиль: PEP8, длина строки 79, одинарные кавычки.
+# Без обязательных аннотаций (вводятся только по запросу).
+
+indent-width = 4
+line-length = 79
+required-version = ">=0.11.11"
+target-version = "py313"
+
+# Без preview-правил: нужна стабильность между версиями ruff.
+preview = false
+
+exclude = [
+    "venv", ".venv",   # окружение
+    "data", "output",  # данные и результаты
+]
+
+[format]
+docstring-code-format = true
+docstring-code-line-length = 60
+line-ending = "lf"
+# Одинарные кавычки.
+quote-style = "single"
+
+[lint]
+select = [
+    "E", "W", "F", "I", "C90", "D", "N", "A", "RET",
+]
+ignore = [
+    "D203", "D213",   # конфликтные пары: оставляем D211 + D212
+    "D401",           # императив не работает с русскими докстрингами
+    "N999",           # модули 01_downloader.py и т.д. — осознанно
+    "E501",           # длину строк контролирует ruff format
+]
+
+
+[lint.per-file-ignores]
+# импорты после sys.path.insert / matplotlib.use() — намеренно
+"modis_pipeline.py" = ["E402"]
+"core/05_analyzer.py" = ["E402"]
+# имена тестов описаны декоратором @check — докстринги избыточны
+"tests/smoke_test.py" = ["D103"]
+
+[lint.flake8-quotes]
+inline-quotes = "single"
+
+[lint.isort]
+case-sensitive = true
+known-local-folder = ["cli", "core", "utils", "tests"]
+
+[lint.mccabe]
+# download_granules и main пока сложнее 10 — лимит поднят, это техдолг.
+max-complexity = 12
+
+[lint.pycodestyle]
+max-doc-length = 79
+max-line-length = 79
