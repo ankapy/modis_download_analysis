@@ -8,6 +8,7 @@ import warnings
 import matplotlib
 import numpy as np
 import pandas as pd
+from matplotlib.ticker import MultipleLocator
 
 matplotlib.use('Agg')
 from datetime import datetime
@@ -165,6 +166,7 @@ class MODISAnalyzer:
         ax.set_ylabel(f'{product} ({self._get_unit(product)})')
         ax.legend(title='Зона', frameon=True)
         ax.grid(axis='y', alpha=0.3)
+        ax.xaxis.set_major_locator(MultipleLocator(1))
 
         if save:
             path = self.output_dir / f'seasonal_{product.lower()}.png'
