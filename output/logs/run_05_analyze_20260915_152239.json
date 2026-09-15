@@ -1,6 +1,6 @@
 {
   "stage": "05_analyze",
-  "started_at": "2026-09-09T22:46:49.481896",
+  "started_at": "2026-09-15T15:22:38.504448",
   "params": {
     "product": "all",
     "output_dir": "D:\\Dev\\_ASP\\modis_download_analysis1\\output\\figures",

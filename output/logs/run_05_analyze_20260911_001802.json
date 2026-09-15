@@ -1,0 +1,19 @@
+{
+  "stage": "05_analyze",
+  "started_at": "2026-09-11T00:18:00.097823",
+  "params": {
+    "product": "all",
+    "output_dir": "D:\\Dev\\_ASP\\modis_download_analysis1\\output\\figures",
+    "excel": false
+  },
+  "environment": {
+    "python": "3.13.13",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "versions": {
+      "numpy": "2.3.2",
+      "pandas": "2.3.1",
+      "earthaccess": "0.18.0",
+      "osgeo.gdal": "3.13.3"
+    }
+  }
+}

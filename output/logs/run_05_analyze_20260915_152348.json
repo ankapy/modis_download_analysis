@@ -1,10 +1,10 @@
 {
-  "stage": "04_stats",
-  "started_at": "2026-09-09T23:07:58.078518",
+  "stage": "05_analyze",
+  "started_at": "2026-09-15T15:23:47.766894",
   "params": {
-    "zones": "gis\\zones.gpkg",
-    "workers": 4,
-    "test": false
+    "product": "all",
+    "output_dir": "D:\\Dev\\_ASP\\modis_download_analysis1\\output\\figures",
+    "excel": false
   },
   "environment": {
     "python": "3.13.13",

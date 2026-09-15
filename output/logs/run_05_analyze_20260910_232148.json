@@ -1,13 +1,10 @@
 {
-  "stage": "03_convert",
-  "started_at": "2026-09-05T23:19:33.453159",
+  "stage": "05_analyze",
+  "started_at": "2026-09-10T23:21:47.957391",
   "params": {
     "product": "all",
-    "year": null,
-    "workers": 4,
-    "mosaic": false,
-    "cog": false,
-    "reproject": null
+    "output_dir": "D:\\Dev\\_ASP\\modis_download_analysis1\\output\\figures",
+    "excel": false
   },
   "environment": {
     "python": "3.13.13",

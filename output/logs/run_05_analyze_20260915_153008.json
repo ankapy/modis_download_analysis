@@ -1,9 +1,9 @@
 {
   "stage": "05_analyze",
-  "started_at": "2026-09-05T23:20:21.304504",
+  "started_at": "2026-09-15T15:30:08.519442",
   "params": {
     "product": "all",
-    "output_dir": "D:\\Dev\\_ASP\\modis_download_analysis1\\output\\figures\\analysis",
+    "output_dir": "D:\\Dev\\_ASP\\modis_download_analysis1\\output\\figures",
     "excel": false
   },
   "environment": {

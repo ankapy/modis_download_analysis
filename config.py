@@ -107,8 +107,16 @@ DATE_FORMAT_ISO = '%Y-%m-%d'  # даты в метаданных и таблиц
 TIMESTAMP_FORMAT = '%Y%m%d_%H%M%S'  # метки времени в именах отчётов
 BYTES_TO_MB = 1 / (1024 * 1024)  # байты -> мегабайты
 
+# Статистика и анализ.
+PERCENTILES = (10, 25, 75, 90)
+ANOMALY_BASELINE_YEARS = (2015, 2020)
+PHENOLOGY_THRESHOLD_FRACTION = 0.2
+DATA_TYPE_CONTINUOUS = 'continuous'
+DATA_TYPE_CATEGORICAL = 'categorical'
+
 # Формат строки логирования (служебный).
 LOG_FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+
 
 # === ПРОДУКТЫ MODIS =======
 # Ключ словаря — внутреннее имя продукта в пайплайне (CLI: --products LST,NDVI;
@@ -123,7 +131,8 @@ LOG_FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 #   scale_factor        — множитель перевода DN в физические величины;
 #   offset              — слагаемое: значение = DN * scale_factor + offset;
 #   no_data_value       — fill-значение сырых данных; маскируется ДО масштаба;
-#   unit                — единица измерения; идёт в метаданные и подписи осей.
+#   unit                — единица измерения; идёт в метаданные и подписи осей;
+#   data_type           — тип данных: 'continuous' или 'categorical'.
 #
 # Необязательные поля (QA-фильтрация облаков и плохих пикселей):
 #   qa_band — имя QA-поддатасета; qa_mask — битовая маска; qa_good — значение
@@ -140,6 +149,7 @@ MODIS_PRODUCTS = {
         'offset': -273.15,
         'no_data_value': 0,
         'unit': '°C',
+        'data_type': DATA_TYPE_CONTINUOUS,
         'qa_band': 'QC_Day',
         'qa_mask': 3,
         'qa_good': 0,
@@ -154,6 +164,7 @@ MODIS_PRODUCTS = {
         'offset': 0,
         'no_data_value': -3000,
         'unit': 'index',
+        'data_type': DATA_TYPE_CONTINUOUS,
         'qa_band': 'VI_Quality',
         'qa_mask': 3,
         'qa_good': 0,
@@ -169,6 +180,7 @@ MODIS_PRODUCTS = {
         'offset': 0,
         'no_data_value': -3000,
         'unit': 'index',
+        'data_type': DATA_TYPE_CONTINUOUS,
         'qa_band': 'VI_Quality',
         'qa_mask': 3,
         'qa_good': 0,
@@ -183,6 +195,7 @@ MODIS_PRODUCTS = {
         'offset': 0,
         'no_data_value': -3000,
         'unit': 'index',
+        'data_type': DATA_TYPE_CONTINUOUS,
         'qa_band': 'VI_Quality',
         'qa_mask': 3,
         'qa_good': 0,
@@ -198,6 +211,7 @@ MODIS_PRODUCTS = {
         'offset': -273.15,
         'no_data_value': 0,
         'unit': '°C',
+        'data_type': DATA_TYPE_CONTINUOUS,
         'qa_band': 'QC_Night',
         'qa_mask': 3,
         'qa_good': 0,
@@ -213,6 +227,7 @@ MODIS_PRODUCTS = {
         'offset': 0,
         'no_data_value': 250,
         'unit': '%',
+        'data_type': DATA_TYPE_CONTINUOUS,
     },
     'Snow_Daily': {
         'product': 'MOD10A1',
@@ -224,6 +239,7 @@ MODIS_PRODUCTS = {
         'offset': 0,
         'no_data_value': 250,
         'unit': '%',
+        'data_type': DATA_TYPE_CONTINUOUS,
     },
     # ЗЕМЛЕЛЬНЫЙ ПОКРОВ
     'Land_Cover': {
@@ -236,6 +252,7 @@ MODIS_PRODUCTS = {
         'offset': 0,
         'no_data_value': 255,
         'unit': 'class',
+        'data_type': DATA_TYPE_CATEGORICAL,
     },
     # ПОЖАРЫ
     'Fire': {
@@ -248,6 +265,7 @@ MODIS_PRODUCTS = {
         'offset': 0,
         'no_data_value': 255,
         'unit': 'class',
+        'data_type': DATA_TYPE_CATEGORICAL,
     },
     # ОТРАЖАТЕЛЬНАЯ СПОСОБНОСТЬ
     'Albedo': {
@@ -260,6 +278,7 @@ MODIS_PRODUCTS = {
         'offset': 0,
         'no_data_value': 32767,
         'unit': 'fraction',
+        'data_type': DATA_TYPE_CONTINUOUS,
         'qa_band': 'Quality',
         'qa_mask': 2,
         'qa_good': 0,
@@ -274,6 +293,7 @@ REQUIRED_PRODUCT_KEYS = (
     'offset',
     'no_data_value',
     'unit',
+    'data_type',
 )
 
 

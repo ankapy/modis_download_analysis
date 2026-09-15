@@ -23,6 +23,7 @@ from config import (
     DATE_FORMAT_ISO,
     MODIS_PRODUCTS,
     MONTH_CUMDAYS,
+    PERCENTILES,
 )
 
 from utils import messages
@@ -60,10 +61,18 @@ EXPECTED_COLUMNS = [
     'median',
     'min',
     'max',
+    'p10',
+    'p25',
+    'p75',
+    'p90',
+    'cv',
+    'shannon',
+    'dominant_class',
+    'n_classes',
 ]
 
 
-def get_zone_mask(raster_path: str, zones: list):
+def get_zone_mask(raster_path, zones):
     """Получение маски зон для растра с потокобезопасным кэшированием."""
     ds = gdal.Open(raster_path)
     if ds is None:
@@ -105,7 +114,7 @@ def get_zone_mask(raster_path: str, zones: list):
                 logger.warning(
                     messages.ERR_GEOM_TRANSFORM.format(
                         zone['name'], str(e)[:80]
-                    ),
+                    )
                 )
                 continue
 
@@ -116,11 +125,7 @@ def get_zone_mask(raster_path: str, zones: list):
             feat = None
 
         mask_ds = gdal.GetDriverByName('MEM').Create(
-            'mask',
-            cols,
-            rows,
-            1,
-            gdal.GDT_Int32,
+            'mask', cols, rows, 1, gdal.GDT_Int32
         )
         mask_ds.SetGeoTransform(geotransform)
         mask_ds.SetProjection(projection)
@@ -143,7 +148,7 @@ def get_zone_mask(raster_path: str, zones: list):
     return mask_data, cols, rows, geotransform
 
 
-def extract_date(filename: str) -> str:
+def extract_date(filename):
     """Извлечение YYYY-DOY из имени файла MODIS."""
     try:
         parts = filename.split('.')
@@ -154,27 +159,13 @@ def extract_date(filename: str) -> str:
     return 'unknown'
 
 
-def composite_period_days(product_key: str) -> int:
-    """Длина периода композита в днях по конфигу продукта."""
-    config = MODIS_PRODUCTS.get(product_key, {})
-    resolution = config.get('temporal_resolution', 'daily')
-    if resolution in ('daily', 'yearly'):
-        return 1
-    return int(resolution.split('-')[0])
-
-
-def nominal_month(doy: int) -> int:
+def nominal_month(doy):
     """Месяц по дню года в невисокосном календаре MODIS."""
     return bisect_left(MONTH_CUMDAYS, doy) + 1
 
 
-def parse_doy(date_str: str) -> tuple:
-    """Конвертация YYYY-DOY в фактическую дату и номинальный месяц.
-
-    date_formatted — реальная дата старта периода;
-    month — номинальный месяц периода (невисокосный календарь MODIS),
-    чтобы месяцы загрузки и месяцы анализа всегда совпадали.
-    """
+def parse_doy(date_str):
+    """Конвертация YYYY-DOY в фактическую дату и номинальный месяц."""
     if date_str == 'unknown':
         return '', 0
     try:
@@ -185,7 +176,51 @@ def parse_doy(date_str: str) -> tuple:
         return '', 0
 
 
-def build_aggregated_table(flat_csv: Path, agg_csv: Path) -> int:
+def _continuous_stats(values):
+    """Пространственные статистики непрерывного продукта."""
+    mean = float(values.mean())
+    std = float(values.std())
+    p10, p25, p75, p90 = np.percentile(values, PERCENTILES)
+    return {
+        'mean': mean,
+        'std': std,
+        'median': float(np.median(values)),
+        'min': float(values.min()),
+        'max': float(values.max()),
+        'p10': float(p10),
+        'p25': float(p25),
+        'p75': float(p75),
+        'p90': float(p90),
+        'cv': std / mean if mean else np.nan,
+        'shannon': np.nan,
+        'dominant_class': np.nan,
+        'n_classes': np.nan,
+    }
+
+
+def _categorical_stats(values):
+    """Статистики классов и индекс Шеннона категориального продукта."""
+    classes, counts = np.unique(values, return_counts=True)
+    shares = counts / counts.sum()
+    shannon = -float(np.sum(shares * np.log(shares[shares > 0])))
+    return {
+        'mean': np.nan,
+        'std': np.nan,
+        'median': np.nan,
+        'min': np.nan,
+        'max': np.nan,
+        'p10': np.nan,
+        'p25': np.nan,
+        'p75': np.nan,
+        'p90': np.nan,
+        'cv': np.nan,
+        'shannon': shannon,
+        'dominant_class': float(classes[np.argmax(counts)]),
+        'n_classes': int(len(classes)),
+    }
+
+
+def build_aggregated_table(flat_csv, agg_csv):
     """Построение агрегированной сводки из полной плоской таблицы."""
     try:
         df = pd.read_csv(
@@ -217,7 +252,7 @@ def build_aggregated_table(flat_csv: Path, agg_csv: Path) -> int:
                 'min': 'min_val',
                 'max': 'max_val',
                 'count': 'n_observations',
-            },
+            }
         )
     )
     agg.to_csv(
@@ -230,7 +265,7 @@ def build_aggregated_table(flat_csv: Path, agg_csv: Path) -> int:
     return len(agg)
 
 
-def process_single_raster(raster_path: str, zones: list):
+def process_single_raster(raster_path, zones):
     """Обработка одного растра с использованием кэшированной маски."""
     mask_data, _, _, _ = get_zone_mask(raster_path, zones)
     if mask_data is None:
@@ -249,9 +284,11 @@ def process_single_raster(raster_path: str, zones: list):
     year = int(path_obj.parent.name)
     date_str = extract_date(path_obj.name)
     date_formatted, month = parse_doy(date_str)
+    data_type = MODIS_PRODUCTS.get(product, {}).get('data_type', 'continuous')
 
     zones_by_id = {z['id']: z for z in zones}
     results = []
+
     for uid in np.unique(mask_data[mask_data >= 0]):
         zone = zones_by_id.get(int(uid))
         if zone is None:
@@ -262,30 +299,28 @@ def process_single_raster(raster_path: str, zones: list):
         if valid.size == 0:
             continue
 
-        results.append(
-            {
-                'zone_id': zone['id'],
-                'zone_name': zone['name'],
-                'year': year,
-                'month': month,
-                'product': product,
-                'date': date_str,
-                'date_formatted': date_formatted,
-                'lat_center': zone['lat_center'],
-                'lon_center': zone['lon_center'],
-                'pixel_count': int(valid.size),
-                'mean': float(valid.mean()),
-                'std': float(valid.std()),
-                'median': float(np.median(valid)),
-                'min': float(valid.min()),
-                'max': float(valid.max()),
-            },
-        )
+        row = {
+            'zone_id': zone['id'],
+            'zone_name': zone['name'],
+            'year': year,
+            'month': month,
+            'product': product,
+            'date': date_str,
+            'date_formatted': date_formatted,
+            'lat_center': zone['lat_center'],
+            'lon_center': zone['lon_center'],
+            'pixel_count': int(valid.size),
+        }
+        if data_type == 'categorical':
+            row.update(_categorical_stats(valid))
+        else:
+            row.update(_continuous_stats(valid))
+        results.append(row)
 
     return results
 
 
-def _process_raster_safe(raster_path: str, zones: list) -> list:
+def _process_raster_safe(raster_path, zones):
     """Обработка одного растра с защитой от исключений."""
     try:
         return process_single_raster(raster_path, zones)
@@ -294,7 +329,7 @@ def _process_raster_safe(raster_path: str, zones: list) -> list:
         return []
 
 
-def _iter_results(tasks: list, zones: list, workers: int):
+def _iter_results(tasks, zones, workers):
     """Генерация результатов обработки: параллельно или последовательно."""
     if workers > 1:
         logger.info(messages.STATUS_MULTITHREAD.format(workers))
@@ -310,7 +345,7 @@ def _iter_results(tasks: list, zones: list, workers: int):
             yield _process_raster_safe(path, zones)
 
 
-def _format_row(row: dict) -> dict:
+def _format_row(row):
     """Форматирование float-значений для CSV по локали из конфига."""
     return {
         key: (
@@ -325,13 +360,13 @@ def _format_row(row: dict) -> dict:
 class CsvAppender:
     """Потокобезопасная дозапись строк статистики в CSV."""
 
-    def __init__(self, path: Path):
+    def __init__(self, path):
         """Запоминание пути и состояния заголовка."""
         self.path = path
         self._lock = threading.Lock()
         self._header_written = path.exists() and path.stat().st_size > 0
 
-    def append(self, rows: list) -> None:
+    def append(self, rows):
         """Запись пачки строк под блокировкой."""
         with self._lock:
             with open(self.path, 'a', newline='', encoding='utf-8-sig') as f:
@@ -346,7 +381,7 @@ class CsvAppender:
                 writer.writerows(_format_row(row) for row in rows)
 
 
-def _load_zones_safe(zones_path: Path) -> list:
+def _load_zones_safe(zones_path):
     """Загрузка зон с логированием; возвращает [] при ошибке."""
     try:
         zones = load_zones(zones_path)
@@ -362,21 +397,24 @@ def _load_zones_safe(zones_path: Path) -> list:
         return []
 
 
-def _collect_tasks(processed_dir: Path, test_mode: bool) -> list:
-    """Сбор списка растров для обработки."""
+def _collect_tasks(processed_dir, test_mode):
+    """Сбор списка растров по фактическим папкам продуктов."""
     tasks = []
-    for product in MODIS_PRODUCTS:
-        product_dir = processed_dir / product
-        if not product_dir.exists():
+    for product_dir in sorted(
+        d for d in processed_dir.iterdir() if d.is_dir()
+    ):
+        if product_dir.name not in MODIS_PRODUCTS:
+            logger.warning(
+                messages.WARN_UNKNOWN_PRODUCT_DIR.format(product_dir.name)
+            )
             continue
-
         years = sorted(
             int(d.name)
             for d in product_dir.iterdir()
             if d.is_dir() and d.name.isdigit()
         )
         for year in years:
-            tifs = sorted((product_dir / str(year)).glob('*.tif'))
+            tifs = sorted(product_dir.glob(f'{year}/*.tif'))
             if not tifs:
                 continue
             if test_mode:
@@ -384,11 +422,10 @@ def _collect_tasks(processed_dir: Path, test_mode: bool) -> list:
                 logger.info(messages.INFO_TEST_FILE.format(tifs[0].name))
                 break
             tasks.extend(str(tif) for tif in tifs)
-
     return tasks
 
 
-def _load_processed_keys(csv_path: Path) -> set:
+def _load_processed_keys(csv_path):
     """Загрузка уже посчитанных ключей для resume."""
     if not csv_path.exists():
         return set()
@@ -421,12 +458,7 @@ def _load_processed_keys(csv_path: Path) -> set:
     return keys
 
 
-def _process_results(
-    results: list,
-    processed_keys: set,
-    appender: CsvAppender,
-    all_results: list,
-) -> None:
+def _process_results(results, processed_keys, appender, all_results):
     """Фильтрация дублей, дозапись в CSV и накопление результатов."""
     new_rows = []
     for row in results:
@@ -458,7 +490,6 @@ def main(args):
     if not zones:
         return
 
-    logger.info(messages.STATS_STEP_SCANNING)
     tasks = _collect_tasks(DATA_PATHS['processed'], args.test)
     logger.info(messages.INFO_RASTERS_FOUND.format(len(tasks)))
     if not tasks:
@@ -466,11 +497,29 @@ def main(args):
         return
 
     output_csv = DATA_PATHS['tables'] / 'zonal_stats_flat.csv'
+    if output_csv.exists():
+        header = list(
+            pd.read_csv(output_csv, nrows=0, sep=CSV_SEPARATOR).columns
+        )
+        if header != EXPECTED_COLUMNS:
+            logger.warning(messages.WARN_SCHEMA_MISMATCH.format(output_csv))
+            output_csv.unlink()
+    processed_keys = _load_processed_keys(output_csv)
+
+    # Контроль схемы: старый CSV без новых колонок пересоздаётся.
+    if output_csv.exists():
+        header = list(
+            pd.read_csv(output_csv, nrows=0, sep=CSV_SEPARATOR).columns
+        )
+        if header != EXPECTED_COLUMNS:
+            logger.warning(messages.WARN_SCHEMA_MISMATCH.format(output_csv))
+            output_csv.unlink()
     processed_keys = _load_processed_keys(output_csv)
 
     logger.info(messages.STATS_STEP_PROCESSING)
     all_results = []
     appender = CsvAppender(output_csv)
+
     for i, results in enumerate(_iter_results(tasks, zones, args.workers), 1):
         _process_results(results, processed_keys, appender, all_results)
         if not args.test and i % PROGRESS_LOG_STEP == 0:

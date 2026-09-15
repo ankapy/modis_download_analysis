@@ -101,18 +101,35 @@ WARN_VRT_FAILED = 'Не удалось собрать VRT {}: {}'
 INFO_MOSAIC_SAVED = 'Mosaic Dataset создан: {}'
 WARN_ARCPY_NOT_FOUND = 'arcpy недоступен: сборка Mosaic Dataset пропущена.'
 WARN_MOSAIC_FAILED = 'Не удалось создать Mosaic Dataset {}: {}'
+WARN_UNKNOWN_PRODUCT_DIR = 'Папка {} не описана в MODIS_PRODUCTS — пропуск.'
 
 # RUN-ALL
 INFO_RUN_ALL_START = 'Запуск полного пайплайна: 01 → 05.'
 INFO_RUN_ALL_STAGE = '>>> ЭТАП: {}'
 
 # ШАГИ АНАЛИЗА
-ANALYSIS_STEP_SEASONAL = '[1/6] Сезонная динамика...'
-ANALYSIS_STEP_TRENDS = '[2/6] Межгодовые тренды...'
-ANALYSIS_STEP_GRADIENT = '[3/6] Широтный градиент (месяц {})...'
-ANALYSIS_STEP_AMPLITUDE = '[4/6] Сезонная амплитуда...'
-ANALYSIS_STEP_CORRELATION = '[5/6] Корреляция продуктов (месяц {})...'
-ANALYSIS_STEP_TABLES = '[6/6] Сводные таблицы...'
+ANALYSIS_STEP_SEASONAL = '[1/10] Сезонная динамика...'
+ANALYSIS_STEP_TRENDS = '[2/10] Межгодовые тренды...'
+ANALYSIS_STEP_GRADIENT = '[3/10] Широтный градиент (месяц {})...'
+ANALYSIS_STEP_AMPLITUDE = '[4/10] Сезонная амплитуда...'
+ANALYSIS_STEP_CORRELATION = '[5/10] Корреляция продуктов (месяц {})...'
+ANALYSIS_STEP_TABLES = '[6/10] Сводные таблицы...'
+ANALYSIS_STEP_WIDE = '[7/10] Широкие таблицы для Origin Pro...'
+ANALYSIS_STEP_ANOMALY = '[8/10] Аномалии и фенология...'
+ANALYSIS_STEP_CATEGORICAL = '[9/10] Метрики категориальных продуктов...'
+ANALYSIS_STEP_EXTRA_PLOTS = '[10/10] Дополнительные визуализации...'
+WARN_BASELINE_MISSING = (
+    'Базовые годы {} не найдены в данных; норма рассчитана по всему периоду.'
+)
+WARN_PCA_SKIPPED = 'PCA для {} пропущен: недостаточно полных зон.'
+WARN_PHENOLOGY_EMPTY = (
+    'Фенология для {} не рассчитана: недостаточно полных месяцев.'
+)
+WARN_CORR_ZONES = 'Корреляционная матрица для {} пропущена: недостаточно зон.'
+WARN_SCHEMA_MISMATCH = 'Схема колонок {} устарела; файл будет пересоздан.'
+INFO_NO_CATEGORICAL = (
+    'Категориальные продукты в данных отсутствуют — раздел пропущен.'
+)
 
 # ЛОГИРОВАНИЕ: АНАЛИЗ
 LOG_ANALYSIS_OK = 'Сохранено: {}'
