@@ -4,6 +4,7 @@ project_dump.txt
 gis/
 data/
 pipeline_schema/
+output/
 
 # Python
 __pycache__/
