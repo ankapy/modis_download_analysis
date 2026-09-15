@@ -380,3 +380,107 @@
 2026-09-15 16:04:30 - core.05_analyzer - INFO - Создание Excel-файла: D:\Dev\_ASP\modis_download_analysis1\output\tables\modis_analysis.xlsx
 2026-09-15 16:04:35 - core.05_analyzer - INFO - Excel сохранён: D:\Dev\_ASP\modis_download_analysis1\output\tables\modis_analysis.xlsx
 2026-09-15 16:04:35 - core.05_analyzer - INFO - Время окончания: 2026-09-15 16:04:35
+2026-09-15 18:09:21 - core.05_analyzer - INFO - ============================================================
+2026-09-15 18:09:21 - core.05_analyzer - INFO - MODIS Analyzer
+2026-09-15 18:09:21 - core.05_analyzer - INFO - ============================================================
+2026-09-15 18:09:21 - core.05_analyzer - INFO - Время начала: 2026-09-15 18:09:21
+2026-09-15 18:09:21 - utils.provenance - INFO - Провенанс запуска сохранён: D:\Dev\_ASP\modis_download_analysis1\output\logs\run_05_analyze_20260915_180921.json
+2026-09-15 18:09:21 - core.05_analyzer - INFO - Загрузка данных: D:\Dev\_ASP\modis_download_analysis1\data\tables\zonal_stats_flat.csv
+2026-09-15 18:09:21 - core.05_analyzer - INFO - Загружено записей: 3063
+2026-09-15 18:09:21 - core.05_analyzer - INFO - [1/10] Сезонная динамика...
+2026-09-15 18:09:22 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\seasonal_lst.png
+2026-09-15 18:09:22 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\seasonal_ndvi.png
+2026-09-15 18:09:22 - core.05_analyzer - INFO - [2/10] Межгодовые тренды...
+2026-09-15 18:09:23 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\trend_lst.png
+2026-09-15 18:09:23 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\trend_ndvi.png
+2026-09-15 18:09:23 - core.05_analyzer - INFO - [3/10] Широтный градиент (месяц 7)...
+2026-09-15 18:09:23 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\gradient_lst_m7.png
+2026-09-15 18:09:24 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\gradient_ndvi_m7.png
+2026-09-15 18:09:24 - core.05_analyzer - INFO - [4/10] Сезонная амплитуда...
+2026-09-15 18:09:24 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\amplitude_lst.png
+2026-09-15 18:09:24 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\amplitude_ndvi.png
+2026-09-15 18:09:24 - core.05_analyzer - INFO - [5/10] Корреляция продуктов (месяц 7)...
+2026-09-15 18:09:25 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\correlation_lst_ndvi_m7.png
+2026-09-15 18:09:25 - core.05_analyzer - INFO - [6/10] Сводные таблицы...
+2026-09-15 18:09:25 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\summary_statistics.csv
+2026-09-15 18:09:25 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\trend_significance.csv
+2026-09-15 18:09:25 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\monthly_aggregated.csv
+2026-09-15 18:09:25 - core.05_analyzer - INFO - [7/10] Широкие таблицы для Origin Pro...
+2026-09-15 18:09:25 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\origin_pivot_lst.csv
+2026-09-15 18:09:25 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\origin_pivot_ndvi.csv
+2026-09-15 18:09:25 - core.05_analyzer - INFO - [8/10] Аномалии и фенология...
+2026-09-15 18:09:26 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\anomalies_lst.png
+2026-09-15 18:09:26 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\phenology_lst.png
+2026-09-15 18:09:27 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\anomalies_ndvi.png
+2026-09-15 18:09:27 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\phenology_ndvi.png
+2026-09-15 18:09:27 - core.05_analyzer - INFO - [9/10] Метрики категориальных продуктов...
+2026-09-15 18:09:27 - core.05_analyzer - INFO - Категориальные продукты в данных отсутствуют — раздел пропущен.
+2026-09-15 18:09:27 - core.05_analyzer - INFO - [10/10] Дополнительные визуализации...
+2026-09-15 18:09:27 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\boxplot_lst.png
+2026-09-15 18:09:28 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\heatmap_lst.png
+2026-09-15 18:09:29 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\small_multiples_lst.png
+2026-09-15 18:09:30 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\corr_matrix_lst.png
+2026-09-15 18:09:30 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\pca_biplot_lst.png
+2026-09-15 18:09:31 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\boxplot_ndvi.png
+2026-09-15 18:09:31 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\heatmap_ndvi.png
+2026-09-15 18:09:33 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\small_multiples_ndvi.png
+2026-09-15 18:09:34 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\corr_matrix_ndvi.png
+2026-09-15 18:09:34 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\pca_biplot_ndvi.png
+2026-09-15 18:09:34 - core.05_analyzer - INFO - Завершено.
+2026-09-15 18:09:34 - core.05_analyzer - INFO - Графики: D:\Dev\_ASP\modis_download_analysis1\output\figures
+2026-09-15 18:09:34 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\tables_help.csv
+2026-09-15 18:09:35 - core.05_analyzer - INFO - Создание Excel-файла: D:\Dev\_ASP\modis_download_analysis1\output\figures\modis_analysis.xlsx
+2026-09-15 18:09:38 - core.05_analyzer - INFO - Excel сохранён: D:\Dev\_ASP\modis_download_analysis1\output\figures\modis_analysis.xlsx
+2026-09-15 18:09:38 - core.05_analyzer - INFO - Время окончания: 2026-09-15 18:09:38
+2026-09-15 18:14:55 - core.05_analyzer - INFO - ============================================================
+2026-09-15 18:14:55 - core.05_analyzer - INFO - MODIS Analyzer
+2026-09-15 18:14:55 - core.05_analyzer - INFO - ============================================================
+2026-09-15 18:14:55 - core.05_analyzer - INFO - Время начала: 2026-09-15 18:14:55
+2026-09-15 18:14:56 - utils.provenance - INFO - Провенанс запуска сохранён: D:\Dev\_ASP\modis_download_analysis1\output\logs\run_05_analyze_20260915_181456.json
+2026-09-15 18:14:56 - core.05_analyzer - INFO - Загрузка данных: D:\Dev\_ASP\modis_download_analysis1\data\tables\zonal_stats_flat.csv
+2026-09-15 18:14:56 - core.05_analyzer - INFO - Загружено записей: 3063
+2026-09-15 18:14:56 - core.05_analyzer - INFO - [1/10] Сезонная динамика...
+2026-09-15 18:14:56 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\seasonal_lst.png
+2026-09-15 18:14:57 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\seasonal_ndvi.png
+2026-09-15 18:14:57 - core.05_analyzer - INFO - [2/10] Межгодовые тренды...
+2026-09-15 18:14:57 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\trend_lst.png
+2026-09-15 18:14:58 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\trend_ndvi.png
+2026-09-15 18:14:58 - core.05_analyzer - INFO - [3/10] Широтный градиент (месяц 7)...
+2026-09-15 18:14:58 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\gradient_lst_m7.png
+2026-09-15 18:14:58 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\gradient_ndvi_m7.png
+2026-09-15 18:14:58 - core.05_analyzer - INFO - [4/10] Сезонная амплитуда...
+2026-09-15 18:14:58 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\amplitude_lst.png
+2026-09-15 18:14:58 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\amplitude_ndvi.png
+2026-09-15 18:14:58 - core.05_analyzer - INFO - [5/10] Корреляция продуктов (месяц 7)...
+2026-09-15 18:14:59 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\correlation_lst_ndvi_m7.png
+2026-09-15 18:14:59 - core.05_analyzer - INFO - [6/10] Сводные таблицы...
+2026-09-15 18:14:59 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\summary_statistics.csv
+2026-09-15 18:14:59 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\trend_significance.csv
+2026-09-15 18:14:59 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\monthly_aggregated.csv
+2026-09-15 18:14:59 - core.05_analyzer - INFO - [7/10] Широкие таблицы для Origin Pro...
+2026-09-15 18:14:59 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\origin_pivot_lst.csv
+2026-09-15 18:14:59 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\origin_pivot_ndvi.csv
+2026-09-15 18:14:59 - core.05_analyzer - INFO - [8/10] Аномалии и фенология...
+2026-09-15 18:14:59 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\anomalies_lst.png
+2026-09-15 18:15:00 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\phenology_lst.png
+2026-09-15 18:15:00 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\anomalies_ndvi.png
+2026-09-15 18:15:01 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\phenology_ndvi.png
+2026-09-15 18:15:01 - core.05_analyzer - INFO - [9/10] Метрики категориальных продуктов...
+2026-09-15 18:15:01 - core.05_analyzer - INFO - Категориальные продукты в данных отсутствуют — раздел пропущен.
+2026-09-15 18:15:01 - core.05_analyzer - INFO - [10/10] Дополнительные визуализации...
+2026-09-15 18:15:01 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\boxplot_lst.png
+2026-09-15 18:15:01 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\heatmap_lst.png
+2026-09-15 18:15:03 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\small_multiples_lst.png
+2026-09-15 18:15:03 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\corr_matrix_lst.png
+2026-09-15 18:15:04 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\pca_biplot_lst.png
+2026-09-15 18:15:04 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\boxplot_ndvi.png
+2026-09-15 18:15:04 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\heatmap_ndvi.png
+2026-09-15 18:15:06 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\small_multiples_ndvi.png
+2026-09-15 18:15:07 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\corr_matrix_ndvi.png
+2026-09-15 18:15:07 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\pca_biplot_ndvi.png
+2026-09-15 18:15:07 - core.05_analyzer - INFO - Завершено.
+2026-09-15 18:15:07 - core.05_analyzer - INFO - Графики: D:\Dev\_ASP\modis_download_analysis1\output\figures
+2026-09-15 18:15:08 - core.05_analyzer - INFO - Сохранено: D:\Dev\_ASP\modis_download_analysis1\output\figures\tables_help.csv
+2026-09-15 18:15:08 - core.05_analyzer - INFO - Создание Excel-файла: D:\Dev\_ASP\modis_download_analysis1\output\figures\modis_analysis.xlsx
+2026-09-15 18:15:11 - core.05_analyzer - INFO - Excel сохранён: D:\Dev\_ASP\modis_download_analysis1\output\figures\modis_analysis.xlsx
+2026-09-15 18:15:11 - core.05_analyzer - INFO - Время окончания: 2026-09-15 18:15:11

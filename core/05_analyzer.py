@@ -1,7 +1,7 @@
 """Анализ и визуализация результатов зональной статистики.
 
 Сезонность, тренды, градиент, амплитуда, аномалии, фенология,
-корреляции, PCA и широкие таблицы под Origin Pro.
+корреляции, PCA и широкие таблицы.
 """
 
 import warnings
@@ -46,6 +46,59 @@ warnings.filterwarnings('ignore')
 logger = setup_logger(__name__)
 
 PHENOLOGY_MIN_MONTHS = 5
+EXCEL_FILENAME = 'modis_analysis.xlsx'
+HELP_FILENAME = 'tables_help.csv'
+
+
+class ExcelExporter:
+    """Экспорт данных в Excel с листом HELP."""
+
+    def __init__(self, analyzer):
+        """Инициализация экспортера."""
+        self.analyzer = analyzer
+
+    def _help_dataframe(self):
+        """Создание DataFrame с описанием всех листов."""
+        sheets = self.analyzer._collect_sheets()
+        return pd.DataFrame(
+            [
+                {
+                    'table': name,
+                    'description': meta[1],
+                    'columns': ', '.join(str(c) for c in meta[0].columns),
+                    'origin_x': meta[2],
+                    'origin_y': meta[3],
+                }
+                for name, meta in sheets.items()
+            ]
+        )
+
+    def export_help_csv(self, save=True):
+        """Экспорт словаря таблиц в CSV."""
+        df = self._help_dataframe()
+        if save:
+            path = self.analyzer.output_dir / HELP_FILENAME
+            df.to_csv(
+                path, index=False, encoding='utf-8-sig', sep=';', decimal=','
+            )
+            logger.info(messages.LOG_ANALYSIS_OK.format(path))
+        return df
+
+    def export_excel(self, path):
+        """Экспорт Excel-книги с листом HELP."""
+        sheets = self.analyzer._collect_sheets()
+        logger.info(messages.INFO_CREATING_EXCEL.format(path))
+
+        try:
+            with pd.ExcelWriter(path, engine='openpyxl') as writer:
+                self._help_dataframe().to_excel(
+                    writer, sheet_name='HELP', index=False
+                )
+                for name, meta in sheets.items():
+                    meta[0].to_excel(writer, sheet_name=name[:31], index=False)
+            logger.info(messages.INFO_EXCEL_SAVED.format(path))
+        except ImportError:
+            logger.error(messages.ERR_EXCEL_NO_OPENPYXL)
 
 
 class MODISAnalyzer:
@@ -131,6 +184,15 @@ class MODISAnalyzer:
         mask = (self.df['product'] == product) & self.df[metric].notna()
         return self.df[mask]
 
+    def _validate_product(self, product, required_cols=None):
+        """Проверка наличия продукта и колонок."""
+        if product not in self.df['product'].values:
+            return False
+        if required_cols:
+            if not all(col in self.df.columns for col in required_cols):
+                return False
+        return True
+
     def _preprocess_data(self):
         """Фильтрация и подготовка данных."""
         if 'month' in self.df.columns:
@@ -173,6 +235,17 @@ class MODISAnalyzer:
             fig.savefig(path, dpi=300, bbox_inches='tight')
             logger.info(messages.LOG_ANALYSIS_OK.format(path))
         plt.close(fig)
+
+    def _plot_base(self, figsize=(10, 6), title='', xlabel='', ylabel=''):
+        """Базовая настройка графика (DRY)."""
+        fig, ax = plt.subplots(figsize=figsize)
+        if title:
+            ax.set_title(title)
+        if xlabel:
+            ax.set_xlabel(xlabel)
+        if ylabel:
+            ax.set_ylabel(ylabel)
+        return fig, ax
 
     def _monthly(self, product):
         """Среднее за месяц по зона-годам для непрерывного продукта."""
@@ -371,20 +444,17 @@ class MODISAnalyzer:
         if mat.shape[0] < 3 or mat.shape[1] < 2 or mat.isna().any().any():
             return None
 
-        # Стандартизация матрицы данных
         data_matrix = mat.to_numpy()
         std_dev = data_matrix.std(axis=0)
         data_matrix = (data_matrix - data_matrix.mean(axis=0)) / np.where(
             std_dev > 0, std_dev, 1
         )
 
-        # Сингулярное разложение (SVD)
         u_mat, singular_vals, vt_mat = np.linalg.svd(
             data_matrix, full_matrices=False
         )
         evr = singular_vals**2 / np.sum(singular_vals**2)
 
-        # Формирование DataFrame для scores и loadings
         scores = pd.DataFrame(
             u_mat[:, :2] * singular_vals[:2],
             columns=['PC1', 'PC2'],
@@ -399,11 +469,7 @@ class MODISAnalyzer:
 
     def plot_seasonal_dynamics(self, product, save=True):
         """Сезонная динамика по месяцам."""
-        if (
-            'zone_name' not in self.df.columns
-            or 'month' not in self.df.columns
-            or 'mean' not in self.df.columns
-        ):
+        if not self._validate_product(product, ['zone_name', 'month', 'mean']):
             logger.warning(
                 messages.LOG_ANALYSIS_WARN.format(
                     'Сезонная динамика', 'zone_name, month или mean'
@@ -421,7 +487,13 @@ class MODISAnalyzer:
         if agg.empty:
             return
 
-        fig, ax = plt.subplots(figsize=(10, 6))
+        fig, ax = self._plot_base(
+            figsize=(10, 6),
+            title=f'Сезонная динамика ({product})',
+            xlabel='Месяц',
+            ylabel=f'{product} ({self._get_unit(product)})',
+        )
+
         for zone in self.zone_order:
             data = agg[agg['zone_name'] == zone]
             if data.empty:
@@ -437,9 +509,6 @@ class MODISAnalyzer:
                 linewidth=1.5,
             )
 
-        ax.set_title(f'Сезонная динамика ({product})')
-        ax.set_xlabel('Месяц')
-        ax.set_ylabel(f'{product} ({self._get_unit(product)})')
         ax.legend(title='Зона', frameon=True)
         ax.grid(axis='y', alpha=0.3)
         ax.xaxis.set_major_locator(MultipleLocator(1))
@@ -447,11 +516,7 @@ class MODISAnalyzer:
 
     def plot_interannual_trends(self, product, save=True):
         """Межгодовые тренды."""
-        if (
-            'zone_name' not in self.df.columns
-            or 'year' not in self.df.columns
-            or 'mean' not in self.df.columns
-        ):
+        if not self._validate_product(product, ['zone_name', 'year', 'mean']):
             logger.warning(
                 messages.LOG_ANALYSIS_WARN.format(
                     'Тренды', 'zone_name, year или mean'
@@ -459,7 +524,13 @@ class MODISAnalyzer:
             )
             return
 
-        fig, ax = plt.subplots(figsize=(11, 6))
+        fig, ax = self._plot_base(
+            figsize=(11, 6),
+            title=f'Межгодовая динамика ({product})',
+            xlabel='Год',
+            ylabel=f'{product} ({self._get_unit(product)})',
+        )
+
         has_data = False
         for zone in self.zone_order:
             subset = self.df[
@@ -494,9 +565,6 @@ class MODISAnalyzer:
             plt.close(fig)
             return
 
-        ax.set_title(f'Межгодовая динамика ({product})')
-        ax.set_xlabel('Год')
-        ax.set_ylabel(f'{product} ({self._get_unit(product)})')
         ax.legend(title='Зона', ncol=2)
         ax.grid(alpha=0.3)
         self._save(fig, f'trend_{product.lower()}.png', save)
@@ -534,7 +602,13 @@ class MODISAnalyzer:
             logger.warning(messages.WARN_CORRELATION_NO_DATA)
             return
 
-        fig, ax = plt.subplots(figsize=(8, 7))
+        fig, ax = self._plot_base(
+            figsize=(8, 7),
+            title=f'Корреляция {product_x} - {product_y} (месяц {month})',
+            xlabel=f'{product_x} ({self._get_unit(product_x)})',
+            ylabel=f'{product_y} ({self._get_unit(product_y)})',
+        )
+
         for zone in self.zone_order:
             data = merged[merged['zone_name'] == zone]
             if data.empty:
@@ -565,9 +639,6 @@ class MODISAnalyzer:
                     va='top',
                 )
 
-        ax.set_xlabel(f'{product_x} ({self._get_unit(product_x)})')
-        ax.set_ylabel(f'{product_y} ({self._get_unit(product_y)})')
-        ax.set_title(f'Корреляция {product_x} - {product_y} (месяц {month})')
         ax.legend(frameon=True)
         ax.grid(alpha=0.3)
         self._save(
@@ -578,10 +649,7 @@ class MODISAnalyzer:
 
     def plot_latitudinal_gradient(self, product, month=7, save=True):
         """Широтный градиент."""
-        if (
-            'lat_center' not in self.df.columns
-            or 'mean' not in self.df.columns
-        ):
+        if not self._validate_product(product, ['lat_center', 'mean']):
             logger.warning(messages.LOG_ANALYSIS_NO_LAT)
             return
 
@@ -606,7 +674,13 @@ class MODISAnalyzer:
         )
         agg = agg[agg['count'] >= 1]
 
-        fig, ax = plt.subplots(figsize=(9, 6))
+        fig, ax = self._plot_base(
+            figsize=(9, 6),
+            title=f'Широтный градиент {product} (месяц {month})',
+            xlabel='Широта, ° с.ш.',
+            ylabel=f'{product} ({self._get_unit(product)})',
+        )
+
         ax.errorbar(
             agg['lat_bin'],
             agg['mean'],
@@ -636,9 +710,6 @@ class MODISAnalyzer:
                 bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.3),
             )
 
-        ax.set_xlabel('Широта, ° с.ш.')
-        ax.set_ylabel(f'{product} ({self._get_unit(product)})')
-        ax.set_title(f'Широтный градиент {product} (месяц {month})')
         ax.legend()
         ax.grid(alpha=0.3)
         self._save(fig, f'gradient_{product.lower()}_m{month}.png', save)
@@ -659,14 +730,17 @@ class MODISAnalyzer:
         agg['amplitude'] = agg['max'] - agg['min']
         agg = agg[agg['zone_name'].isin(self.zone_order)]
 
-        fig, ax = plt.subplots(figsize=(10, 6))
+        fig, ax = self._plot_base(
+            figsize=(10, 6),
+            title=f'Сезонная амплитуда ({product})',
+            xlabel=f'Амплитуда ({self._get_unit(product)})',
+        )
+
         bars = ax.barh(
             agg['zone_name'],
             agg['amplitude'],
             color=[self._get_color(z) for z in agg['zone_name']],
         )
-        ax.set_xlabel(f'Амплитуда ({self._get_unit(product)})')
-        ax.set_title(f'Сезонная амплитуда ({product})')
         ax.grid(axis='x', alpha=0.3)
 
         for bar in bars:
@@ -690,12 +764,15 @@ class MODISAnalyzer:
             )
             return
 
-        fig, ax = plt.subplots(figsize=(10, 6))
+        fig, ax = self._plot_base(
+            figsize=(10, 6),
+            title=f'Распределение значений по зонам ({product})',
+            ylabel=f'{product} ({self._get_unit(product)})',
+        )
+
         ax.boxplot(
             [data[z].dropna() for z in data.columns], labels=data.columns
         )
-        ax.set_ylabel(f'{product} ({self._get_unit(product)})')
-        ax.set_title(f'Распределение значений по зонам ({product})')
         ax.tick_params(axis='x', rotation=45)
         ax.grid(axis='y', alpha=0.3)
         self._save(fig, f'boxplot_{product.lower()}.png', save)
@@ -713,7 +790,14 @@ class MODISAnalyzer:
             index='time', columns='zone_name', values='value'
         )
         mat = mat[[z for z in self.zone_order if z in mat.columns]]
-        fig, ax = plt.subplots(figsize=(10, 8))
+
+        fig, ax = self._plot_base(
+            figsize=(10, 8),
+            title=f'Тепловая карта время × зона ({product})',
+            xlabel='Зона',
+            ylabel='Время (годы)',
+        )
+
         im = ax.pcolormesh(mat.to_numpy(), cmap='viridis')
         ax.set_aspect('auto')
         ax.set_xticks(np.arange(len(mat.columns)) + 0.5)
@@ -721,10 +805,7 @@ class MODISAnalyzer:
         step = max(1, len(mat) // 10)
         ax.set_yticks(np.arange(0, len(mat), step) + 0.5)
         ax.set_yticklabels([f'{t:.2f}' for t in mat.index[::step]])
-        ax.set_xlabel('Зона')
-        ax.set_ylabel('Время (годы)')
         fig.colorbar(im, ax=ax, label=f'{product} ({self._get_unit(product)})')
-        ax.set_title(f'Тепловая карта время × зона ({product})')
         self._save(fig, f'heatmap_{product.lower()}.png', save)
 
     def plot_small_multiples(self, product, save=True):
@@ -747,6 +828,7 @@ class MODISAnalyzer:
             nrows, ncols, figsize=(4 * ncols, 3 * nrows), sharey=True
         )
         flat_axes = np.atleast_1d(axes).ravel()
+
         for ax, zone in zip(flat_axes, self.zone_order):
             z = m[m['zone_name'] == zone].sort_values('month')
             color = self._get_color(zone)
@@ -760,8 +842,10 @@ class MODISAnalyzer:
             )
             ax.set_title(zone, fontsize=9)
             ax.grid(alpha=0.3)
+
         for ax in flat_axes[len(self.zone_order) :]:
             ax.axis('off')
+
         fig.suptitle(f'Сезонный цикл по зонам ({product})')
         fig.tight_layout()
         self._save(fig, f'small_multiples_{product.lower()}.png', save)
@@ -773,12 +857,16 @@ class MODISAnalyzer:
             logger.warning(messages.WARN_CORR_ZONES.format(product))
             return
 
-        fig, ax = plt.subplots(figsize=(8, 7))
+        fig, ax = self._plot_base(
+            figsize=(8, 7), title=f'Корреляция зон по аномалиям ({product})'
+        )
+
         im = ax.imshow(corr.to_numpy(), cmap='coolwarm', vmin=-1, vmax=1)
         ax.set_xticks(range(len(corr)))
         ax.set_xticklabels(corr.columns, rotation=45, ha='right')
         ax.set_yticks(range(len(corr)))
         ax.set_yticklabels(corr.index)
+
         for i in range(len(corr)):
             for j in range(len(corr)):
                 ax.text(
@@ -789,8 +877,8 @@ class MODISAnalyzer:
                     va='center',
                     fontsize=7,
                 )
+
         fig.colorbar(im, ax=ax, label='r')
-        ax.set_title(f'Корреляция зон по аномалиям ({product})')
         self._save(fig, f'corr_matrix_{product.lower()}.png', save)
 
     def plot_pca_biplot(self, product, save=True):
@@ -801,7 +889,13 @@ class MODISAnalyzer:
             return
         scores, loadings, evr = pca
 
-        fig, ax = plt.subplots(figsize=(8, 7))
+        fig, ax = self._plot_base(
+            figsize=(8, 7),
+            title=f'PCA biplot сезонного цикла ({product})',
+            xlabel=f'PC1 ({evr[0]:.0%})',
+            ylabel=f'PC2 ({evr[1]:.0%})',
+        )
+
         for _, r in scores.iterrows():
             ax.scatter(
                 r['PC1'], r['PC2'], color=self._get_color(r['zone_name'])
@@ -831,11 +925,9 @@ class MODISAnalyzer:
                 fontsize=8,
                 color='gray',
             )
+
         ax.axhline(0, color='k', lw=0.5)
         ax.axvline(0, color='k', lw=0.5)
-        ax.set_xlabel(f'PC1 ({evr[0]:.0%})')
-        ax.set_ylabel(f'PC2 ({evr[1]:.0%})')
-        ax.set_title(f'PCA biplot сезонного цикла ({product})')
         self._save(fig, f'pca_biplot_{product.lower()}.png', save)
 
     def plot_anomalies(self, product, save=True):
@@ -843,7 +935,14 @@ class MODISAnalyzer:
         wide = self.build_anomalies_wide(product)
         if wide.empty:
             return
-        fig, ax = plt.subplots(figsize=(10, 6))
+
+        fig, ax = self._plot_base(
+            figsize=(10, 6),
+            title=f'Годовые аномалии относительно нормы ({product})',
+            xlabel='Год',
+            ylabel=f'Аномалия ({self._get_unit(product)})',
+        )
+
         for zone in self.zone_order:
             if zone in wide:
                 ax.plot(
@@ -854,10 +953,8 @@ class MODISAnalyzer:
                     color=self._get_color(zone),
                     ms=4,
                 )
+
         ax.axhline(0, color='k', lw=0.8)
-        ax.set_xlabel('Год')
-        ax.set_ylabel(f'Аномалия ({self._get_unit(product)})')
-        ax.set_title(f'Годовые аномалии относительно нормы ({product})')
         ax.legend(ncol=2, fontsize=8)
         ax.grid(alpha=0.3)
         self._save(fig, f'anomalies_{product.lower()}.png', save)
@@ -878,14 +975,18 @@ class MODISAnalyzer:
         x = np.arange(len(g))
         width = 0.25
 
-        fig, ax = plt.subplots(figsize=(10, 6))
+        fig, ax = self._plot_base(
+            figsize=(10, 6),
+            title=f'Фенологические метрики ({product})',
+            xlabel='',
+            ylabel='Месяц',
+        )
+
         ax.bar(x - width, g['sos_month'], width, label='SOS')
         ax.bar(x, g['pos_month'], width, label='POS')
         ax.bar(x + width, g['eos_month'], width, label='EOS')
         ax.set_xticks(x)
         ax.set_xticklabels(g.index, rotation=45, ha='right')
-        ax.set_ylabel('Месяц')
-        ax.set_title(f'Фенологические метрики ({product})')
         ax.legend()
         ax.grid(axis='y', alpha=0.3)
         self._save(fig, f'phenology_{product.lower()}.png', save)
@@ -894,20 +995,24 @@ class MODISAnalyzer:
         """Экспорт сводной таблицы."""
         if 'mean' not in self.df.columns and 'shannon' not in self.df.columns:
             return pd.DataFrame()
+
         rows = []
         for product in self.df['product'].unique().tolist():
             metric = self._metric_column(product)
             product_rows = self._product_rows(product)
+
             for zone in self.zone_order:
                 subset = product_rows[product_rows['zone_name'] == zone]
                 if subset.empty:
                     continue
+
                 yearly = subset.groupby('year')[metric].mean()
                 trend, p_val = np.nan, np.nan
                 if len(yearly) >= 3:
                     x = yearly.index.astype(float)
                     slope, _, _, p_val, _ = stats.linregress(x, yearly.values)
                     trend = slope * 10
+
                 rows.append(
                     {
                         'product': product,
@@ -920,6 +1025,7 @@ class MODISAnalyzer:
                         'n': len(subset),
                     }
                 )
+
         df_out = pd.DataFrame(rows)
         if save and not df_out.empty:
             path = self.output_dir / 'summary_statistics.csv'
@@ -933,19 +1039,24 @@ class MODISAnalyzer:
         """Экспорт таблицы значимости трендов."""
         if 'mean' not in self.df.columns and 'shannon' not in self.df.columns:
             return pd.DataFrame()
+
         rows = []
         for product in self.df['product'].unique().tolist():
             metric = self._metric_column(product)
+            product_rows = self._product_rows(product)
+
             for zone in self.zone_order:
-                subset = self._product_rows(product)
-                subset = subset[subset['zone_name'] == zone]
+                subset = product_rows[product_rows['zone_name'] == zone]
                 if subset.empty:
                     continue
+
                 yearly = subset.groupby('year')[metric].mean()
                 if len(yearly) < 3:
                     continue
+
                 x = yearly.index.astype(float)
                 slope, _, r, p_val, _ = stats.linregress(x, yearly.values)
+
                 rows.append(
                     {
                         'product': product,
@@ -960,6 +1071,7 @@ class MODISAnalyzer:
                         'n_years': len(yearly),
                     }
                 )
+
         df_out = pd.DataFrame(rows)
         if save and not df_out.empty:
             path = self.output_dir / 'trend_significance.csv'
@@ -980,6 +1092,7 @@ class MODISAnalyzer:
             .agg(['mean', 'std', 'count', 'min', 'max'])
             .reset_index()
         )
+
         if save and not agg.empty:
             path = self.output_dir / 'monthly_aggregated.csv'
             agg.to_csv(
@@ -989,7 +1102,7 @@ class MODISAnalyzer:
         return agg
 
     def _collect_sheets(self):
-        """Сборка вкладышей книги: имя -> (df, описание, X для Origin, Y)."""
+        """Сборка вкладышей книги: имя -> (df, описание, X, Y)."""
         sheets = {
             'flat': (
                 self.df,
@@ -1016,6 +1129,7 @@ class MODISAnalyzer:
                 'trend_per_10yr, p_value',
             ),
         }
+
         cat = self.build_categorical()
         if not cat.empty:
             sheets['categorical'] = (
@@ -1024,9 +1138,11 @@ class MODISAnalyzer:
                 'year',
                 'shannon, dominant_class',
             )
+
         for p in sorted(self.df['product'].unique()):
             if self._monthly(p).empty:
                 continue
+
             sheets[f'seasonal_{p}'] = (
                 self.build_seasonal_wide(p),
                 f'Сезонный цикл {p}: строки — месяцы, колонки — зоны',
@@ -1057,6 +1173,7 @@ class MODISAnalyzer:
                 'year',
                 'колонки зон',
             )
+
             ph = self.build_phenology(p)
             if not ph.empty:
                 sheets[f'phenology_{p}'] = (
@@ -1065,14 +1182,16 @@ class MODISAnalyzer:
                     'year',
                     'sos_month, pos_month, eos_month, los_months',
                 )
+
             cm = self.build_corr_matrix(p)
             if not cm.empty and cm.shape[0] >= 3:
                 sheets[f'corr_{p}'] = (
                     cm.reset_index(),
-                    f'Матрица корреляций зоны x зоны по аномалиям {p}',
+                    f'Матрица корреляций зона x зона по аномалиям {p}',
                     '-',
                     'матрица',
                 )
+
             pca = self.build_pca(p)
             if pca is not None:
                 sc, ld, evr = pca
@@ -1088,32 +1207,8 @@ class MODISAnalyzer:
                     'PC1',
                     'PC2',
                 )
-        return sheets
 
-    def export_excel(self, path):
-        """Excel-книга с вкладышем HELP и таблицами под Origin Pro."""
-        sheets = self._collect_sheets()
-        help_rows = [
-            {
-                'sheet': name,
-                'description': meta[1],
-                'columns': ', '.join(str(c) for c in meta[0].columns),
-                'origin_x': meta[2],
-                'origin_y': meta[3],
-            }
-            for name, meta in sheets.items()
-        ]
-        logger.info(messages.INFO_CREATING_EXCEL.format(path))
-        try:
-            with pd.ExcelWriter(path, engine='openpyxl') as writer:
-                pd.DataFrame(help_rows).to_excel(
-                    writer, sheet_name='HELP', index=False
-                )
-                for name, meta in sheets.items():
-                    meta[0].to_excel(writer, sheet_name=name[:31], index=False)
-            logger.info(messages.INFO_EXCEL_SAVED.format(path))
-        except ImportError:
-            logger.error(messages.ERR_EXCEL_NO_OPENPYXL)
+        return sheets
 
     def export_origin_pivot(self, save=True):
         """Широкие таблицы период x зона для каждого непрерывного продукта."""
@@ -1124,6 +1219,7 @@ class MODISAnalyzer:
         for product in self.df['product'].unique().tolist():
             if self._is_categorical(product):
                 continue
+
             subset = self._product_rows(product).copy()
             if subset.empty:
                 continue
@@ -1133,6 +1229,7 @@ class MODISAnalyzer:
                 + '-'
                 + subset['month'].astype(str).str.zfill(2)
             )
+
             pivot_df = (
                 subset.pivot_table(
                     index='period',
@@ -1143,6 +1240,7 @@ class MODISAnalyzer:
                 .reset_index()
                 .sort_values('period')
             )
+
             if save and not pivot_df.empty:
                 path = self.output_dir / f'origin_pivot_{product.lower()}.csv'
                 pivot_df.to_csv(
@@ -1160,11 +1258,12 @@ class MODISAnalyzer:
         """Запуск всех визуализаций и экспорта."""
         available = self.df['product'].unique().tolist()
         products = [p for p in (products or available) if p in available]
+
         if not products:
             logger.warning(messages.INFO_NO_PRODUCTS)
             return
-        continuous = [p for p in products if not self._is_categorical(p)]
 
+        continuous = [p for p in products if not self._is_categorical(p)]
         months = sorted(self.df['month'].unique())
         target_month = (
             7 if 7 in months else (months[len(months) // 2] if months else 7)
@@ -1198,6 +1297,8 @@ class MODISAnalyzer:
         self.export_summary_table()
         self.export_trend_significance()
         self.export_monthly_aggregated()
+
+        logger.info(messages.ANALYSIS_STEP_WIDE)
         self.export_origin_pivot()
 
         logger.info(messages.ANALYSIS_STEP_ANOMALY)
@@ -1250,7 +1351,6 @@ def main(args):
         {
             'product': args.product,
             'output_dir': str(output_dir),
-            'excel': args.excel,
         },
     )
 
@@ -1258,10 +1358,11 @@ def main(args):
         analyzer = MODISAnalyzer(input_csv, output_dir)
         analyzer.run_all(products=products)
 
-        if args.excel:
-            analyzer.export_excel(
-                DATA_PATHS['tables_output'] / 'modis_analysis.xlsx'
-            )
+        # Excel и Help CSV создаются всегда
+        exporter = ExcelExporter(analyzer)
+        exporter.export_help_csv(save=True)
+        excel_path = output_dir / EXCEL_FILENAME
+        exporter.export_excel(excel_path)
 
         logger.info(
             messages.STATUS_END_TIME.format(

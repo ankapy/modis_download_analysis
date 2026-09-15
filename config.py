@@ -24,7 +24,6 @@ DATA_PATHS = {
     'tables': BASE_DIR / 'data' / 'tables',  # CSV-статистика и отчёты
     'gis': BASE_DIR / 'gis',  # входные ГИС-файлы (зоны)
     'figures': BASE_DIR / 'output' / 'figures',  # графики анализа
-    'tables_output': BASE_DIR / 'output' / 'tables',  # Excel и сводки
     'logs': BASE_DIR / 'output' / 'logs',  # логи и provenance
     'gis_output': BASE_DIR / 'output' / 'gis',  # Mosaic Dataset (gdb)
 }
